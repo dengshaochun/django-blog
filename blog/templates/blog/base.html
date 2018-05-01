@@ -1,140 +1,170 @@
 <!DOCTYPE html>
 {% load static %}
 
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<html class="theme-next mist use-motion" lang="zh-Hans">
+
 {% block head %}
-<head>
-    <meta http-equiv="Content-Type" content="text/html; Charset=gb2312">
-    <meta http-equiv="Content-Language" content="zh-CN">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    {% block title %}<title>base title</title>{% endblock %}
-    <link rel="shortcut icon" href="{% static 'images/Logo_40.png' %}" type="image/x-icon">
-    <!--Layui-->
-    <link href="{% static 'plug/layui/css/layui.css' %}" rel="stylesheet" />
-    <!--font-awesome-->
-    <link href="{% static 'plug/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" />
-    <!--全局样式表-->
-    <link href="{% static  'css/global.css' %}" rel="stylesheet" />
-    <!-- 本页样式表 -->
-    <link href="{% static  'css/home.css' %}" rel="stylesheet" />
-</head>
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <link href="{% static 'blog/css/jquery.fancybox.min.css' %}" rel="stylesheet" type="text/css" />
+  <link href="{% static 'blog/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css" />
+  <link href="{% static 'blog/css/main.css' %}" rel="stylesheet" type="text/css" />
+  <meta name="keywords" content="Dengsc" />
+  <link rel="shortcut icon" type="image/x-icon" href="https://www.ezlippi.com/favicon.ico?v=5.1.0" />
+  <meta name="description" content="Dengsc" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="西风浊酒" />
+  <meta name="twitter:description" content="Dengsc" />
+  <script src="{% static 'blog/js/hm.js' %}"></script>
+  <script src="{% static 'blog/js/index.js' %}" type="text/javascript" id="hexo.configurations"></script>
+  <link rel="canonical" href="#" />
+  <script src="{% static 'blog/js/pace.min.js' %}"></script>
+  <link href="{% static 'blog/css/pace-theme-flash.css' %}" rel="stylesheet" />
+  <link href="{% static 'blog/css/pace-user-define.css' %}" rel="stylesheet" type="text/css" />
+  <title> 西风浊酒 </title>
+ </head>
 {% endblock %}
 
+ <!-- custom analytics part create by xiamo -->
+
 {% block body %}
-<body>
-    <!-- 导航 -->
-    {% block navbar %}
-    <nav class="blog-nav layui-header">
-        <div class="blog-container">
-            <!-- QQ互联登陆 -->
-            <a href="javascript:;" class="blog-user">
-                <i class="fa fa-qq"></i>
-            </a>
-            <a href="javascript:;" class="blog-user layui-hide">
-                <img src="{% static 'images/Absolutely.jpg' %}" alt="Absolutely" title="Absolutely" />
-            </a>
-            <!-- 不落阁 -->
-            <a class="blog-logo" href="blog/home.html">不落阁</a>
-            <!-- 导航菜单 -->
-            <ul class="layui-nav" lay-filter="nav">
-                <li class="layui-nav-item layui-this">
-                    <a href="blog/home.html"><i class="fa fa-home fa-fw"></i>&nbsp;网站首页</a>
-                </li>
-                <li class="layui-nav-item">
-                    <a href="blog/article.html"><i class="fa fa-file-text fa-fw"></i>&nbsp;文章专栏</a>
-                </li>
-                <li class="layui-nav-item">
-                    <a href="blog/resource.html"><i class="fa fa-tags fa-fw"></i>&nbsp;资源分享</a>
-                </li>
-                <li class="layui-nav-item">
-                    <a href="blog/timeline.html"><i class="fa fa-hourglass-half fa-fw"></i>&nbsp;点点滴滴</a>
-                </li>
-                <li class="layui-nav-item">
-                    <a href="blog/about.html"><i class="fa fa-info fa-fw"></i>&nbsp;关于本站</a>
-                </li>
-            </ul>
-            <!-- 手机和平板的导航开关 -->
-            <a class="blog-navicon" href="javascript:;">
-                <i class="fa fa-navicon"></i>
-            </a>
-        </div>
-    </nav>
-    {% endblock %}
-    <!-- 主体（一般只改变这里的内容） -->
-    <div class="blog-body">
-        <!-- canvas -->
-        <canvas id="canvas-banner" style="background: #393D49;"></canvas>
-        <!--为了及时效果需要立即设置canvas宽高，否则就在home.js中设置-->
-        <script type="text/javascript">
-            var canvas = document.getElementById('canvas-banner');
-            canvas.width = window.document.body.clientWidth - 10;//减去滚动条的宽度
-            if (screen.width >= 992) {
-                canvas.height = window.innerHeight * 1 / 3;
-            } else {
-                canvas.height = window.innerHeight * 2 / 7;
-            }
-        </script>
-        <!-- 这个一般才是真正的主体内容 -->
-        {% block page-content %} {% endblock %}
+ <body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans" class="  pace-done">
+
+ {% block pace %}
+  <div class="pace pace-inactive">
+   <div class="pace-progress" data-progress-text="100%" data-progress="99" style="transform: translate3d(100%, 0px, 0px);">
+    <div class="pace-progress-inner"></div>
+   </div>
+   <div class="pace-activity"></div>
+  </div>
+  {% endblock %}
+
+  <div class="container one-collumn sidebar-position-right page-home">
+   <div class="headband"></div>
+
+  {% block content-header %}
+   <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+    <div class="header-inner">
+     <div class="site-meta custom-logo">
+      <div class="custom-logo-site-title">
+       <a href="https://www.ezlippi.com/" class="brand" rel="start" style="opacity: 1;"> <span class="logo-line-before"><i class="" style="transform: translateX(100%);"></i></span> <span class="site-title" style="opacity: 1; top: 0px;">西风浊酒</span> <span class="logo-line-after"><i class="" style="transform: translateX(-100%);"></i></span> </a>
+      </div>
+      <h1 class="site-subtitle" itemprop="description" style="opacity: 1; top: 0px;"></h1>
+     </div>
+     <div class="site-nav-toggle">
+      <button> <span class="btn-bar"></span> <span class="btn-bar"></span> <span class="btn-bar"></span> </button>
+     </div>
+     <nav class="site-nav">
+      <ul id="menu" class="menu">
+       <li class="menu-item menu-item-home menu-item-active" style="opacity: 1; transform: translateY(0px);"> <a href="https://www.ezlippi.com/" rel="section"> <i class="menu-item-icon fa fa-fw fa-home"></i> <br /> 首页 </a> </li>
+       <li class="menu-item menu-item-categories" style="opacity: 1; transform: translateY(0px);"> <a href="https://www.ezlippi.com/categories" rel="section"> <i class="menu-item-icon fa fa-fw fa-th"></i> <br /> 分类 </a> </li>
+       <li class="menu-item menu-item-archives" style="opacity: 1; transform: translateY(0px);"> <a href="https://www.ezlippi.com/archives" rel="section"> <i class="menu-item-icon fa fa-fw fa-archive"></i> <br /> 归档 </a> </li>
+       <li class="menu-item menu-item-tags" style="opacity: 1; transform: translateY(0px);"> <a href="https://www.ezlippi.com/tags" rel="section"> <i class="menu-item-icon fa fa-fw fa-tags"></i> <br /> 标签 </a> </li>
+       <li class="menu-item menu-item-about" style="opacity: 1; transform: translateY(0px);"> <a href="https://www.ezlippi.com/about" rel="section"> <i class="menu-item-icon fa fa-fw fa-user"></i> <br /> 关于 </a> </li>
+      </ul>
+     </nav>
     </div>
-    <!-- 底部 -->
-
-    {% block footer %}
-    <footer class="blog-footer">
-        <p><span>Copyright</span><span>&copy;</span><span>2017</span><a href="http://www.lyblogs.cn">不落阁</a><span>Design By LY</span></p>
-        <p><a href="http://www.miibeian.gov.cn/" target="_blank">蜀ICP备16029915号-1</a></p>
-    </footer>
-    {% endblock %}
-
-    {% block left-nav %}
-    <!--侧边导航-->
-    <ul class="layui-nav layui-nav-tree layui-nav-side blog-nav-left layui-hide" lay-filter="nav">
-        <li class="layui-nav-item layui-this">
-            <a href="home.html"><i class="fa fa-home fa-fw"></i>&nbsp;网站首页</a>
-        </li>
-        <li class="layui-nav-item">
-            <a href="article.html"><i class="fa fa-file-text fa-fw"></i>&nbsp;文章专栏</a>
-        </li>
-        <li class="layui-nav-item">
-            <a href="resource.html"><i class="fa fa-tags fa-fw"></i>&nbsp;资源分享</a>
-        </li>
-        <li class="layui-nav-item">
-            <a href="timeline.html"><i class="fa fa-road fa-fw"></i>&nbsp;点点滴滴</a>
-        </li>
-        <li class="layui-nav-item">
-            <a href="about.html"><i class="fa fa-info fa-fw"></i>&nbsp;关于本站</a>
-        </li>
-    </ul>
-    {% endblock %}
+   </header>
+   {% endblock %}
 
 
-    {% block share %}
-    <!--分享窗体-->
-    <div class="blog-share layui-hide">
-        <div class="blog-share-body">
-            <div style="width: 200px;height:100%;">
-                <div class="bdsharebuttonbox">
-                    <a class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
-                    <a class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
-                    <a class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
-                    <a class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
-                </div>
-            </div>
+   <main id="main" class="main">
+    <div class="main-inner">
+
+    {% block page-content %} {% endblock %}
+
+     {% block sidebar %}
+     <div class="sidebar-toggle">
+      <div class="sidebar-toggle-line-wrap">
+       <span class="sidebar-toggle-line sidebar-toggle-line-first" style="width: 100%; top: 0px; transform: rotateZ(0deg); opacity: 1; left: 0px;"></span>
+       <span class="sidebar-toggle-line sidebar-toggle-line-middle" style="width: 100%; opacity: 1; left: 0px; top: 0px; transform: rotateZ(0deg);"></span>
+       <span class="sidebar-toggle-line sidebar-toggle-line-last" style="width: 100%; top: 0px; transform: rotateZ(0deg); opacity: 1; left: 0px;"></span>
+      </div>
+     </div>
+     <aside id="sidebar" class="sidebar">
+      <div class="sidebar-inner">
+       <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+         <img class="site-author-image" itemprop="image" src="{% static 'blog/image/avatar.gif' %}" alt="EZLippi" />
+         <p class="site-author-name" itemprop="name">EZLippi</p>
+         <p class="site-description motion-element" itemprop="description">Dengsc</p>
         </div>
-    </div>
-    <!--遮罩-->
-    <div class="blog-mask animated layui-hide"></div>
-    {% endblock %}
+        <nav class="site-state motion-element">
+         <div class="site-state-item site-state-posts">
+          <a href="https://www.ezlippi.com/archives"> <span class="site-state-item-count">95</span> <span class="site-state-item-name">日志</span> </a>
+         </div>
+         <div class="site-state-item site-state-categories">
+          <a href="https://www.ezlippi.com/categories"> <span class="site-state-item-count">30</span> <span class="site-state-item-name">分类</span> </a>
+         </div>
+         <div class="site-state-item site-state-tags">
+          <a href="https://www.ezlippi.com/tags"> <span class="site-state-item-count">103</span> <span class="site-state-item-name">标签</span> </a>
+         </div>
+        </nav>
+        <div class="links-of-author motion-element">
+         <span class="links-of-author-item"> <a href="https://github.com/EZLippi" target="_blank" title="GitHub"> <i class="fa fa-fw fa-github"></i> GitHub </a> </span>
+         <span class="links-of-author-item"> <a href="http://weibo.com/ouyanglip" target="_blank" title="weibo"> <i class="fa fa-fw fa-weibo"></i> weibo </a> </span>
+         <span class="links-of-author-item"> <a href="http://www.zhihu.com/people/lippi-ouyang" target="_blank" title="zhihu"> <i class="fa fa-fw fa-battery-3"></i> zhihu </a> </span>
+        </div>
+        <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+         <div class="links-of-blogroll-title">
+          <i class="fa  fa-fw fa-globe"></i> 友情链接
+         </div>
+         <ul class="links-of-blogroll-list">
+          <li class="links-of-blogroll-item"> <a href="http://www.woaitqs.cc/" title="Qisen Tang" target="_blank">Qisen Tang</a> </li>
+          <li class="links-of-blogroll-item"> <a href="http://szhshp.org/" title="szhshp的博客" target="_blank">szhshp的博客</a> </li>
+          <li class="links-of-blogroll-item"> <a href="http://python.zhangwei.website/" title="JuniorCoder" target="_blank">JuniorCoder</a> </li>
+          <li class="links-of-blogroll-item"> <a href="http://hippo-jessy.com/" title="Hippo" target="_blank">Hippo</a> </li>
+          <li class="links-of-blogroll-item"> <a href="https://www.zhihu.com/people/lippi-ouyang" title="友链出租" target="_blank">友链出租</a> </li>
+         </ul>
+        </div>
+       </section>
+      </div>
+     </aside>
+     {% endblock %}
 
-    {% block script %}
-    <!-- layui.js -->
-    <script src="{% static 'plug/layui/layui.js' %}"></script>
-    <!-- 全局脚本 -->
-    <script src="{% static 'js/global.js' %}"></script>
-    <!-- 本页脚本 -->
-    <script src="{% static 'js/home.js' %}"></script>
-	<script src="{% static 'js/love.js' %}"></script>
-    {% endblock %}
-</body>
+    </div>
+   </main>
+
+
+   {% block footer %}
+   <footer id="footer" class="footer">
+    <div class="footer-inner">
+     <div class="copyright">
+       &copy; 2018 -
+      <span itemprop="copyrightYear">2022</span>
+      <span class="with-love"> <i class="fa fa-heart"></i> </span>
+      <span class="author" itemprop="copyrightHolder">Dengsc</span>
+     </div>
+     <div class="theme-info">
+       主题 -
+      <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next" rel="external nofollow"> NexT.Mist </a>| Hosted by
+      <a href="https://pages.coding.me/" style="font-weight: bold">Coding Pages</a>
+     </div>
+    </div>
+   </footer>
+   <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+   </div>
+   {% endblock %}
+  </div>
+
+  {% block script %}
+  <script type="text/javascript" src="{% static 'blog/js/jquery.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'blog/js/fastclick.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'blog/js/jquery.lazyload.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'blog/js/velocity.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'blog/js/velocity.ui.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'blog/js/jquery.fancybox.pack.js' %}"></script>
+  <script type="text/javascript" src="{% static 'blog/js/utils.js' %}"></script>
+  <script type="text/javascript" src="{% static 'blog/js/motion.js' %}"></script>
+  <script type="text/javascript" src="{% static 'blog/js/bootstrap.js' %}"></script>
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="{% static 'blog/js/love.js' %}"></script>
+ {% endblock %}
+
+
+ </body>
 {% endblock %}
 </html>

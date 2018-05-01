@@ -159,22 +159,22 @@ LOGGING = {
             'formatter': 'simple'
         },
         'log_file': {
-            'level': "INFO",
-            "class": "logging.FileHandler",
-            "formatter": "verbose",
-            "filename": os.path.join(BASE_DIR, "logs/django.log"),
+            'level': 'INFO',
+            'class': 'logging.FileHandler',
+            'formatter': 'verbose',
+            'filename': os.path.join(BASE_DIR, 'logs/django.log'),
         },
-        "faillog": {
-            'level': "ERROR",
-            "class": "logging.FileHandler",
-            "formatter": "verbose",
-            "filename": os.path.join(BASE_DIR, "logs/faillog.log"),
+        'faillog': {
+            'level': 'ERROR',
+            'class': 'logging.FileHandler',
+            'formatter': 'verbose',
+            'filename': os.path.join(BASE_DIR, 'logs/faillog.log'),
         },
-        "dberror": {
-            'level': "ERROR",
-            "class": "logging.FileHandler",
-            "formatter": "verbose",
-            "filename": os.path.join(BASE_DIR, "logs/dberror.log"),
+        'dberror': {
+            'level': 'ERROR',
+            'class': 'logging.FileHandler',
+            'formatter': 'verbose',
+            'filename': os.path.join(BASE_DIR, 'logs/dberror.log'),
         },
     },
     'loggers': {
@@ -193,15 +193,15 @@ LOGGING = {
             'level': 'ERROR',
             'propagate': False,
         },
-        "faillog": {
-            "handlers": ['console', "faillog"],
-            "propagate": False,
-            "level": "ERROR",
+        'faillog': {
+            'handlers': ['console', 'faillog'],
+            'propagate': False,
+            'level': 'ERROR',
         },
-        "dberror": {
-            "handlers": ['console', "dberror"],
-            "propagate": False,
-            "level": "ERROR",
+        'dberror': {
+            'handlers': ['console', 'dberror'],
+            'propagate': False,
+            'level': 'ERROR',
         },
     }
 }

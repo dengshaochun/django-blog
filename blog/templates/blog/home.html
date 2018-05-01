@@ -1,262 +1,453 @@
 {% extends 'blog/base.html' %}
 {% load static %}
-{% block page-content %}
-    <div class="blog-container">
-            <div class="blog-main">
-                <!-- 网站公告提示 -->
-                <div class="home-tips shadow">
-                    <i style="float:left;line-height:17px;" class="fa fa-volume-up"></i>
-                    <div class="home-tips-container">
-                        <span style="color: #009688">偷偷告诉大家，本博客的后台管理也正在制作，为大家准备了游客专用账号！</span>
-                        <span style="color: red">网站新增留言回复啦！使用QQ登陆即可回复，人人都可以回复！</span>
-                        <span style="color: red">如果你觉得网站做得还不错，来Fly社区点个赞吧！<a href="http://fly.layui.com/case/2017/" target="_blank" style="color:#01AAED">点我前往</a></span>
-                        <span style="color: #009688">不落阁 &nbsp;—— &nbsp;一个.NET程序员的个人博客，新版网站采用Layui为前端框架，目前正在建设中！</span>
-                    </div>
-                </div>
-                <!--左边文章列表-->
-                <div class="blog-main-left">
-                    <div class="article shadow">
-                        <div class="article-left">
-                            <img src="{% static 'images/cover/201703181909057125.jpg' %}" alt="基于laypage的layui扩展模块（pagesize.js）！" />
-                        </div>
-                        <div class="article-right">
-                            <div class="article-title">
-                                <a href="detail.html">基于laypage的layui扩展模块（pagesize.js）！</a>
-                            </div>
-                            <div class="article-abstract">
-                                该模块主要是针对当前版本laypage没有页容量控制功能而制作，使用该模块后即可实现每页显示多少条数据的控制！本人原创，但是可能有可能只对本人的分页写法有用！
-                            </div>
-                        </div>
-                        <div class="clear"></div>
-                        <div class="article-footer">
-                            <span><i class="fa fa-clock-o"></i>&nbsp;&nbsp;2017-03-18</span>
-                            <span class="article-author"><i class="fa fa-user"></i>&nbsp;&nbsp;Absolutely</span>
-                            <span><i class="fa fa-tag"></i>&nbsp;&nbsp;<a href="#">Web前端</a></span>
-                            <span class="article-viewinfo"><i class="fa fa-eye"></i>&nbsp;0</span>
-                            <span class="article-viewinfo"><i class="fa fa-commenting"></i>&nbsp;4</span>
-                        </div>
-                    </div>
-                    <div class="article shadow">
-                        <div class="article-left">
-                            <img src="{% static 'images/cover/201703181909057125.jpg' %}" alt="基于laypage的layui扩展模块（pagesize.js）！" />
-                        </div>
-                        <div class="article-right">
-                            <div class="article-title">
-                                <a href="detail.html">基于laypage的layui扩展模块（pagesize.js）！</a>
-                            </div>
-                            <div class="article-abstract">
-                                该模块主要是针对当前版本laypage没有页容量控制功能而制作，使用该模块后即可实现每页显示多少条数据的控制！本人原创，但是可能有可能只对本人的分页写法有用！
-                            </div>
-                        </div>
-                        <div class="clear"></div>
-                        <div class="article-footer">
-                            <span><i class="fa fa-clock-o"></i>&nbsp;&nbsp;2017-03-18</span>
-                            <span class="article-author"><i class="fa fa-user"></i>&nbsp;&nbsp;Absolutely</span>
-                            <span><i class="fa fa-tag"></i>&nbsp;&nbsp;<a href="#">Web前端</a></span>
-                            <span class="article-viewinfo"><i class="fa fa-eye"></i>&nbsp;0</span>
-                            <span class="article-viewinfo"><i class="fa fa-commenting"></i>&nbsp;4</span>
-                        </div>
-                    </div>
-                    <div class="article shadow">
-                        <div class="article-left">
-                            <img src="{% static 'images/cover/201703181909057125.jpg' %}" alt="基于laypage的layui扩展模块（pagesize.js）！" />
-                        </div>
-                        <div class="article-right">
-                            <div class="article-title">
-                                <a href="detail.html">基于laypage的layui扩展模块（pagesize.js）！</a>
-                            </div>
-                            <div class="article-abstract">
-                                该模块主要是针对当前版本laypage没有页容量控制功能而制作，使用该模块后即可实现每页显示多少条数据的控制！本人原创，但是可能有可能只对本人的分页写法有用！
-                            </div>
-                        </div>
-                        <div class="clear"></div>
-                        <div class="article-footer">
-                            <span><i class="fa fa-clock-o"></i>&nbsp;&nbsp;2017-03-18</span>
-                            <span class="article-author"><i class="fa fa-user"></i>&nbsp;&nbsp;Absolutely</span>
-                            <span><i class="fa fa-tag"></i>&nbsp;&nbsp;<a href="#">Web前端</a></span>
-                            <span class="article-viewinfo"><i class="fa fa-eye"></i>&nbsp;0</span>
-                            <span class="article-viewinfo"><i class="fa fa-commenting"></i>&nbsp;4</span>
-                        </div>
-                    </div>
-                    <div class="article shadow">
-                        <div class="article-left">
-                            <img src="{% static 'images/cover/201703181909057125.jpg' %}" alt="基于laypage的layui扩展模块（pagesize.js）！" />
-                        </div>
-                        <div class="article-right">
-                            <div class="article-title">
-                                <a href="detail.html">基于laypage的layui扩展模块（pagesize.js）！</a>
-                            </div>
-                            <div class="article-abstract">
-                                该模块主要是针对当前版本laypage没有页容量控制功能而制作，使用该模块后即可实现每页显示多少条数据的控制！本人原创，但是可能有可能只对本人的分页写法有用！
-                            </div>
-                        </div>
-                        <div class="clear"></div>
-                        <div class="article-footer">
-                            <span><i class="fa fa-clock-o"></i>&nbsp;&nbsp;2017-03-18</span>
-                            <span class="article-author"><i class="fa fa-user"></i>&nbsp;&nbsp;Absolutely</span>
-                            <span><i class="fa fa-tag"></i>&nbsp;&nbsp;<a href="#">Web前端</a></span>
-                            <span class="article-viewinfo"><i class="fa fa-eye"></i>&nbsp;0</span>
-                            <span class="article-viewinfo"><i class="fa fa-commenting"></i>&nbsp;4</span>
-                        </div>
-                    </div>
-                    <div class="article shadow">
-                        <div class="article-left">
-                            <img src="{% static 'images/cover/201703181909057125.jpg' %}" alt="基于laypage的layui扩展模块（pagesize.js）！" />
-                        </div>
-                        <div class="article-right">
-                            <div class="article-title">
-                                <a href="detail.html">基于laypage的layui扩展模块（pagesize.js）！</a>
-                            </div>
-                            <div class="article-abstract">
-                                该模块主要是针对当前版本laypage没有页容量控制功能而制作，使用该模块后即可实现每页显示多少条数据的控制！本人原创，但是可能有可能只对本人的分页写法有用！
-                            </div>
-                        </div>
-                        <div class="clear"></div>
-                        <div class="article-footer">
-                            <span><i class="fa fa-clock-o"></i>&nbsp;&nbsp;2017-03-18</span>
-                            <span class="article-author"><i class="fa fa-user"></i>&nbsp;&nbsp;Absolutely</span>
-                            <span><i class="fa fa-tag"></i>&nbsp;&nbsp;<a href="#">Web前端</a></span>
-                            <span class="article-viewinfo"><i class="fa fa-eye"></i>&nbsp;0</span>
-                            <span class="article-viewinfo"><i class="fa fa-commenting"></i>&nbsp;4</span>
-                        </div>
-                    </div>
-                    <div class="article shadow">
-                        <div class="article-left">
-                            <img src="{% static 'images/cover/201703181909057125.jpg' %}" alt="基于laypage的layui扩展模块（pagesize.js）！" />
-                        </div>
-                        <div class="article-right">
-                            <div class="article-title">
-                                <a href="detail.html">基于laypage的layui扩展模块（pagesize.js）！</a>
-                            </div>
-                            <div class="article-abstract">
-                                该模块主要是针对当前版本laypage没有页容量控制功能而制作，使用该模块后即可实现每页显示多少条数据的控制！本人原创，但是可能有可能只对本人的分页写法有用！
-                            </div>
-                        </div>
-                        <div class="clear"></div>
-                        <div class="article-footer">
-                            <span><i class="fa fa-clock-o"></i>&nbsp;&nbsp;2017-03-18</span>
-                            <span class="article-author"><i class="fa fa-user"></i>&nbsp;&nbsp;Absolutely</span>
-                            <span><i class="fa fa-tag"></i>&nbsp;&nbsp;<a href="#">Web前端</a></span>
-                            <span class="article-viewinfo"><i class="fa fa-eye"></i>&nbsp;0</span>
-                            <span class="article-viewinfo"><i class="fa fa-commenting"></i>&nbsp;4</span>
-                        </div>
-                    </div>
-                    <div class="article shadow">
-                        <div class="article-left">
-                            <img src="{% static 'images/cover/201703181909057125.jpg' %}" alt="基于laypage的layui扩展模块（pagesize.js）！" />
-                        </div>
-                        <div class="article-right">
-                            <div class="article-title">
-                                <a href="detail.html">基于laypage的layui扩展模块（pagesize.js）！</a>
-                            </div>
-                            <div class="article-abstract">
-                                该模块主要是针对当前版本laypage没有页容量控制功能而制作，使用该模块后即可实现每页显示多少条数据的控制！本人原创，但是可能有可能只对本人的分页写法有用！
-                            </div>
-                        </div>
-                        <div class="clear"></div>
-                        <div class="article-footer">
-                            <span><i class="fa fa-clock-o"></i>&nbsp;&nbsp;2017-03-18</span>
-                            <span class="article-author"><i class="fa fa-user"></i>&nbsp;&nbsp;Absolutely</span>
-                            <span><i class="fa fa-tag"></i>&nbsp;&nbsp;<a href="#">Web前端</a></span>
-                            <span class="article-viewinfo"><i class="fa fa-eye"></i>&nbsp;0</span>
-                            <span class="article-viewinfo"><i class="fa fa-commenting"></i>&nbsp;4</span>
-                        </div>
-                    </div>
-                    <div class="article shadow">
-                        <div class="article-left">
-                            <img src="{% static 'images/cover/201703181909057125.jpg' %}" alt="基于laypage的layui扩展模块（pagesize.js）！" />
-                        </div>
-                        <div class="article-right">
-                            <div class="article-title">
-                                <a href="detail.html">基于laypage的layui扩展模块（pagesize.js）！</a>
-                            </div>
-                            <div class="article-abstract">
-                                该模块主要是针对当前版本laypage没有页容量控制功能而制作，使用该模块后即可实现每页显示多少条数据的控制！本人原创，但是可能有可能只对本人的分页写法有用！
-                            </div>
-                        </div>
-                        <div class="clear"></div>
-                        <div class="article-footer">
-                            <span><i class="fa fa-clock-o"></i>&nbsp;&nbsp;2017-03-18</span>
-                            <span class="article-author"><i class="fa fa-user"></i>&nbsp;&nbsp;Absolutely</span>
-                            <span><i class="fa fa-tag"></i>&nbsp;&nbsp;<a href="#">Web前端</a></span>
-                            <span class="article-viewinfo"><i class="fa fa-eye"></i>&nbsp;0</span>
-                            <span class="article-viewinfo"><i class="fa fa-commenting"></i>&nbsp;4</span>
-                        </div>
-                    </div>
-                </div>
-                <!--右边小栏目-->
-                <div class="blog-main-right">
-                    <div class="blogerinfo shadow">
-                        <div class="blogerinfo-figure">
-                            <img src="{% static 'images/Absolutely.jpg' %}" alt="Absolutely" />
-                        </div>
-                        <p class="blogerinfo-nickname">Absolutely</p>
-                        <p class="blogerinfo-introduce">一枚90后程序员，.NET开发工程师</p>
-                        <p class="blogerinfo-location"><i class="fa fa-location-arrow"></i>&nbsp;四川 - 成都</p>
-                        <hr />
-                        <div class="blogerinfo-contact">
-                            <a target="_blank" title="QQ交流" href="javascript:layer.msg('启动QQ会话窗口')"><i class="fa fa-qq fa-2x"></i></a>
-                            <a target="_blank" title="给我写信" href="javascript:layer.msg('启动邮我窗口')"><i class="fa fa-envelope fa-2x"></i></a>
-                            <a target="_blank" title="新浪微博" href="javascript:layer.msg('转到你的微博主页')"><i class="fa fa-weibo fa-2x"></i></a>
-                            <a target="_blank" title="码云" href="javascript:layer.msg('转到你的github主页')"><i class="fa fa-git fa-2x"></i></a>
-                        </div>
-                    </div>
-                    <div></div><!--占位-->
-                    <div class="blog-module shadow">
-                        <div class="blog-module-title">热文排行</div>
-                        <ul class="fa-ul blog-module-ul">
-                            <li><i class="fa-li fa fa-hand-o-right"></i><a href="detail.html">Web安全之跨站请求伪造CSRF</a></li>
-                            <li><i class="fa-li fa fa-hand-o-right"></i><a href="detail.html">ASP.NET MVC 防范跨站请求伪造（CSRF）</a></li>
-                            <li><i class="fa-li fa fa-hand-o-right"></i><a href="detail.html">常用正则表达式</a></li>
-                            <li><i class="fa-li fa fa-hand-o-right"></i><a href="detail.html">EF CodeFirst数据迁移常用指令</a></li>
-                            <li><i class="fa-li fa fa-hand-o-right"></i><a href="detail.html">浅谈.NET Framework基元类型</a></li>
-                            <li><i class="fa-li fa fa-hand-o-right"></i><a href="detail.html">C#基础知识回顾-扩展方法</a></li>
-                            <li><i class="fa-li fa fa-hand-o-right"></i><a href="detail.html">一步步制作时光轴（一）（HTML篇）</a></li>
-                            <li><i class="fa-li fa fa-hand-o-right"></i><a href="detail.html">一步步制作时光轴（二）（CSS篇）</a></li>
-                        </ul>
-                    </div>
-                    <div class="blog-module shadow">
-                        <div class="blog-module-title">最近分享</div>
-                        <ul class="fa-ul blog-module-ul">
-                            <li><i class="fa-li fa fa-hand-o-right"></i><a href="http://pan.baidu.com/s/1c1BJ6Qc" target="_blank">Canvas</a></li>
-                            <li><i class="fa-li fa fa-hand-o-right"></i><a href="http://pan.baidu.com/s/1kVK8UhT" target="_blank">pagesize.js</a></li>
-                            <li><i class="fa-li fa fa-hand-o-right"></i><a href="https://pan.baidu.com/s/1mit2aiW" target="_blank">时光轴</a></li>
-                            <li><i class="fa-li fa fa-hand-o-right"></i><a href="https://pan.baidu.com/s/1nuAKF81" target="_blank">图片轮播</a></li>
-                        </ul>
-                    </div>
-                    <div class="blog-module shadow">
-                        <div class="blog-module-title">一路走来</div>
-                        <dl class="footprint">
-                            <dt>2017年03月12日</dt>
-                            <dd>新增留言回复功能！人人都可参与回复！</dd>
-                            <dt>2017年03月10日</dt>
-                            <dd>不落阁2.0基本功能完成，正式上线！</dd>
-                            <dt>2017年03月09日</dt>
-                            <dd>新增文章搜索功能！</dd>
-                            <dt>2017年02月25日</dt>
-                            <dd>QQ互联接入网站，可QQ登陆发表评论与留言！</dd>
-                        </dl>
-                    </div>
-                    <div class="blog-module shadow">
-                        <div class="blog-module-title">后台记录</div>
-                        <dl class="footprint">
-                            <dt>2017年03月16日</dt>
-                            <dd>分页新增页容量控制</dd>
-                            <dt>2017年03月12日</dt>
-                            <dd>新增管家提醒功能</dd>
-                            <dt>2017年03月10日</dt>
-                            <dd>新增Win10快捷菜单</dd>
-                        </dl>
-                    </div>
-                    <div class="blog-module shadow">
-                        <div class="blog-module-title">友情链接</div>
-                        <ul class="blogroll">
-                            <li><a target="_blank" href="http://www.layui.com/" title="Layui">Layui</a></li>
-                            <li><a target="_blank" href="http://www.pagemark.cn/" title="页签">页签</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="clear"></div>
-            </div>
-        </div>
-{% endblock %}
+
+    {% block page-content %}
+    <div class="content-wrap">
+      <div id="content" class="content">
+       <section id="posts" class="posts-expand">
+        <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article" style="opacity: 1; display: block; transform: translateY(0px);">
+         <link itemprop="mainEntityOfPage" href="http://www.ezlippi.com/blog/2018/04/elasticsearch-translog.html" />
+         <span style="display:none" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <meta itemprop="name" content="EZLippi" />
+          <meta itemprop="description" content="" />
+          <meta itemprop="image" content="./images/avatar.gif" /> </span>
+         <span style="display:none" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+          <meta itemprop="name" content="西风浊酒" /> <span style="display:none" itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject"> <a href="{% static 'blog/image/avatar.jpg' %}" class="fancybox" rel="group"><img style="display:none;" itemprop="url image" alt="西风浊酒" src="{% static 'blog/image/avatar.jpg' %}" /></a> </span> </span>
+         <header class="post-header">
+          <h2 class="post-title" itemprop="name headline"> <a class="post-title-link" href="https://www.ezlippi.com/blog/2018/04/elasticsearch-translog.html" itemprop="url"> Elasticsearch translog文件介绍 </a> </h2>
+          <div class="post-meta">
+           <span class="post-time"> <span class="post-meta-item-icon"> <i class="fa fa-calendar-o"></i> </span> <span class="post-meta-item-text">发表于</span> <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-24T15:38:32+08:00"> 2018-04-24 </time> </span>
+           <span class="post-category"> <span class="post-meta-divider">|</span> <span class="post-meta-item-icon"> <i class="fa fa-folder-o"></i> </span> <span class="post-meta-item-text">分类于</span> <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"> <a href="https://www.ezlippi.com/categories/JVM/" itemprop="url" rel="index"> <span itemprop="name">JVM</span> </a> </span> </span>
+           <span id="/blog/2018/04/elasticsearch-translog.html" class="leancloud_visitors" data-flag-title="Elasticsearch translog文件介绍"> <span class="post-meta-divider">|</span> <span class="post-meta-item-icon"> <i class="fa fa-eye"></i> </span> <span class="post-meta-item-text">热度 </span> <span class="leancloud-visitors-count">54</span> <span>℃</span> </span>
+           <div class="post-wordcount">
+            <span class="post-meta-item-icon"> <i class="fa fa-file-word-o"></i> </span>
+            <span class="post-meta-item-text">字数统计</span>
+            <span title="字数统计"> 1,399 </span>
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon"> <i class="fa fa-clock-o"></i> </span>
+            <span class="post-meta-item-text">阅读时长</span>
+            <span title="阅读时长"> 5 </span>
+           </div>
+          </div>
+         </header>
+         <div class="post-body" itemprop="articleBody">
+          <p>这篇文章主要介绍Elasticsearch的索引工作机制,它是如何利用translog来保证数据的安全,以及我们在生产环境中如何优化translog的参数来最大化性能,主要会介绍到elastic中常见的2个操作:refresh和flush，以及这2个接口是如何保证数据能够被检索到的。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+           <a class="btn" href="https://www.ezlippi.com/blog/2018/04/elasticsearch-translog.html#more" rel="contents"> 阅读全文 &raquo; </a>
+          </div>
+          <!--/noindex-->
+         </div>
+         <div>
+         </div>
+         <div>
+         </div>
+         <footer class="post-footer">
+          <div>
+          </div>
+          <div class="post-eof"></div>
+         </footer>
+        </article>
+        <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article" style="opacity: 1; display: block; transform: translateY(0px);">
+         <link itemprop="mainEntityOfPage" href="http://www.ezlippi.com/blog/2018/04/mysql-settings.html" />
+         <span style="display:none" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <meta itemprop="name" content="EZLippi" />
+          <meta itemprop="description" content="" />
+          <meta itemprop="image" content="./images/avatar.gif" /> </span>
+         <span style="display:none" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+          <meta itemprop="name" content="西风浊酒" /> <span style="display:none" itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject"> <a href="{% static 'blog/image/avatar.jpg' %}" class="fancybox" rel="group"><img style="display:none;" itemprop="url image" alt="西风浊酒" src="{% static 'blog/image/avatar.jpg' %}" /></a> </span> </span>
+         <header class="post-header">
+          <h2 class="post-title" itemprop="name headline"> <a class="post-title-link" href="https://www.ezlippi.com/blog/2018/04/mysql-settings.html" itemprop="url"> MySQL常用参数列表 </a> </h2>
+          <div class="post-meta">
+           <span class="post-time"> <span class="post-meta-item-icon"> <i class="fa fa-calendar-o"></i> </span> <span class="post-meta-item-text">发表于</span> <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-12T15:38:32+08:00"> 2018-04-12 </time> </span>
+           <span class="post-category"> <span class="post-meta-divider">|</span> <span class="post-meta-item-icon"> <i class="fa fa-folder-o"></i> </span> <span class="post-meta-item-text">分类于</span> <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"> <a href="https://www.ezlippi.com/categories/MySQL/" itemprop="url" rel="index"> <span itemprop="name">MySQL</span> </a> </span> </span>
+           <span id="/blog/2018/04/mysql-settings.html" class="leancloud_visitors" data-flag-title="MySQL常用参数列表"> <span class="post-meta-divider">|</span> <span class="post-meta-item-icon"> <i class="fa fa-eye"></i> </span> <span class="post-meta-item-text">热度 </span> <span class="leancloud-visitors-count">143</span> <span>℃</span> </span>
+           <div class="post-wordcount">
+            <span class="post-meta-item-icon"> <i class="fa fa-file-word-o"></i> </span>
+            <span class="post-meta-item-text">字数统计</span>
+            <span title="字数统计"> 1,777 </span>
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon"> <i class="fa fa-clock-o"></i> </span>
+            <span class="post-meta-item-text">阅读时长</span>
+            <span title="阅读时长"> 7 </span>
+           </div>
+          </div>
+         </header>
+         <div class="post-body" itemprop="articleBody">
+          <p>收集一些常用的MySQL参数，方便日后使用。<br />
+           <!--noindex--> </p>
+          <div class="post-button text-center">
+           <a class="btn" href="https://www.ezlippi.com/blog/2018/04/mysql-settings.html#more" rel="contents"> 阅读全文 &raquo; </a>
+          </div>
+          <!--/noindex-->
+         </div>
+         <div>
+         </div>
+         <div>
+         </div>
+         <footer class="post-footer">
+          <div>
+          </div>
+          <div class="post-eof"></div>
+         </footer>
+        </article>
+        <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article" style="opacity: 1; display: block; transform: translateY(0px);">
+         <link itemprop="mainEntityOfPage" href="http://www.ezlippi.com/blog/2018/04/final-reference.html" />
+         <span style="display:none" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <meta itemprop="name" content="EZLippi" />
+          <meta itemprop="description" content="" />
+          <meta itemprop="image" content="./images/avatar.gif" /> </span>
+         <span style="display:none" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+          <meta itemprop="name" content="西风浊酒" /> <span style="display:none" itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject"> <a href="{% static 'blog/image/avatar.jpg' %}" class="fancybox" rel="group"><img style="display:none;" itemprop="url image" alt="西风浊酒" src="{% static 'blog/image/avatar.jpg' %}" /></a> </span> </span>
+         <header class="post-header">
+          <h2 class="post-title" itemprop="name headline"> <a class="post-title-link" href="https://www.ezlippi.com/blog/2018/04/final-reference.html" itemprop="url"> 慎用java的finalize方法 </a> </h2>
+          <div class="post-meta">
+           <span class="post-time"> <span class="post-meta-item-icon"> <i class="fa fa-calendar-o"></i> </span> <span class="post-meta-item-text">发表于</span> <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-04T15:38:32+08:00"> 2018-04-04 </time> </span>
+           <span class="post-category"> <span class="post-meta-divider">|</span> <span class="post-meta-item-icon"> <i class="fa fa-folder-o"></i> </span> <span class="post-meta-item-text">分类于</span> <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"> <a href="https://www.ezlippi.com/categories/JVM/" itemprop="url" rel="index"> <span itemprop="name">JVM</span> </a> </span> </span>
+           <span id="/blog/2018/04/final-reference.html" class="leancloud_visitors" data-flag-title="慎用java的finalize方法"> <span class="post-meta-divider">|</span> <span class="post-meta-item-icon"> <i class="fa fa-eye"></i> </span> <span class="post-meta-item-text">热度 </span> <span class="leancloud-visitors-count">92</span> <span>℃</span> </span>
+           <div class="post-wordcount">
+            <span class="post-meta-item-icon"> <i class="fa fa-file-word-o"></i> </span>
+            <span class="post-meta-item-text">字数统计</span>
+            <span title="字数统计"> 1,605 </span>
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon"> <i class="fa fa-clock-o"></i> </span>
+            <span class="post-meta-item-text">阅读时长</span>
+            <span title="阅读时长"> 7 </span>
+           </div>
+          </div>
+         </header>
+         <div class="post-body" itemprop="articleBody">
+          <p>我们通常用构造器来创建对象,而Finalize正好相反,构造方法执行对象的初始化操作,finalize方法执行对象的销毁操作.<br />那我们什么时候需要使用finalize方法呢,我们都知道Java里垃圾回收器可以回收对象使用的内存空间,但是对象可能会<br />持有很多资源比如Socket、文件句柄等,垃圾收集器无法回收这些资源,因此你需要使用finalize方法帮助GC回收这些<br />资源,比如关闭打开的文件或者网元资源,删除临时文件等.</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+           <a class="btn" href="https://www.ezlippi.com/blog/2018/04/final-reference.html#more" rel="contents"> 阅读全文 &raquo; </a>
+          </div>
+          <!--/noindex-->
+         </div>
+         <div>
+         </div>
+         <div>
+         </div>
+         <footer class="post-footer">
+          <div>
+          </div>
+          <div class="post-eof"></div>
+         </footer>
+        </article>
+        <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article" style="opacity: 1; display: block; transform: translateY(0px);">
+         <link itemprop="mainEntityOfPage" href="http://www.ezlippi.com/blog/2018/02/the-missing-stacktrace.html" />
+         <span style="display:none" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <meta itemprop="name" content="EZLippi" />
+          <meta itemprop="description" content="" />
+          <meta itemprop="image" content="./images/avatar.gif" /> </span>
+         <span style="display:none" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+          <meta itemprop="name" content="西风浊酒" /> <span style="display:none" itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject"> <a href="{% static 'blog/image/avatar.jpg' %}" class="fancybox" rel="group"><img style="display:none;" itemprop="url image" alt="西风浊酒" src="{% static 'blog/image/avatar.jpg' %}" /></a> </span> </span>
+         <header class="post-header">
+          <h2 class="post-title" itemprop="name headline"> <a class="post-title-link" href="https://www.ezlippi.com/blog/2018/02/the-missing-stacktrace.html" itemprop="url"> JVM解惑:消失的异常堆栈 </a> </h2>
+          <div class="post-meta">
+           <span class="post-time"> <span class="post-meta-item-icon"> <i class="fa fa-calendar-o"></i> </span> <span class="post-meta-item-text">发表于</span> <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-02-04T15:38:32+08:00"> 2018-02-04 </time> </span>
+           <span class="post-category"> <span class="post-meta-divider">|</span> <span class="post-meta-item-icon"> <i class="fa fa-folder-o"></i> </span> <span class="post-meta-item-text">分类于</span> <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"> <a href="https://www.ezlippi.com/categories/JVM/" itemprop="url" rel="index"> <span itemprop="name">JVM</span> </a> </span> </span>
+           <span id="/blog/2018/02/the-missing-stacktrace.html" class="leancloud_visitors" data-flag-title="JVM解惑:消失的异常堆栈"> <span class="post-meta-divider">|</span> <span class="post-meta-item-icon"> <i class="fa fa-eye"></i> </span> <span class="post-meta-item-text">热度 </span> <span class="leancloud-visitors-count">623</span> <span>℃</span> </span>
+           <div class="post-wordcount">
+            <span class="post-meta-item-icon"> <i class="fa fa-file-word-o"></i> </span>
+            <span class="post-meta-item-text">字数统计</span>
+            <span title="字数统计"> 1,756 </span>
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon"> <i class="fa fa-clock-o"></i> </span>
+            <span class="post-meta-item-text">阅读时长</span>
+            <span title="阅读时长"> 7 </span>
+           </div>
+          </div>
+         </header>
+         <div class="post-body" itemprop="articleBody">
+          <p>最近在分析日志的时候发现有个日志捕捉了NullPointerException，但是没有异常堆栈信息,只有<code>java.lang.NullPointerException</code>这一条信息,无法知道是从哪里抛出来的, 经过分析是JIT编译器对异常进行了优化，当代码中的某个位置抛出同一个异常很多次后,JIT服务端编译器(C2)会将其优化成抛出一个事先编译好的、类型匹配的异常,异常堆栈信息就看不到了。<br />
+           <!--noindex--> </p>
+          <div class="post-button text-center">
+           <a class="btn" href="https://www.ezlippi.com/blog/2018/02/the-missing-stacktrace.html#more" rel="contents"> 阅读全文 &raquo; </a>
+          </div>
+          <!--/noindex-->
+         </div>
+         <div>
+         </div>
+         <div>
+         </div>
+         <footer class="post-footer">
+          <div>
+          </div>
+          <div class="post-eof"></div>
+         </footer>
+        </article>
+        <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article" style="opacity: 1; display: block; transform: translateY(0px);">
+         <link itemprop="mainEntityOfPage" href="http://www.ezlippi.com/blog/2018/01/next-chat.html" />
+         <span style="display:none" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <meta itemprop="name" content="EZLippi" />
+          <meta itemprop="description" content="" />
+          <meta itemprop="image" content="./images/avatar.gif" /> </span>
+         <span style="display:none" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+          <meta itemprop="name" content="西风浊酒" /> <span style="display:none" itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject"> <a href="{% static 'blog/image/avatar.jpg' %}" class="fancybox" rel="group"><img style="display:none;" itemprop="url image" alt="西风浊酒" src="{% static 'blog/image/avatar.jpg' %}" /></a> </span> </span>
+         <header class="post-header">
+          <h2 class="post-title" itemprop="name headline"> <a class="post-title-link" href="https://www.ezlippi.com/blog/2018/01/next-chat.html" itemprop="url"> Hexo博客添加在线联系功能 </a> </h2>
+          <div class="post-meta">
+           <span class="post-time"> <span class="post-meta-item-icon"> <i class="fa fa-calendar-o"></i> </span> <span class="post-meta-item-text">发表于</span> <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-29T20:38:32+08:00"> 2018-01-29 </time> </span>
+           <span class="post-category"> <span class="post-meta-divider">|</span> <span class="post-meta-item-icon"> <i class="fa fa-folder-o"></i> </span> <span class="post-meta-item-text">分类于</span> <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"> <a href="https://www.ezlippi.com/categories/hexo/" itemprop="url" rel="index"> <span itemprop="name">hexo</span> </a> </span> </span>
+           <span id="/blog/2018/01/next-chat.html" class="leancloud_visitors" data-flag-title="Hexo博客添加在线联系功能"> <span class="post-meta-divider">|</span> <span class="post-meta-item-icon"> <i class="fa fa-eye"></i> </span> <span class="post-meta-item-text">热度 </span> <span class="leancloud-visitors-count">424</span> <span>℃</span> </span>
+           <div class="post-wordcount">
+            <span class="post-meta-item-icon"> <i class="fa fa-file-word-o"></i> </span>
+            <span class="post-meta-item-text">字数统计</span>
+            <span title="字数统计"> 411 </span>
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon"> <i class="fa fa-clock-o"></i> </span>
+            <span class="post-meta-item-text">阅读时长</span>
+            <span title="阅读时长"> 2 </span>
+           </div>
+          </div>
+         </header>
+         <div class="post-body" itemprop="articleBody">
+          <p>Hexo博客如何添加在线联系功能呢,发现了一个不错的网站可以提供在线联系的服务，当有用户在网页上给你留言后会通过邮件或者微信通知你，可以及时的解答用户的疑问。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+           <a class="btn" href="https://www.ezlippi.com/blog/2018/01/next-chat.html#more" rel="contents"> 阅读全文 &raquo; </a>
+          </div>
+          <!--/noindex-->
+         </div>
+         <div>
+         </div>
+         <div>
+         </div>
+         <footer class="post-footer">
+          <div>
+          </div>
+          <div class="post-eof"></div>
+         </footer>
+        </article>
+        <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article" style="opacity: 1; display: block; transform: translateY(0px);">
+         <link itemprop="mainEntityOfPage" href="http://www.ezlippi.com/blog/2018/01/jvm-card-table-turning.html" />
+         <span style="display:none" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <meta itemprop="name" content="EZLippi" />
+          <meta itemprop="description" content="" />
+          <meta itemprop="image" content="./images/avatar.gif" /> </span>
+         <span style="display:none" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+          <meta itemprop="name" content="西风浊酒" /> <span style="display:none" itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject"> <a href="{% static 'blog/image/avatar.jpg' %}" class="fancybox" rel="group"><img style="display:none;" itemprop="url image" alt="西风浊酒" src="{% static 'blog/image/avatar.jpg' %}" /></a> </span> </span>
+         <header class="post-header">
+          <h2 class="post-title" itemprop="name headline"> <a class="post-title-link" href="https://www.ezlippi.com/blog/2018/01/jvm-card-table-turning.html" itemprop="url"> JVM调优:CardTable简介 </a> </h2>
+          <div class="post-meta">
+           <span class="post-time"> <span class="post-meta-item-icon"> <i class="fa fa-calendar-o"></i> </span> <span class="post-meta-item-text">发表于</span> <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-28T00:38:32+08:00"> 2018-01-28 </time> </span>
+           <span class="post-category"> <span class="post-meta-divider">|</span> <span class="post-meta-item-icon"> <i class="fa fa-folder-o"></i> </span> <span class="post-meta-item-text">分类于</span> <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"> <a href="https://www.ezlippi.com/categories/Java/" itemprop="url" rel="index"> <span itemprop="name">Java</span> </a> </span> </span>
+           <span id="/blog/2018/01/jvm-card-table-turning.html" class="leancloud_visitors" data-flag-title="JVM调优:CardTable简介"> <span class="post-meta-divider">|</span> <span class="post-meta-item-icon"> <i class="fa fa-eye"></i> </span> <span class="post-meta-item-text">热度 </span> <span class="leancloud-visitors-count">529</span> <span>℃</span> </span>
+           <div class="post-wordcount">
+            <span class="post-meta-item-icon"> <i class="fa fa-file-word-o"></i> </span>
+            <span class="post-meta-item-text">字数统计</span>
+            <span title="字数统计"> 572 </span>
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon"> <i class="fa fa-clock-o"></i> </span>
+            <span class="post-meta-item-text">阅读时长</span>
+            <span title="阅读时长"> 2 </span>
+           </div>
+          </div>
+         </header>
+         <div class="post-body" itemprop="articleBody">
+          <p>网上关于JVM调优的文章很多,这篇文章主要介绍JVM里Card Table的作用。我们知道JVM GC可以分为MinorGC、MajorGC和FullGC,对于Mirnor GC来讲它的耗时主要由两个因素决定:</p>
+          <ol>
+           <li>复制活跃对象的时间</li>
+           <li>扫描card table(老年代对象引用新生代对象)的时间</li>
+          </ol>
+          <!--noindex-->
+          <div class="post-button text-center">
+           <a class="btn" href="https://www.ezlippi.com/blog/2018/01/jvm-card-table-turning.html#more" rel="contents"> 阅读全文 &raquo; </a>
+          </div>
+          <!--/noindex-->
+         </div>
+         <div>
+         </div>
+         <div>
+         </div>
+         <footer class="post-footer">
+          <div>
+          </div>
+          <div class="post-eof"></div>
+         </footer>
+        </article>
+        <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article" style="opacity: 1; display: block; transform: translateY(0px);">
+         <link itemprop="mainEntityOfPage" href="http://www.ezlippi.com/blog/2018/01/btrace-introduce.html" />
+         <span style="display:none" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <meta itemprop="name" content="EZLippi" />
+          <meta itemprop="description" content="" />
+          <meta itemprop="image" content="./images/avatar.gif" /> </span>
+         <span style="display:none" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+          <meta itemprop="name" content="西风浊酒" /> <span style="display:none" itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject"> <a href="{% static 'blog/image/avatar.jpg' %}" class="fancybox" rel="group"><img style="display:none;" itemprop="url image" alt="西风浊酒" src="{% static 'blog/image/avatar.jpg' %}" /></a> </span> </span>
+         <header class="post-header">
+          <h2 class="post-title" itemprop="name headline"> <a class="post-title-link" href="https://www.ezlippi.com/blog/2018/01/btrace-introduce.html" itemprop="url"> btrace动态追踪技术解析 </a> </h2>
+          <div class="post-meta">
+           <span class="post-time"> <span class="post-meta-item-icon"> <i class="fa fa-calendar-o"></i> </span> <span class="post-meta-item-text">发表于</span> <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-26T13:38:32+08:00"> 2018-01-26 </time> </span>
+           <span class="post-category"> <span class="post-meta-divider">|</span> <span class="post-meta-item-icon"> <i class="fa fa-folder-o"></i> </span> <span class="post-meta-item-text">分类于</span> <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"> <a href="https://www.ezlippi.com/categories/Java/" itemprop="url" rel="index"> <span itemprop="name">Java</span> </a> </span> </span>
+           <span id="/blog/2018/01/btrace-introduce.html" class="leancloud_visitors" data-flag-title="btrace动态追踪技术解析"> <span class="post-meta-divider">|</span> <span class="post-meta-item-icon"> <i class="fa fa-eye"></i> </span> <span class="post-meta-item-text">热度 </span> <span class="leancloud-visitors-count">730</span> <span>℃</span> </span>
+           <div class="post-wordcount">
+            <span class="post-meta-item-icon"> <i class="fa fa-file-word-o"></i> </span>
+            <span class="post-meta-item-text">字数统计</span>
+            <span title="字数统计"> 2,944 </span>
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon"> <i class="fa fa-clock-o"></i> </span>
+            <span class="post-meta-item-text">阅读时长</span>
+            <span title="阅读时长"> 13 </span>
+           </div>
+          </div>
+         </header>
+         <div class="post-body" itemprop="articleBody">
+          <p> 开发环境定位问题手段较多,可以加日志、远程调试hotswap等,但在生产环境就没这么方便了,服务上线后就不能随便重启,比如某个接口有时候返回的数据异常,日志又没打印详情,这时候又想知道方法的入参是什么、是否调用了内部某个方法，或者接口响应时间较长想排查具体在哪个方法上调用比较耗时，这些场景都需要用到动态追踪的技术,btrace就是一个能帮助你分析和监控JVM的工具,采用了动态attach到目标JVM的方法,非侵入式监控,主要使用了JVMT(JVM Tool Interface)和Instrumentation技术,国内介绍btrace的文章并不多,最近正好要在部门内分享btrace的使用心得,因此整理了这篇文档,希望能够把btrace里的技术讲清楚。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+           <a class="btn" href="https://www.ezlippi.com/blog/2018/01/btrace-introduce.html#more" rel="contents"> 阅读全文 &raquo; </a>
+          </div>
+          <!--/noindex-->
+         </div>
+         <div>
+         </div>
+         <div>
+         </div>
+         <footer class="post-footer">
+          <div>
+          </div>
+          <div class="post-eof"></div>
+         </footer>
+        </article>
+        <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article" style="opacity: 1; display: block; transform: translateY(0px);">
+         <link itemprop="mainEntityOfPage" href="http://www.ezlippi.com/blog/2018/01/gatling.html" />
+         <span style="display:none" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <meta itemprop="name" content="EZLippi" />
+          <meta itemprop="description" content="" />
+          <meta itemprop="image" content="./images/avatar.gif" /> </span>
+         <span style="display:none" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+          <meta itemprop="name" content="西风浊酒" /> <span style="display:none" itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject"> <a href="{% static 'blog/image/avatar.jpg' %}" class="fancybox" rel="group"><img style="display:none;" itemprop="url image" alt="西风浊酒" src="{% static 'blog/image/avatar.jpg' %}" /></a> </span> </span>
+         <header class="post-header">
+          <h2 class="post-title" itemprop="name headline"> <a class="post-title-link" href="https://www.ezlippi.com/blog/2018/01/gatling.html" itemprop="url"> 性能测试Gatling入门教程 </a> </h2>
+          <div class="post-meta">
+           <span class="post-time"> <span class="post-meta-item-icon"> <i class="fa fa-calendar-o"></i> </span> <span class="post-meta-item-text">发表于</span> <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-23T13:38:32+08:00"> 2018-01-23 </time> </span>
+           <span class="post-category"> <span class="post-meta-divider">|</span> <span class="post-meta-item-icon"> <i class="fa fa-folder-o"></i> </span> <span class="post-meta-item-text">分类于</span> <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"> <a href="https://www.ezlippi.com/categories/Java/" itemprop="url" rel="index"> <span itemprop="name">Java</span> </a> </span> </span>
+           <span id="/blog/2018/01/gatling.html" class="leancloud_visitors" data-flag-title="性能测试Gatling入门教程"> <span class="post-meta-divider">|</span> <span class="post-meta-item-icon"> <i class="fa fa-eye"></i> </span> <span class="post-meta-item-text">热度 </span> <span class="leancloud-visitors-count">755</span> <span>℃</span> </span>
+           <div class="post-wordcount">
+            <span class="post-meta-item-icon"> <i class="fa fa-file-word-o"></i> </span>
+            <span class="post-meta-item-text">字数统计</span>
+            <span title="字数统计"> 1,370 </span>
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon"> <i class="fa fa-clock-o"></i> </span>
+            <span class="post-meta-item-text">阅读时长</span>
+            <span title="阅读时长"> 7 </span>
+           </div>
+          </div>
+         </header>
+         <div class="post-body" itemprop="articleBody">
+          <p>Gatling 是一个功能强大的负载测试工具。它是为易用性、可维护性和高性能而设计的,它能生成丰富多彩的报告，包含测试案例中收集的所有指标,该功能似乎比 JMeter更好,因此我在实际压力测试中选用Gatling。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+           <a class="btn" href="https://www.ezlippi.com/blog/2018/01/gatling.html#more" rel="contents"> 阅读全文 &raquo; </a>
+          </div>
+          <!--/noindex-->
+         </div>
+         <div>
+         </div>
+         <div>
+         </div>
+         <footer class="post-footer">
+          <div>
+          </div>
+          <div class="post-eof"></div>
+         </footer>
+        </article>
+        <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article" style="opacity: 1; display: block; transform: translateY(0px);">
+         <link itemprop="mainEntityOfPage" href="http://www.ezlippi.com/blog/2018/01/jmh-test-guide.html" />
+         <span style="display:none" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <meta itemprop="name" content="EZLippi" />
+          <meta itemprop="description" content="" />
+          <meta itemprop="image" content="./images/avatar.gif" /> </span>
+         <span style="display:none" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+          <meta itemprop="name" content="西风浊酒" /> <span style="display:none" itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject"> <a href="{% static 'blog/image/avatar.jpg' %}" class="fancybox" rel="group"><img style="display:none;" itemprop="url image" alt="西风浊酒" src="{% static 'blog/image/avatar.jpg' %}" /></a> </span> </span>
+         <header class="post-header">
+          <h2 class="post-title" itemprop="name headline"> <a class="post-title-link" href="https://www.ezlippi.com/blog/2018/01/jmh-test-guide.html" itemprop="url"> 使用JMH微基准测试一切 </a> </h2>
+          <div class="post-meta">
+           <span class="post-time"> <span class="post-meta-item-icon"> <i class="fa fa-calendar-o"></i> </span> <span class="post-meta-item-text">发表于</span> <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-20T13:38:32+08:00"> 2018-01-20 </time> </span>
+           <span class="post-category"> <span class="post-meta-divider">|</span> <span class="post-meta-item-icon"> <i class="fa fa-folder-o"></i> </span> <span class="post-meta-item-text">分类于</span> <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"> <a href="https://www.ezlippi.com/categories/Java/" itemprop="url" rel="index"> <span itemprop="name">Java</span> </a> </span> </span>
+           <span id="/blog/2018/01/jmh-test-guide.html" class="leancloud_visitors" data-flag-title="使用JMH微基准测试一切"> <span class="post-meta-divider">|</span> <span class="post-meta-item-icon"> <i class="fa fa-eye"></i> </span> <span class="post-meta-item-text">热度 </span> <span class="leancloud-visitors-count">583</span> <span>℃</span> </span>
+           <div class="post-wordcount">
+            <span class="post-meta-item-icon"> <i class="fa fa-file-word-o"></i> </span>
+            <span class="post-meta-item-text">字数统计</span>
+            <span title="字数统计"> 1,235 </span>
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon"> <i class="fa fa-clock-o"></i> </span>
+            <span class="post-meta-item-text">阅读时长</span>
+            <span title="阅读时长"> 6 </span>
+           </div>
+          </div>
+         </header>
+         <div class="post-body" itemprop="articleBody">
+          <p> 引用江南白衣的一句话:没有测试数据证明的论断，都是可疑的，诚意推荐JMH。这篇文章简要介绍怎么使用JMH来做基准测试,可以作为JMH的入门教程。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+           <a class="btn" href="https://www.ezlippi.com/blog/2018/01/jmh-test-guide.html#more" rel="contents"> 阅读全文 &raquo; </a>
+          </div>
+          <!--/noindex-->
+         </div>
+         <div>
+         </div>
+         <div>
+         </div>
+         <footer class="post-footer">
+          <div>
+          </div>
+          <div class="post-eof"></div>
+         </footer>
+        </article>
+        <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article" style="opacity: 1; display: block; transform: translateY(0px);">
+         <link itemprop="mainEntityOfPage" href="http://www.ezlippi.com/blog/2018/01/safepoint.html" />
+         <span style="display:none" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <meta itemprop="name" content="EZLippi" />
+          <meta itemprop="description" content="" />
+          <meta itemprop="image" content="./images/avatar.gif" /> </span>
+         <span style="display:none" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+          <meta itemprop="name" content="西风浊酒" /> <span style="display:none" itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject"> <a href="{% static 'blog/image/avatar.jpg' %}" class="fancybox" rel="group"><img style="display:none;" itemprop="url image" alt="西风浊酒" src="{% static 'blog/image/avatar.jpg' %}" /></a> </span> </span>
+         <header class="post-header">
+          <h2 class="post-title" itemprop="name headline"> <a class="post-title-link" href="https://www.ezlippi.com/blog/2018/01/safepoint.html" itemprop="url"> JVM安全点介绍 </a> </h2>
+          <div class="post-meta">
+           <span class="post-time"> <span class="post-meta-item-icon"> <i class="fa fa-calendar-o"></i> </span> <span class="post-meta-item-text">发表于</span> <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-15T13:38:32+08:00"> 2018-01-15 </time> </span>
+           <span class="post-category"> <span class="post-meta-divider">|</span> <span class="post-meta-item-icon"> <i class="fa fa-folder-o"></i> </span> <span class="post-meta-item-text">分类于</span> <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"> <a href="https://www.ezlippi.com/categories/Java/" itemprop="url" rel="index"> <span itemprop="name">Java</span> </a> </span> </span>
+           <span id="/blog/2018/01/safepoint.html" class="leancloud_visitors" data-flag-title="JVM安全点介绍"> <span class="post-meta-divider">|</span> <span class="post-meta-item-icon"> <i class="fa fa-eye"></i> </span> <span class="post-meta-item-text">热度 </span> <span class="leancloud-visitors-count">511</span> <span>℃</span> </span>
+           <div class="post-wordcount">
+            <span class="post-meta-item-icon"> <i class="fa fa-file-word-o"></i> </span>
+            <span class="post-meta-item-text">字数统计</span>
+            <span title="字数统计"> 1,764 </span>
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon"> <i class="fa fa-clock-o"></i> </span>
+            <span class="post-meta-item-text">阅读时长</span>
+            <span title="阅读时长"> 7 </span>
+           </div>
+          </div>
+         </header>
+         <div class="post-body" itemprop="articleBody">
+          <h2 id="基本概念"><a href="https://www.ezlippi.com/#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5" class="headerlink" title="基本概念"></a>基本概念</h2>
+          <p>学习JVM到一定程度后肯定会接触到safepoint(安全点)的概念,特别是在处理GC问题的时候,这篇文章主要介绍下安全点(safepoint)的概念及如何在JVM环境中开启安全点日志来分析系统的性能.</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+           <a class="btn" href="https://www.ezlippi.com/blog/2018/01/safepoint.html#more" rel="contents"> 阅读全文 &raquo; </a>
+          </div>
+          <!--/noindex-->
+         </div>
+         <div>
+         </div>
+         <div>
+         </div>
+         <footer class="post-footer">
+          <div>
+          </div>
+          <div class="post-eof"></div>
+         </footer>
+        </article>
+       </section>
+       <nav class="pagination">
+        <span class="page-number current">1</span>
+        <a class="page-number" href="https://www.ezlippi.com/page/2/">2</a>
+        <span class="space">…</span>
+        <a class="page-number" href="https://www.ezlippi.com/page/10/">10</a>
+        <a class="extend next" rel="next" href="https://www.ezlippi.com/page/2/"><i class="fa fa-angle-right"></i></a>
+       </nav>
+      </div>
+     </div>
+    {% endblock %}
