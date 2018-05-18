@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 from django.shortcuts import render
 from django.http.response import HttpResponse
 from django.shortcuts import render
-from .models import Article, Category, Tag
+from .models import Article, Category, Tag, Profile
 from django.shortcuts import get_object_or_404, redirect, get_list_or_404
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
@@ -19,7 +19,7 @@ logger = logging.getLogger(__name__)
 
 
 class IndexView(ListView):
-    template_name = 'blog/home.html'
+    template_name = 'blog/index.html'
     # 制定获取的model数据列表的名字
     context_object_name = "article_list"
 
@@ -72,3 +72,51 @@ class ArticleDetailView(DetailView):
         # kwargs['category_list'] = Category.objects.all().order_by('name')
         # kwargs['tag_list'] = Tag.objects.all().order_by('name')
         return super(ArticleDetailView, self).get_context_data(**kwargs)
+
+
+class AboutView(DetailView):
+
+    model = Profile
+    template_name = 'blog/about.html'
+
+    def get_object(self, queryset=None):
+        pass
+
+    def get_context_data(self, **kwargs):
+        return super(AboutView, self).get_context_data(**kwargs)
+
+
+class CategoryView(DetailView):
+
+    model = Category
+    template_name = 'blog/categories.html'
+
+    def get_object(self, queryset=None):
+        pass
+
+    def get_context_data(self, **kwargs):
+        return super(CategoryView, self).get_context_data(**kwargs)
+
+
+class TagView(DetailView):
+
+    model = Tag
+    template_name = 'blog/tags.html'
+
+    def get_object(self, queryset=None):
+        pass
+
+    def get_context_data(self, **kwargs):
+        return super(TagView, self).get_context_data(**kwargs)
+
+
+class ArchiveView(DetailView):
+
+    model = Article
+    template_name = 'blog/archives.html'
+
+    def get_object(self, queryset=None):
+        pass
+
+    def get_context_data(self, **kwargs):
+        return super(ArchiveView, self).get_context_data(**kwargs)

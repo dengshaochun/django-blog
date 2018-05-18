@@ -15,7 +15,7 @@
   <link rel="shortcut icon" type="image/x-icon" href="https://www.ezlippi.com/favicon.ico?v=5.1.0" />
   <meta name="description" content="Dengsc" />
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="西风浊酒" />
+  <meta name="twitter:title" content="剑试天下" />
   <meta name="twitter:description" content="Dengsc" />
   <script src="{% static 'blog/js/hm.js' %}"></script>
   <script src="{% static 'blog/js/index.js' %}" type="text/javascript" id="hexo.configurations"></script>
@@ -23,14 +23,14 @@
   <script src="{% static 'blog/js/pace.min.js' %}"></script>
   <link href="{% static 'blog/css/pace-theme-flash.css' %}" rel="stylesheet" />
   <link href="{% static 'blog/css/pace-user-define.css' %}" rel="stylesheet" type="text/css" />
-  <title> 西风浊酒 </title>
+  <title> 剑试天下 </title>
  </head>
 {% endblock %}
 
  <!-- custom analytics part create by xiamo -->
 
 {% block body %}
- <body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans" class="  pace-done">
+ <body itemscope="" lang="zh-Hans" class="  pace-done">
 
  {% block pace %}
   <div class="pace pace-inactive">
@@ -45,11 +45,11 @@
    <div class="headband"></div>
 
   {% block content-header %}
-   <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+   <header id="header" class="header" itemscope="">
     <div class="header-inner">
      <div class="site-meta custom-logo">
       <div class="custom-logo-site-title">
-       <a href="https://www.ezlippi.com/" class="brand" rel="start" style="opacity: 1;"> <span class="logo-line-before"><i class="" style="transform: translateX(100%);"></i></span> <span class="site-title" style="opacity: 1; top: 0px;">西风浊酒</span> <span class="logo-line-after"><i class="" style="transform: translateX(-100%);"></i></span> </a>
+       <a href="#" class="brand" rel="start" style="opacity: 1;"> <span class="logo-line-before"><i class="" style="transform: translateX(100%);"></i></span> <span class="site-title" style="opacity: 1; top: 0px;">剑试天下</span> <span class="logo-line-after"><i class="" style="transform: translateX(-100%);"></i></span> </a>
       </div>
       <h1 class="site-subtitle" itemprop="description" style="opacity: 1; top: 0px;"></h1>
      </div>
@@ -58,11 +58,11 @@
      </div>
      <nav class="site-nav">
       <ul id="menu" class="menu">
-       <li class="menu-item menu-item-home menu-item-active" style="opacity: 1; transform: translateY(0px);"> <a href="https://www.ezlippi.com/" rel="section"> <i class="menu-item-icon fa fa-fw fa-home"></i> <br /> 首页 </a> </li>
-       <li class="menu-item menu-item-categories" style="opacity: 1; transform: translateY(0px);"> <a href="https://www.ezlippi.com/categories" rel="section"> <i class="menu-item-icon fa fa-fw fa-th"></i> <br /> 分类 </a> </li>
-       <li class="menu-item menu-item-archives" style="opacity: 1; transform: translateY(0px);"> <a href="https://www.ezlippi.com/archives" rel="section"> <i class="menu-item-icon fa fa-fw fa-archive"></i> <br /> 归档 </a> </li>
-       <li class="menu-item menu-item-tags" style="opacity: 1; transform: translateY(0px);"> <a href="https://www.ezlippi.com/tags" rel="section"> <i class="menu-item-icon fa fa-fw fa-tags"></i> <br /> 标签 </a> </li>
-       <li class="menu-item menu-item-about" style="opacity: 1; transform: translateY(0px);"> <a href="https://www.ezlippi.com/about" rel="section"> <i class="menu-item-icon fa fa-fw fa-user"></i> <br /> 关于 </a> </li>
+       <li class="menu-item menu-item-home menu-item-active" style="opacity: 1; transform: translateY(0px);"> <a href="{% url 'index' %}" rel="section"> <i class="menu-item-icon fa fa-fw fa-home"></i> <br /> 首页 </a> </li>
+       <li class="menu-item menu-item-categories" style="opacity: 1; transform: translateY(0px);"> <a href="{% url 'categories' %}" rel="section"> <i class="menu-item-icon fa fa-fw fa-th"></i> <br /> 分类 </a> </li>
+       <li class="menu-item menu-item-archives" style="opacity: 1; transform: translateY(0px);"> <a href="{% url 'archives' %}" rel="section"> <i class="menu-item-icon fa fa-fw fa-archive"></i> <br /> 归档 </a> </li>
+       <li class="menu-item menu-item-tags" style="opacity: 1; transform: translateY(0px);"> <a href="{% url 'tags' %}" rel="section"> <i class="menu-item-icon fa fa-fw fa-tags"></i> <br /> 标签 </a> </li>
+       <li class="menu-item menu-item-about" style="opacity: 1; transform: translateY(0px);"> <a href="{% url 'about' %}" rel="section"> <i class="menu-item-icon fa fa-fw fa-user"></i> <br /> 关于 </a> </li>
       </ul>
      </nav>
     </div>
@@ -85,27 +85,28 @@
      </div>
      <aside id="sidebar" class="sidebar">
       <div class="sidebar-inner">
+      {% block blog_index_nav %}{% endblock %}
        <section class="site-overview sidebar-panel sidebar-panel-active">
-        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-         <img class="site-author-image" itemprop="image" src="{% static 'blog/image/avatar.gif' %}" alt="EZLippi" />
-         <p class="site-author-name" itemprop="name">EZLippi</p>
+        <div class="site-author motion-element" itemprop="author" itemscope="">
+         <img class="site-author-image" itemprop="image" src="{% static 'blog/image/avatar.gif' %}" alt="dengsc" />
+         <p class="site-author-name" itemprop="name">Dengsc</p>
          <p class="site-description motion-element" itemprop="description">Dengsc</p>
         </div>
         <nav class="site-state motion-element">
          <div class="site-state-item site-state-posts">
-          <a href="https://www.ezlippi.com/archives"> <span class="site-state-item-count">95</span> <span class="site-state-item-name">日志</span> </a>
+          <a href="#"> <span class="site-state-item-count">95</span> <span class="site-state-item-name">日志</span> </a>
          </div>
          <div class="site-state-item site-state-categories">
-          <a href="https://www.ezlippi.com/categories"> <span class="site-state-item-count">30</span> <span class="site-state-item-name">分类</span> </a>
+          <a href="#"> <span class="site-state-item-count">30</span> <span class="site-state-item-name">分类</span> </a>
          </div>
          <div class="site-state-item site-state-tags">
-          <a href="https://www.ezlippi.com/tags"> <span class="site-state-item-count">103</span> <span class="site-state-item-name">标签</span> </a>
+          <a href="#"> <span class="site-state-item-count">103</span> <span class="site-state-item-name">标签</span> </a>
          </div>
         </nav>
         <div class="links-of-author motion-element">
-         <span class="links-of-author-item"> <a href="https://github.com/EZLippi" target="_blank" title="GitHub"> <i class="fa fa-fw fa-github"></i> GitHub </a> </span>
-         <span class="links-of-author-item"> <a href="http://weibo.com/ouyanglip" target="_blank" title="weibo"> <i class="fa fa-fw fa-weibo"></i> weibo </a> </span>
-         <span class="links-of-author-item"> <a href="http://www.zhihu.com/people/lippi-ouyang" target="_blank" title="zhihu"> <i class="fa fa-fw fa-battery-3"></i> zhihu </a> </span>
+         <span class="links-of-author-item"> <a href="https://github.com/dengshaochun" target="_blank" title="GitHub"> <i class="fa fa-fw fa-github"></i> GitHub </a> </span>
+         <span class="links-of-author-item"> <a href="#" target="_blank" title="weibo"> <i class="fa fa-fw fa-weibo"></i> weibo </a> </span>
+         <span class="links-of-author-item"> <a href="#" target="_blank" title="zhihu"> <i class="fa fa-fw fa-battery-3"></i> zhihu </a> </span>
         </div>
         <div class="links-of-blogroll motion-element links-of-blogroll-inline">
          <div class="links-of-blogroll-title">
@@ -120,6 +121,7 @@
          </ul>
         </div>
        </section>
+          {% block blog_index_content %}{% endblock %}
       </div>
      </aside>
      {% endblock %}
@@ -160,6 +162,8 @@
   <script type="text/javascript" src="{% static 'blog/js/utils.js' %}"></script>
   <script type="text/javascript" src="{% static 'blog/js/motion.js' %}"></script>
   <script type="text/javascript" src="{% static 'blog/js/bootstrap.js' %}"></script>
+  <script type="text/javascript" src="{% static 'blog/js/post-details.js' %}"></script>
+  <script type="text/javascript" src="{% static 'blog/js/scrollspy.js' %}"></script>
   <!-- 页面点击小红心 -->
   <script type="text/javascript" src="{% static 'blog/js/love.js' %}"></script>
  {% endblock %}
