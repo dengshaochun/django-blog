@@ -8,6 +8,7 @@ name = "pypi"
 [packages]
 django = "==1.11.12"
 markdown = "*"
+django-markdownx = "*"
 
 [requires]
 python_version = "2.7"

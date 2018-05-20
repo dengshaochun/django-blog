@@ -8,8 +8,9 @@
 
 from django.conf.urls import url
 from django.views.decorators.cache import cache_page
-from . import views
+from app import views
 
+app_name = 'app'
 
 urlpatterns = [
     url(r'^$', views.IndexView.as_view(), name='index'),

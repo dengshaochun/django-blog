@@ -8,6 +8,8 @@ from app.models import Profile, Article, Category, BlogComment, Tag, Suggest
 
 
 class ArticleAdmin(admin.ModelAdmin):
+    list_display = ('title', 'author', 'status', 'created_time')
+
     def save_model(self, request, obj, form, change):
         obj.author = request.user
         obj.save()
@@ -28,6 +30,7 @@ class BlogCommentAdmin(admin.ModelAdmin):
         self.readonly_fields = ('user',)
         form = super(BlogCommentAdmin, self).get_form(request, obj, **kwargs)
         return form
+
 
 admin.site.register((Profile, Category, Tag, Suggest))
 admin.site.register(Article, ArticleAdmin)

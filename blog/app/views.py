@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 from django.shortcuts import render
 from django.http.response import HttpResponse
 from django.shortcuts import render
-from .models import Article, Category, Tag, Profile
+from app.models import Article, Category, Tag, Profile, BlogComment
 from django.shortcuts import get_object_or_404, redirect, get_list_or_404
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
@@ -19,6 +19,7 @@ logger = logging.getLogger(__name__)
 
 
 class IndexView(ListView):
+    model = Article
     template_name = 'blog/index.html'
     # 制定获取的model数据列表的名字
     context_object_name = "article_list"
@@ -30,7 +31,8 @@ class IndexView(ListView):
         """
         article_list = Article.objects.filter(status='p')
         for article in article_list:
-            article.body = markdown.markdown(article.body,)
+            if not article.abstract:
+                article.abstract = article.body[:50]
         return article_list
 
     # 为上下文添加额外的变量，以便在模板中访问
@@ -53,24 +55,22 @@ class ArticleDetailView(DetailView):
 
     # 从数据库中获取id为pk_url_kwargs的对象
     def get_object(self, queryset=None):
-        # obj = super(ArticleDetailView, self).get_object()
-        # # 点击一次阅读量增加一次
-        # obj.views += 1
-        # obj.save()
-        # obj.body = markdown.markdown(obj.body, safe_mode='escape',
-        # extensions=[
-        #     'markdown.extensions.nl2br',
-        #     'markdown.extensions.fenced_code'
-        # ])
-        # return obj
-        pass
+        obj = super(ArticleDetailView, self).get_object()
+        # 点击一次阅读量增加一次
+        obj.views += 1
+        obj.save()
+        obj.body = markdown.markdown(obj.body, safe_mode='escape',
+        extensions=[
+            'markdown.extensions.nl2br',
+            'markdown.extensions.fenced_code'
+        ])
+        return obj
 
     # 新增form到上下文
     def get_context_data(self, **kwargs):
-        # kwargs['comment_list'] = self.object.blogcomment_set.all()
-        # kwargs['form'] = BlogCommentForm()
-        # kwargs['category_list'] = Category.objects.all().order_by('name')
-        # kwargs['tag_list'] = Tag.objects.all().order_by('name')
+        kwargs['comment_list'] = self.object.blogcomment_set.all()
+        kwargs['category_list'] = Category.objects.all().order_by('name')
+        kwargs['tag_list'] = Tag.objects.all().order_by('name')
         return super(ArticleDetailView, self).get_context_data(**kwargs)
 
 
