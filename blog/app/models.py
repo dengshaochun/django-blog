@@ -1,11 +1,13 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+import markdown
 from django.db import models
 from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from django.utils.html import strip_tags
 from django.utils.translation import ugettext_lazy as _
 
 # Create your models here.
@@ -51,11 +53,11 @@ class Article(models.Model):
 
     status = models.CharField(_('status'), max_length=1, choices=STATUS_CHOICES)
     abstract = models.CharField(_('abstract'),
-                                max_length=54,
+                                max_length=200,
                                 blank=True,
                                 null=True,
                                 help_text=_('Optional, if it is a space, '
-                                            'the first 54 characters are '
+                                            'the first 200 characters are '
                                             'taken from the body.'))
     # 阅读量
     views = models.PositiveIntegerField(_('view times'), default=0)
@@ -71,7 +73,7 @@ class Article(models.Model):
     # 标签云
     tags = models.ManyToManyField('Tag', verbose_name=_('tags'), blank=True)
 
-    def __str__(self):
+    def __unicode__(self):
         return self.title
 
     class Meta:
@@ -81,6 +83,18 @@ class Article(models.Model):
 
     def get_absolute_url(self):
         return reverse('app:detail', kwargs={'article_id': self.pk})
+
+    def save(self, *args, **kwargs):
+        if not self.abstract:
+            self.abstract = strip_tags(
+                markdown.markdown(
+                    self.body,
+                    safe_mode='escape',
+                    extensions=[
+                        'markdown.extensions.extra',
+                        'markdown.extensions.codehilite',
+                    ]))[:200]
+        super(Article, self).save(*args, **kwargs)
 
 
 class Category(models.Model):
@@ -93,7 +107,7 @@ class Category(models.Model):
     last_modified_time = models.DateTimeField(_('last modified time'),
                                               auto_now=True)
 
-    def __str__(self):
+    def __unicode__(self):
         return self.name
 
 
@@ -112,7 +126,7 @@ class BlogComment(models.Model):
     article = models.ForeignKey('Article', verbose_name=_('article belongs'),
                                 on_delete=models.CASCADE)
 
-    def __str__(self):
+    def __unicode__(self):
         return self.body[:20]
 
 
@@ -125,7 +139,7 @@ class Tag(models.Model):
     last_modified_time = models.DateTimeField(_('last modified time'),
                                               auto_now=True)
 
-    def __str__(self):
+    def __unicode__(self):
         return self.name
 
 
@@ -139,5 +153,5 @@ class Suggest(models.Model):
     suggest = models.TextField(_('opinion'), max_length=200)
     suggest_time = models.DateTimeField(_('creation time'), auto_now_add=True)
 
-    def __str__(self):
+    def __unicode__(self):
         return self.suggest

@@ -1,10 +1,13 @@
 {% extends 'blog/base.html' %}
 {% load static %}
 
+
     {% block page-content %}
     <div class="content-wrap">
       <div id="content" class="content">
        <section id="posts" class="posts-expand">
+        {% load paginate_tags %}
+        {% paginate article_list %}
         {% for article in article_list %}
 		<article class="post post-type-normal" itemscope="" style="opacity: 1; display: block; transform: translateY(0px);">
          <header class="post-header">
@@ -40,14 +43,7 @@
         </article>
 		{% endfor %}
        </section>
-
-       <nav class="pagination">
-        <span class="page-number current">1</span>
-        <a class="page-number" href="#">2</a>
-        <span class="space">…</span>
-        <a class="page-number" href="#">10</a>
-        <a class="extend next" rel="next" href="#"><i class="fa fa-angle-right"></i></a>
-       </nav>
+      {% include 'blog/pagination.html' %}
       </div>
      </div>
     {% endblock %}

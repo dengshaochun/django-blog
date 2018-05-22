@@ -30,16 +30,7 @@ class IndexView(ListView):
         Returns:
         """
         article_list = Article.objects.filter(status='p')
-        for article in article_list:
-            if not article.abstract:
-                article.abstract = article.body[:50]
         return article_list
-
-    # 为上下文添加额外的变量，以便在模板中访问
-    def get_context_data(self, **kwargs):
-        kwargs['category_list'] = Category.objects.all().order_by('name')
-        kwargs['tag_list'] = Tag.objects.all().order_by('name')
-        return super(IndexView, self).get_context_data(**kwargs)
 
 
 class ArticleDetailView(DetailView):
@@ -60,17 +51,26 @@ class ArticleDetailView(DetailView):
         obj.views += 1
         obj.save()
         obj.body = markdown.markdown(obj.body, safe_mode='escape',
-        extensions=[
-            'markdown.extensions.nl2br',
-            'markdown.extensions.fenced_code'
-        ])
+                                     extensions=[
+                                        'markdown.extensions.toc',
+                                        'markdown.extensions.sane_lists',
+                                        'markdown.extensions.codehilite',
+                                        'markdown.extensions.abbr',
+                                        'markdown.extensions.attr_list',
+                                        'markdown.extensions.def_list',
+                                        'markdown.extensions.fenced_code',
+                                        'markdown.extensions.footnotes',
+                                        'markdown.extensions.smart_strong',
+                                        'markdown.extensions.meta',
+                                        'markdown.extensions.nl2br',
+                                        'markdown.extensions.tables'
+                                        ])
         return obj
 
     # 新增form到上下文
     def get_context_data(self, **kwargs):
-        kwargs['comment_list'] = self.object.blogcomment_set.all()
-        kwargs['category_list'] = Category.objects.all().order_by('name')
-        kwargs['tag_list'] = Tag.objects.all().order_by('name')
+        kwargs['comments'] = self.object.blogcomment_set.all()
+        kwargs['tags'] = self.object.tags.all()
         return super(ArticleDetailView, self).get_context_data(**kwargs)
 
 

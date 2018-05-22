@@ -1,0 +1,17 @@
+<nav class="pagination">
+    {% if article_list.has_previous %}
+        <a class="extend next" rel="next" href="?page={{ article_list.previous_page_number }}"><i class="fa fa-angle-left"></i></a>
+    {% endif %}
+
+    {% for page in pages %}
+        {% if page == current_page %}
+            <span class="page-number current">{{ page }}</span>
+        {% else %}
+            <a href="?page={{ page }}">{{ page }}</a>
+        {% endif %}
+    {% endfor %}
+
+    {% if article_list.has_next %}
+        <a class="extend next" rel="next" href="?page={{ article_list.next_page_number }}"><i class="fa fa-angle-right"></i></a>
+    {% endif %}
+</nav>

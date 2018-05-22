@@ -20,13 +20,13 @@
          </div>
         </div>
        </header>
-       <div class="post-body" itemprop="articleBody">
+       <div class="markdown-body" itemprop="articleBody">
         {{ article.body | safe }}
        </div>
        <div>
        </div>
        <div class="post-tags">
-           {% for tag in tag_list %}
+           {% for tag in tags %}
             <a href="#" rel="tag"># {{tag.name }}</a>
            {% endfor %}
        </div>
@@ -35,14 +35,14 @@
          <ul class="post-copyright">
           <li class="post-copyright-link"> <strong>本文作者：</strong> <a href="{% url 'app:index' %}">{{ article.author }}</a> </li>
           <li class="post-copyright-link"> <strong>本文标题：</strong> <a href="{% url 'app:detail' article.pk %}">{{ article.title }}</a> </li>
-          <li class="post-copyright-link"> <strong>本文链接：</strong> <a href="{% url 'app:detail' article.pk %}">{% url 'app:detail' article.pk %}</a> </li>
+          <li class="post-copyright-link"> <strong>本文链接：</strong> <a href="{% url 'app:detail' article.pk %}">{{ article.get_absolute_url }}</a> </li>
           <li class="post-copyright-date"> <strong>发布时间：</strong>{{ article.created_time }}</li>
           <li class="post-copyright-license"> <strong>版权声明： </strong> 本文由 {{ article.author }} 原创，转载请保留以上声明信息！ </li>
          </ul>
         </div>
         <div class="post-nav">
          <div class="post-nav-next post-nav-item">
-          <a href="https://www.ezlippi.com/blog/2018/04/mysql-settings.html" rel="next" title="MySQL常用参数列表"> <i class="fa fa-chevron-left"></i> MySQL常用参数列表 </a>
+          <a href="https://www.ezlippi.com/blog/2018/04/mysql-settings.html" rel="next"> <i class="fa fa-chevron-left"></i> MySQL常用参数列表 </a>
          </div>
          <span class="post-nav-divider"></span>
          <div class="post-nav-prev post-nav-item">
@@ -50,14 +50,7 @@
         </div>
        </footer>
       </article>
-      <div class="post-spread">
-      </div>
      </div>
-    </div>
-    <div class="comments" id="comments">
-     <div id="lv-container" data-id="city" data-uid="MTAyMC8zMjI4My84ODQ3"></div>
-    </div>
-   </div>
   </div>
 {% endblock %}
 
