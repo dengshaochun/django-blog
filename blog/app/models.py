@@ -63,6 +63,8 @@ class Article(models.Model):
     views = models.PositiveIntegerField(_('view times'), default=0)
     # 点赞数
     likes = models.PositiveIntegerField(_('great times'), default=0)
+    # 字数
+    words = models.IntegerField(_('words'), default=0)
     # 是否置顶
     topped = models.BooleanField(_('placed at the top'), default=False)
     # 目录分类
@@ -85,6 +87,9 @@ class Article(models.Model):
         return reverse('app:detail', kwargs={'article_id': self.pk})
 
     def save(self, *args, **kwargs):
+        # 统计字数
+        self.words = len(self.body.strip())
+        # abstract为空则截取body前200个字符
         if not self.abstract:
             self.abstract = strip_tags(
                 markdown.markdown(
