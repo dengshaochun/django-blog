@@ -22,7 +22,7 @@ class IndexView(ListView):
     model = Article
     template_name = 'blog/index.html'
     # 制定获取的model数据列表的名字
-    context_object_name = "article_list"
+    context_object_name = 'article_list'
 
     def get_queryset(self):
         """
@@ -39,7 +39,7 @@ class ArticleDetailView(DetailView):
     """
     model = Article
     template_name = 'blog/detail.html'
-    context_object_name = "article"
+    context_object_name = 'article'
 
     # pk_url_kwarg用于接受来自url中的参数作为主键
     pk_url_kwarg = 'article_id'
@@ -114,9 +114,9 @@ class ArchiveView(DetailView):
 
     model = Article
     template_name = 'blog/archives.html'
+    context_object_name = 'article_list'
 
     def get_object(self, queryset=None):
-        pass
-
-    def get_context_data(self, **kwargs):
-        return super(ArchiveView, self).get_context_data(**kwargs)
+        article_list = Article.objects.filter(
+            status='p').order_by('-created_time')
+        return article_list
