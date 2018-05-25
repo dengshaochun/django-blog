@@ -8,54 +8,17 @@
     <div id="content" class="content">
      <div id="posts" class="posts-expand">
       <header class="post-header">
-       <h2 class="post-title" itemprop="name headline">categories</h2>
+       <h2 class="post-title">categories</h2>
       </header>
       <div class="category-all-page">
        <div class="category-all-title">
-         目前共计 30 个分类
+         目前共计 {{ category_list|length }} 个分类
        </div>
        <div class="category-all">
         <ul class="category-list">
-         <li class="category-list-item"><a class="category-list-link" href="https://www.ezlippi.com/categories/Android/">Android</a><span class="category-list-count">4</span></li>
-         <li class="category-list-item"><a class="category-list-link" href="https://www.ezlippi.com/categories/Database/">Database</a><span class="category-list-count">1</span></li>
-         <li class="category-list-item"><a class="category-list-link" href="https://www.ezlippi.com/categories/Git/">Git</a><span class="category-list-count">1</span></li>
-         <li class="category-list-item"><a class="category-list-link" href="https://www.ezlippi.com/categories/Gradle/">Gradle</a><span class="category-list-count">2</span></li>
-         <li class="category-list-item"><a class="category-list-link" href="https://www.ezlippi.com/categories/Hexo/">Hexo</a><span class="category-list-count">1</span></li>
-         <li class="category-list-item"><a class="category-list-link" href="https://www.ezlippi.com/categories/JVM/">JVM</a><span class="category-list-count">3</span></li>
-         <li class="category-list-item"><a class="category-list-link" href="https://www.ezlippi.com/categories/Java/">Java</a><span class="category-list-count">22</span></li>
-         <li class="category-list-item"><a class="category-list-link" href="https://www.ezlippi.com/categories/Latex/">Latex</a><span class="category-list-count">1</span></li>
-         <li class="category-list-item"><a class="category-list-link" href="https://www.ezlippi.com/categories/Linux/">Linux</a><span class="category-list-count">1</span></li>
-         <li class="category-list-item"><a class="category-list-link" href="https://www.ezlippi.com/categories/MySQL/">MySQL</a><span class="category-list-count">1</span></li>
-         <li class="category-list-item"><a class="category-list-link" href="https://www.ezlippi.com/categories/Unix-Linux/">Unix/Linux</a><span class="category-list-count">4</span></li>
-         <li class="category-list-item"><a class="category-list-link" href="https://www.ezlippi.com/categories/algorithm/">algorithm</a><span class="category-list-count">3</span></li>
-         <li class="category-list-item"><a class="category-list-link" href="https://www.ezlippi.com/categories/android/">android</a><span class="category-list-count">3</span></li>
-         <li class="category-list-item"><a class="category-list-link" href="https://www.ezlippi.com/categories/book/">book</a><span class="category-list-count">1</span></li>
-         <li class="category-list-item"><a class="category-list-link" href="https://www.ezlippi.com/categories/c/">c</a><span class="category-list-count">4</span>
-          <ul class="category-list-child">
-           <li class="category-list-item"><a class="category-list-link" href="https://www.ezlippi.com/categories/c/programming/">programming</a><span class="category-list-count">1</span></li>
-          </ul></li>
-         <li class="category-list-item"><a class="category-list-link" href="https://www.ezlippi.com/categories/c-c/">c/c++</a><span class="category-list-count">1</span></li>
-         <li class="category-list-item"><a class="category-list-link" href="https://www.ezlippi.com/categories/google/">google</a><span class="category-list-count">1</span></li>
-         <li class="category-list-item"><a class="category-list-link" href="https://www.ezlippi.com/categories/gradle/">gradle</a><span class="category-list-count">2</span></li>
-         <li class="category-list-item"><a class="category-list-link" href="https://www.ezlippi.com/categories/hexo/">hexo</a><span class="category-list-count">2</span></li>
-         <li class="category-list-item"><a class="category-list-link" href="https://www.ezlippi.com/categories/java/">java</a><span class="category-list-count">19</span>
-          <ul class="category-list-child">
-           <li class="category-list-item"><a class="category-list-link" href="https://www.ezlippi.com/categories/java/android/">android</a><span class="category-list-count">1</span></li>
-           <li class="category-list-item"><a class="category-list-link" href="https://www.ezlippi.com/categories/java/lambda/">lambda</a><span class="category-list-count">1</span></li>
-           <li class="category-list-item"><a class="category-list-link" href="https://www.ezlippi.com/categories/java/reprints/">reprints</a><span class="category-list-count">3</span></li>
-          </ul></li>
-         <li class="category-list-item"><a class="category-list-link" href="https://www.ezlippi.com/categories/jekyll/">jekyll</a><span class="category-list-count">3</span>
-          <ul class="category-list-child">
-           <li class="category-list-item"><a class="category-list-link" href="https://www.ezlippi.com/categories/jekyll/reprints/">reprints</a><span class="category-list-count">1</span></li>
-          </ul></li>
-         <li class="category-list-item"><a class="category-list-link" href="https://www.ezlippi.com/categories/other/">other</a><span class="category-list-count">4</span>
-          <ul class="category-list-child">
-           <li class="category-list-item"><a class="category-list-link" href="https://www.ezlippi.com/categories/other/programming/">programming</a><span class="category-list-count">3</span>
-            <ul class="category-list-child">
-             <li class="category-list-item"><a class="category-list-link" href="https://www.ezlippi.com/categories/other/programming/reprints/">reprints</a><span class="category-list-count">1</span></li>
-            </ul></li>
-          </ul></li>
-         <li class="category-list-item"><a class="category-list-link" href="https://www.ezlippi.com/categories/web/">web</a><span class="category-list-count">10</span></li>
+         {% for catetory in category_list %}
+         <li class="category-list-item"><a class="category-list-link" href="#">{{ catetory.name }}</a><span class="category-list-count">{{ catetory.count }}</span></li>
+         {% endfor %}
         </ul>
        </div>
       </div>

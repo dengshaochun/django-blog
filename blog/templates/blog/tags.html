@@ -7,116 +7,22 @@
     <div id="content" class="content">
      <div id="posts" class="posts-expand">
       <header class="post-header">
-       <h2 class="post-title" itemprop="name headline">Tagcloud</h2>
+       <h2 class="post-title">Tagcloud</h2>
       </header>
       <div class="tag-cloud">
        <div class="tag-cloud-title">
-         目前共计 103 个标签
+         目前共计 {{ tag_list|length }} 个标签
        </div>
        <div class="tag-cloud-tags">
-        <a href="https://www.ezlippi.com/tags/APK/" style="font-size: 12px; color: #ccc">APK</a>
-        <a href="https://www.ezlippi.com/tags/Android/" style="font-size: 14.25px; color: #b5b5b5">Android</a>
-        <a href="https://www.ezlippi.com/tags/C/" style="font-size: 12px; color: #ccc">C</a>
-        <a href="https://www.ezlippi.com/tags/C/" style="font-size: 12px; color: #ccc">C++</a>
-        <a href="https://www.ezlippi.com/tags/Chat/" style="font-size: 12px; color: #ccc">Chat</a>
-        <a href="https://www.ezlippi.com/tags/ClassLoader/" style="font-size: 12px; color: #ccc">ClassLoader</a>
-        <a href="https://www.ezlippi.com/tags/Dao/" style="font-size: 12px; color: #ccc">Dao</a>
-        <a href="https://www.ezlippi.com/tags/DataBase/" style="font-size: 18.75px; color: #868686">DataBase</a>
-        <a href="https://www.ezlippi.com/tags/ElasticSearch/" style="font-size: 12px; color: #ccc">ElasticSearch</a>
-        <a href="https://www.ezlippi.com/tags/Elasticsearch/" style="font-size: 12px; color: #ccc">Elasticsearch</a>
-        <a href="https://www.ezlippi.com/tags/Gatling/" style="font-size: 12px; color: #ccc">Gatling</a>
-        <a href="https://www.ezlippi.com/tags/Git/" style="font-size: 12px; color: #ccc">Git</a>
-        <a href="https://www.ezlippi.com/tags/Gradle/" style="font-size: 14.25px; color: #b5b5b5">Gradle</a>
-        <a href="https://www.ezlippi.com/tags/Hexo/" style="font-size: 12px; color: #ccc">Hexo</a>
-        <a href="https://www.ezlippi.com/tags/IO/" style="font-size: 12px; color: #ccc">IO</a>
-        <a href="https://www.ezlippi.com/tags/Instrumention/" style="font-size: 12px; color: #ccc">Instrumention</a>
-        <a href="https://www.ezlippi.com/tags/JMH/" style="font-size: 12px; color: #ccc">JMH</a>
-        <a href="https://www.ezlippi.com/tags/JVM/" style="font-size: 23.25px; color: #575757">JVM</a>
-        <a href="https://www.ezlippi.com/tags/Java/" style="font-size: 30px; color: #111">Java</a>
-        <a href="https://www.ezlippi.com/tags/Junit/" style="font-size: 12px; color: #ccc">Junit</a>
-        <a href="https://www.ezlippi.com/tags/Jvm/" style="font-size: 12px; color: #ccc">Jvm</a>
-        <a href="https://www.ezlippi.com/tags/Latex/" style="font-size: 12px; color: #ccc">Latex</a>
-        <a href="https://www.ezlippi.com/tags/Life/" style="font-size: 12px; color: #ccc">Life</a>
-        <a href="https://www.ezlippi.com/tags/Linux/" style="font-size: 12px; color: #ccc">Linux</a>
-        <a href="https://www.ezlippi.com/tags/Logger/" style="font-size: 12px; color: #ccc">Logger</a>
-        <a href="https://www.ezlippi.com/tags/Mock/" style="font-size: 12px; color: #ccc">Mock</a>
-        <a href="https://www.ezlippi.com/tags/MyBatis/" style="font-size: 16.5px; color: #9d9d9d">MyBatis</a>
-        <a href="https://www.ezlippi.com/tags/MySQL/" style="font-size: 12px; color: #ccc">MySQL</a>
-        <a href="https://www.ezlippi.com/tags/NIO/" style="font-size: 14.25px; color: #b5b5b5">NIO</a>
-        <a href="https://www.ezlippi.com/tags/ORM/" style="font-size: 12px; color: #ccc">ORM</a>
-        <a href="https://www.ezlippi.com/tags/OpenSource/" style="font-size: 12px; color: #ccc">OpenSource</a>
-        <a href="https://www.ezlippi.com/tags/PowerMock/" style="font-size: 12px; color: #ccc">PowerMock</a>
-        <a href="https://www.ezlippi.com/tags/SED/" style="font-size: 12px; color: #ccc">SED</a>
-        <a href="https://www.ezlippi.com/tags/Spring/" style="font-size: 12px; color: #ccc">Spring</a>
-        <a href="https://www.ezlippi.com/tags/Transaction/" style="font-size: 12px; color: #ccc">Transaction</a>
-        <a href="https://www.ezlippi.com/tags/VCS/" style="font-size: 12px; color: #ccc">VCS</a>
-        <a href="https://www.ezlippi.com/tags/Vim/" style="font-size: 12px; color: #ccc">Vim</a>
-        <a href="https://www.ezlippi.com/tags/WeakReference/" style="font-size: 18.75px; color: #868686">WeakReference</a>
-        <a href="https://www.ezlippi.com/tags/algorithm/" style="font-size: 14.25px; color: #b5b5b5">algorithm</a>
-        <a href="https://www.ezlippi.com/tags/android/" style="font-size: 25.5px; color: #404040">android</a>
-        <a href="https://www.ezlippi.com/tags/android-tips/" style="font-size: 12px; color: #ccc">android, tips</a>
-        <a href="https://www.ezlippi.com/tags/android-view/" style="font-size: 12px; color: #ccc">android, view</a>
-        <a href="https://www.ezlippi.com/tags/blog/" style="font-size: 14.25px; color: #b5b5b5">blog</a>
-        <a href="https://www.ezlippi.com/tags/book/" style="font-size: 12px; color: #ccc">book</a>
-        <a href="https://www.ezlippi.com/tags/c/" style="font-size: 12px; color: #ccc">c</a>
-        <a href="https://www.ezlippi.com/tags/c/" style="font-size: 14.25px; color: #b5b5b5">c++</a>
-        <a href="https://www.ezlippi.com/tags/cache/" style="font-size: 14.25px; color: #b5b5b5">cache</a>
-        <a href="https://www.ezlippi.com/tags/concurrent/" style="font-size: 14.25px; color: #b5b5b5">concurrent</a>
-        <a href="https://www.ezlippi.com/tags/dns/" style="font-size: 12px; color: #ccc">dns</a>
-        <a href="https://www.ezlippi.com/tags/final/" style="font-size: 12px; color: #ccc">final</a>
-        <a href="https://www.ezlippi.com/tags/github/" style="font-size: 14.25px; color: #b5b5b5">github</a>
-        <a href="https://www.ezlippi.com/tags/google/" style="font-size: 12px; color: #ccc">google</a>
-        <a href="https://www.ezlippi.com/tags/hexo/" style="font-size: 14.25px; color: #b5b5b5">hexo</a>
-        <a href="https://www.ezlippi.com/tags/hibernate/" style="font-size: 12px; color: #ccc">hibernate</a>
-        <a href="https://www.ezlippi.com/tags/hosts/" style="font-size: 12px; color: #ccc">hosts</a>
-        <a href="https://www.ezlippi.com/tags/http/" style="font-size: 12px; color: #ccc">http</a>
-        <a href="https://www.ezlippi.com/tags/jabber/" style="font-size: 14.25px; color: #b5b5b5">jabber</a>
-        <a href="https://www.ezlippi.com/tags/java/" style="font-size: 27.75px; color: #282828">java</a>
-        <a href="https://www.ezlippi.com/tags/java-gradle/" style="font-size: 14.25px; color: #b5b5b5">java, gradle</a>
-        <a href="https://www.ezlippi.com/tags/javas/" style="font-size: 12px; color: #ccc">javas</a>
-        <a href="https://www.ezlippi.com/tags/jekyll/" style="font-size: 21px; color: #6f6f6f">jekyll</a>
-        <a href="https://www.ezlippi.com/tags/jsp%EF%BC%8Cservlet%EF%BC%8Chtml%EF%BC%8Cjfreechart/" style="font-size: 12px; color: #ccc">jsp，servlet，html，jfreechart</a>
-        <a href="https://www.ezlippi.com/tags/lifecycle/" style="font-size: 12px; color: #ccc">lifecycle</a>
-        <a href="https://www.ezlippi.com/tags/linux/" style="font-size: 16.5px; color: #9d9d9d">linux</a>
-        <a href="https://www.ezlippi.com/tags/markdown/" style="font-size: 14.25px; color: #b5b5b5">markdown</a>
-        <a href="https://www.ezlippi.com/tags/maven/" style="font-size: 12px; color: #ccc">maven</a>
-        <a href="https://www.ezlippi.com/tags/network-%E5%BC%82%E6%AD%A5-Volley-android/" style="font-size: 12px; color: #ccc">network,　异步, Volley, android</a>
-        <a href="https://www.ezlippi.com/tags/openfire/" style="font-size: 14.25px; color: #b5b5b5">openfire</a>
-        <a href="https://www.ezlippi.com/tags/plugins/" style="font-size: 12px; color: #ccc">plugins</a>
-        <a href="https://www.ezlippi.com/tags/programming/" style="font-size: 12px; color: #ccc">programming</a>
-        <a href="https://www.ezlippi.com/tags/shell/" style="font-size: 14.25px; color: #b5b5b5">shell</a>
-        <a href="https://www.ezlippi.com/tags/studio/" style="font-size: 12px; color: #ccc">studio</a>
-        <a href="https://www.ezlippi.com/tags/translog/" style="font-size: 12px; color: #ccc">translog</a>
-        <a href="https://www.ezlippi.com/tags/web/" style="font-size: 18.75px; color: #868686">web</a>
-        <a href="https://www.ezlippi.com/tags/xmpp/" style="font-size: 14.25px; color: #b5b5b5">xmpp</a>
-        <a href="https://www.ezlippi.com/tags/%E4%B9%A6%E7%B1%8D/" style="font-size: 12px; color: #ccc">书籍</a>
-        <a href="https://www.ezlippi.com/tags/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/" style="font-size: 12px; color: #ccc">单元测试</a>
-        <a href="https://www.ezlippi.com/tags/%E5%8F%8D%E7%BC%96%E8%AF%91/" style="font-size: 12px; color: #ccc">反编译</a>
-        <a href="https://www.ezlippi.com/tags/%E5%A4%8D%E7%94%A8/" style="font-size: 12px; color: #ccc">复用</a>
-        <a href="https://www.ezlippi.com/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" style="font-size: 12px; color: #ccc">多线程</a>
-        <a href="https://www.ezlippi.com/tags/%E5%AD%A6%E4%B9%A0/" style="font-size: 12px; color: #ccc">学习</a>
-        <a href="https://www.ezlippi.com/tags/%E5%B9%B6%E5%8F%91%EF%BC%8C-%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 12px; color: #ccc">并发， 服务器</a>
-        <a href="https://www.ezlippi.com/tags/%E5%BC%80%E6%BA%90/" style="font-size: 14.25px; color: #b5b5b5">开源</a>
-        <a href="https://www.ezlippi.com/tags/%E6%80%A7%E8%83%BD/" style="font-size: 12px; color: #ccc">性能</a>
-        <a href="https://www.ezlippi.com/tags/%E6%8A%80%E5%B7%A7/" style="font-size: 12px; color: #ccc">技巧</a>
-        <a href="https://www.ezlippi.com/tags/%E6%8E%A5%E5%8F%A3/" style="font-size: 12px; color: #ccc">接口</a>
-        <a href="https://www.ezlippi.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 12px; color: #ccc">数据库</a>
-        <a href="https://www.ezlippi.com/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 12px; color: #ccc">服务器</a>
-        <a href="https://www.ezlippi.com/tags/%E6%A1%86%E6%9E%B6/" style="font-size: 12px; color: #ccc">框架</a>
-        <a href="https://www.ezlippi.com/tags/%E6%B6%88%E6%81%AF%E6%8E%A8%E9%80%81/" style="font-size: 14.25px; color: #b5b5b5">消息推送</a>
-        <a href="https://www.ezlippi.com/tags/%E6%B6%88%E6%81%AF%E6%8E%A8%E9%80%81%EF%BC%8C-server%EF%BC%8C-client/" style="font-size: 14.25px; color: #b5b5b5">消息推送， server， client</a>
-        <a href="https://www.ezlippi.com/tags/%E7%94%9F%E6%B4%BB/" style="font-size: 12px; color: #ccc">生活</a>
-        <a href="https://www.ezlippi.com/tags/%E7%A8%8B%E5%BA%8F/" style="font-size: 12px; color: #ccc">程序</a>
-        <a href="https://www.ezlippi.com/tags/%E7%AD%BE%E5%90%8D/" style="font-size: 12px; color: #ccc">签名</a>
-        <a href="https://www.ezlippi.com/tags/%E7%BB%A7%E6%89%BF/" style="font-size: 12px; color: #ccc">继承</a>
-        <a href="https://www.ezlippi.com/tags/%E7%BC%96%E7%A8%8B/" style="font-size: 12px; color: #ccc">编程</a>
-        <a href="https://www.ezlippi.com/tags/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" style="font-size: 12px; color: #ccc">编程语言</a>
-        <a href="https://www.ezlippi.com/tags/%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93/" style="font-size: 12px; color: #ccc">网络传输</a>
-        <a href="https://www.ezlippi.com/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/" style="font-size: 12px; color: #ccc">虚拟机</a>
-        <a href="https://www.ezlippi.com/tags/%E8%A6%86%E7%9B%96%E7%8E%87/" style="font-size: 12px; color: #ccc">覆盖率</a>
-        <a href="https://www.ezlippi.com/tags/%E9%80%86%E5%90%91/" style="font-size: 12px; color: #ccc">逆向</a>
-        <a href="https://www.ezlippi.com/tags/%E9%98%BB%E5%A1%9E/" style="font-size: 12px; color: #ccc">阻塞</a>
-        <a href="https://www.ezlippi.com/tags/%E9%A1%B9%E7%9B%AE%E6%9E%84%E5%BB%BA/" style="font-size: 14.25px; color: #b5b5b5">项目构建</a>
+        {% for tag in tag_list %}
+            {% if tag.count > 0 and tag.count <= 5 %}
+                <a href="#" style="font-size: 12px; color: #ccc">{{ tag.name }}</a>
+                {% elif tag.count >= 5 and tag.count <= 20 %}
+                <a href="#" style="font-size: 14.25px; color: #b5b5b5">{{ tag.name }}</a>
+                {% elif tag.count > 20 %}
+                <a href="#" style="font-size: 18.75px; color: #868686">{{ tag.name }}</a>
+            {% endif %}
+        {% endfor %}
        </div>
       </div>
      </div>

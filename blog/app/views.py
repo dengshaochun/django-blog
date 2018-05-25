@@ -52,18 +52,23 @@ class ArticleDetailView(DetailView):
         obj.save()
         obj.body = markdown.markdown(obj.body, safe_mode='escape',
                                      extensions=[
-                                        'markdown.extensions.toc',
-                                        'markdown.extensions.sane_lists',
-                                        'markdown.extensions.codehilite',
+                                        'markdown.extensions.extra',
                                         'markdown.extensions.abbr',
                                         'markdown.extensions.attr_list',
                                         'markdown.extensions.def_list',
                                         'markdown.extensions.fenced_code',
                                         'markdown.extensions.footnotes',
+                                        'markdown.extensions.tables',
                                         'markdown.extensions.smart_strong',
+                                        'markdown.extensions.admonition',
+                                        'markdown.extensions.codehilite',
+                                        'markdown.extensions.headerid',
                                         'markdown.extensions.meta',
                                         'markdown.extensions.nl2br',
-                                        'markdown.extensions.tables'
+                                        'markdown.extensions.sane_lists',
+                                        'markdown.extensions.smarty',
+                                        'markdown.extensions.toc',
+                                        'markdown.extensions.wikilinks'
                                         ])
         return obj
 
@@ -90,11 +95,20 @@ class CategoryView(DetailView):
 
     model = Category
     template_name = 'blog/categories.html'
+    context_object_name = 'category_list'
 
     def get_object(self, queryset=None):
-        pass
+        category_list = []
+        categories = Category.objects.all()
+        for category in categories:
+            category_list.append({
+                'name': category.name,
+                'count': Article.objects.filter(category=category).count()
+            })
+        return category_list
 
     def get_context_data(self, **kwargs):
+
         return super(CategoryView, self).get_context_data(**kwargs)
 
 
@@ -102,9 +116,17 @@ class TagView(DetailView):
 
     model = Tag
     template_name = 'blog/tags.html'
+    context_object_name = 'tag_list'
 
     def get_object(self, queryset=None):
-        pass
+        tag_list = []
+        tags = Tag.objects.all()
+        for tag in tags:
+            tag_list.append({
+                'name': tag.name,
+                'count': tag.article_set.count()
+            })
+        return tag_list
 
     def get_context_data(self, **kwargs):
         return super(TagView, self).get_context_data(**kwargs)
