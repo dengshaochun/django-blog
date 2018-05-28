@@ -2,28 +2,29 @@
 {% load static %}
 
 {% block page-content %}
-
-  <div class="main-inner">
-   <div class="content-wrap">
-    <div id="content" class="content">
-     <div id="posts" class="posts-expand">
-      <header class="post-header">
-       <h2 class="post-title">categories</h2>
-      </header>
-      <div class="category-all-page">
-       <div class="category-all-title">
-         目前共计 {{ category_list|length }} 个分类
-       </div>
-       <div class="category-all">
-        <ul class="category-list">
-         {% for catetory in category_list %}
-         <li class="category-list-item"><a class="category-list-link" href="#">{{ catetory.name }}</a><span class="category-list-count">{{ catetory.count }}</span></li>
-         {% endfor %}
-        </ul>
-       </div>
-      </div>
-     </div>
+    <div class="content-wrap">
+        <div id="content" class="content">
+            <div id="posts" class="posts-expand">
+                <header class="post-header">
+                    <h2 class="post-title">categories</h2>
+                </header>
+                <div class="category-all-page">
+                    <div class="category-all-title">
+                        目前共计 {{ category_list|length }} 个分类
+                    </div>
+                    <div class="category-all">
+                        <ul class="category-list">
+                            {% for catetory in category_list %}
+                                <li class="category-list-item"><a
+                                        class="category-list-link"
+                                        href="#">{{ catetory.name }}</a><span
+                                        class="category-list-count">{{ catetory.count }}</span>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-   </div>
-  </div>
 {% endblock %}

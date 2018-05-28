@@ -1,15 +1,10 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.shortcuts import render
-from django.http.response import HttpResponse
-from django.shortcuts import render
-from app.models import Article, Category, Tag, Profile, BlogComment
-from django.shortcuts import get_object_or_404, redirect, get_list_or_404
+from app.models import Article, Category, Tag, Profile, BlogComment, BlogMeta
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 import markdown
-import re
 import logging
 
 # Create your views here.
@@ -31,6 +26,10 @@ class IndexView(ListView):
         """
         article_list = Article.objects.filter(status='p')
         return article_list
+
+    def get_context_data(self, **kwargs):
+        kwargs['blog_meta'] = BlogMeta.objects.get(pk=1)
+        return super(IndexView, self).get_context_data(**kwargs)
 
 
 class ArticleDetailView(DetailView):
@@ -76,16 +75,18 @@ class ArticleDetailView(DetailView):
     def get_context_data(self, **kwargs):
         kwargs['comments'] = self.object.blogcomment_set.all()
         kwargs['tags'] = self.object.tags.all()
+        kwargs['blog_meta'] = BlogMeta.objects.get(pk=1)
         return super(ArticleDetailView, self).get_context_data(**kwargs)
 
 
 class AboutView(DetailView):
 
-    model = Profile
+    model = BlogMeta
     template_name = 'blog/about.html'
+    context_object_name = 'blog_meta'
 
     def get_object(self, queryset=None):
-        pass
+        return BlogMeta.objects.get(pk=1)
 
     def get_context_data(self, **kwargs):
         return super(AboutView, self).get_context_data(**kwargs)
@@ -108,7 +109,7 @@ class CategoryView(DetailView):
         return category_list
 
     def get_context_data(self, **kwargs):
-
+        kwargs['blog_meta'] = BlogMeta.objects.get(pk=1)
         return super(CategoryView, self).get_context_data(**kwargs)
 
 
@@ -129,6 +130,7 @@ class TagView(DetailView):
         return tag_list
 
     def get_context_data(self, **kwargs):
+        kwargs['blog_meta'] = BlogMeta.objects.get(pk=1)
         return super(TagView, self).get_context_data(**kwargs)
 
 
@@ -139,6 +141,11 @@ class ArchiveView(DetailView):
     context_object_name = 'article_list'
 
     def get_object(self, queryset=None):
+
         article_list = Article.objects.filter(
             status='p').order_by('-created_time')
         return article_list
+
+    def get_context_data(self, **kwargs):
+        kwargs['blog_meta'] = BlogMeta.objects.get(pk=1)
+        return super(ArchiveView, self).get_context_data(**kwargs)

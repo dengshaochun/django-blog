@@ -2,35 +2,43 @@
 {% load static %}
 
 {% block page-content %}
-   <div class="main-inner"> 
-    <div class="content-wrap"> 
-     <div id="content" class="content"> 
-      <div id="posts" class="posts-expand"> 
-       <header class="post-header"> 
-        <h2 class="post-title" itemprop="name headline">about</h2> 
-       </header> 
-       <h2 id="个人简介："><a href="{% url 'app:about' %}" class="headerlink" title="个人简介："></a>个人简介：</h2>
-       <ul> 
-        <li>Dengsc</li>
-        <li>Hadoop工程师、Python后台开发</li>
-        <li>来自四川 现居深圳</li>
-        <li>Email: 1162617831@qq.com </li>
-       </ul> 
-       <h3 id="关于本站："><a href="{% url 'app:about' %}" class="headerlink" title="关于本站："></a>关于本站：</h3>
-       <ul>
-        <li>博客托管于<a href="https://github.com/dengshaochun/django-blog" target="_blank" rel="external">GitHub</a></li>
-        <li>Hexo搭建博客指南:<a href="http://theme-next.iissnan.com/" target="_blank" rel="external">Next主题</a></li> 
-        <li>折腾开始于2018年4月28日。</li>
-       </ul> 
-       <h2 id="其他流言"><a href="{% url 'app:about' %}" class="headerlink" title="其他流言"></a>其他流言</h2>
-       <ul> 
-        <li><strong>单身狗</strong></li>
-       </ul> 
-      </div> 
-     </div>
-     <div class="comments" id="comments">
-      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMjI4My84ODQ3"></div>
-     </div>
+    <div class="content-wrap">
+        <div id="content" class="content">
+            <div id="posts" class="posts-expand">
+                <header class="post-header">
+                    <h2 class="post-title">about</h2>
+                </header>
+                <h2><a href="{% url 'app:about' %}" class="headerlink"
+                       title="个人简介："></a>个人简介：</h2>
+                <ul>
+                    <li>UserName: {{ blog_meta.owner.username }}</li>
+                    <li>Position: {{ blog_meta.owner.profile.position }}</li>
+                    <li>Location: {{ blog_meta.owner.profile.location }}</li>
+                    <li>Email: {{ blog_meta.owner.email }} </li>
+                </ul>
+                <h3><a href="{% url 'app:about' %}" class="headerlink"
+                       title="关于本站："></a>关于本站：</h3>
+                <ul>
+                    <li>博客托管于<a href="{{ blog_meta.github_url }}"
+                                target="_blank" rel="external">GitHub</a>
+                    </li>
+                    <li>Hexo搭建博客指南:<a href="http://theme-next.iissnan.com/"
+                                      target="_blank"
+                                      rel="external">Next主题</a></li>
+                    <li>
+                        折腾开始于{{ blog_meta.created_time|date:"Y-m-d H:i:s" }}。
+                    </li>
+                </ul>
+                <h2><a href="{% url 'app:about' %}" class="headerlink"></a>其他流言
+                </h2>
+                <ul>
+                    <li><strong>{{ blog_meta.more }}</strong></li>
+                </ul>
+            </div>
+        </div>
+        <div class="comments" id="comments">
+            <div id="lv-container" data-id="city"
+                 data-uid="MTAyMC8zMjI4My84ODQ3"></div>
+        </div>
     </div>
-   </div>
 {% endblock %}

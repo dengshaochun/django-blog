@@ -13,11 +13,47 @@ from django.utils.translation import ugettext_lazy as _
 # Create your models here.
 
 
+class BlogMeta(models.Model):
+    name = models.CharField(_('blog name'),
+                            max_length=50,
+                            default=u'Example Blog')
+    owner = models.ForeignKey('auth.User', verbose_name=_('owner'),
+                              null=True,
+                              on_delete=models.SET_NULL)
+    created_time = models.DateTimeField(_('create time'), auto_now_add=True)
+    github_url = models.URLField(_('github url address'), null=True, blank=True)
+    more = models.CharField(_('add more'),
+                            max_length=200,
+                            null=True,
+                            blank=True)
+
+
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    bio = models.TextField(_('bio'), max_length=500, blank=True)
-    location = models.CharField(_('address'), max_length=30, blank=True)
-    birth_date = models.DateField(_('birthday'), null=True, blank=True)
+    bio = models.TextField(_('bio'), max_length=500, null=True, blank=True)
+    avatar = models.ImageField(_('avatar'),
+                               upload_to='avatar/%Y/%m/%d/',
+                               max_length=100,
+                               null=True,
+                               blank=True)
+    position = models.CharField(_('position'),
+                                max_length=100,
+                                null=True,
+                                blank=True)
+    location = models.CharField(_('address'),
+                                max_length=30,
+                                null=True,
+                                blank=True)
+    birth_date = models.DateField(_('birthday'),
+                                  null=True,
+                                  blank=True)
+    github = models.URLField(_('github url address'), null=True, blank=True)
+    zhihu = models.URLField(_('zhihu url address'), null=True, blank=True)
+    weibo = models.URLField(_('weibo url address'), null=True, blank=True)
+    more = models.CharField(_('add more'),
+                            max_length=200,
+                            null=True,
+                            blank=True)
 
 
 @receiver(post_save, sender=User)

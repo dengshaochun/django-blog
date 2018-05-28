@@ -3,173 +3,29 @@
 
 <html class="theme-next mist use-motion" lang="zh-Hans">
 
-{% block head %}
- <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-  <link href="{% static 'blog/css/jquery.fancybox.min.css' %}" rel="stylesheet" type="text/css" />
-  <link href="{% static 'blog/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css" />
-  <link href="{% static 'blog/css/main.css' %}" rel="stylesheet" type="text/css" />
-  <link href="{% static 'blog/css/github-markdown.css' %}" rel="stylesheet" type="text/css" />
-  <meta name="keywords" content="Dengsc" />
-  <link rel="shortcut icon" type="image/x-icon" href="https://www.ezlippi.com/favicon.ico?v=5.1.0" />
-  <meta name="description" content="Dengsc" />
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="剑试天下" />
-  <meta name="twitter:description" content="Dengsc" />
-  <script src="{% static 'blog/js/hm.js' %}"></script>
-  <script src="{% static 'blog/js/index.js' %}" type="text/javascript" id="hexo.configurations"></script>
-  <link rel="canonical" href="#" />
-  <script src="{% static 'blog/js/pace.min.js' %}"></script>
-  <link href="{% static 'blog/css/pace-theme-flash.css' %}" rel="stylesheet" />
-  <link href="{% static 'blog/css/pace-user-define.css' %}" rel="stylesheet" type="text/css" />
-  <title> 剑试天下 </title>
- </head>
-{% endblock %}
-
- <!-- custom analytics part create by xiamo -->
+{% include 'blog/units/header.html' %}
 
 {% block body %}
- <body itemscope="" lang="zh-Hans" class="  pace-done">
+    <body itemscope="" lang="zh-Hans" class="pace-done">
 
- {% block pace %}
-  <div class="pace pace-inactive">
-   <div class="pace-progress" data-progress-text="100%" data-progress="99" style="transform: translate3d(100%, 0px, 0px);">
-    <div class="pace-progress-inner"></div>
-   </div>
-   <div class="pace-activity"></div>
-  </div>
-  {% endblock %}
+    {% include 'blog/units/progress-bar.html' %}
 
-  <div class="container one-collumn sidebar-position-right page-home">
-   <div class="headband"></div>
+    <div class="container one-collumn sidebar-position-right page-home">
+        <div class="headband"></div>
 
-  {% block content-header %}
-   <header id="header" class="header" itemscope="">
-    <div class="header-inner">
-     <div class="site-meta custom-logo">
-      <div class="custom-logo-site-title">
-       <a href="{% url 'app:index' %}" class="brand" rel="start" style="opacity: 1;"> <span class="logo-line-before"><i class="" style="transform: translateX(100%);"></i></span> <span class="site-title" style="opacity: 1; top: 0px;">剑试天下</span> <span class="logo-line-after"><i class="" style="transform: translateX(-100%);"></i></span> </a>
-      </div>
-      <h1 class="site-subtitle" itemprop="description" style="opacity: 1; top: 0px;"></h1>
-     </div>
-     <div class="site-nav-toggle">
-      <button> <span class="btn-bar"></span> <span class="btn-bar"></span> <span class="btn-bar"></span> </button>
-     </div>
-     <nav class="site-nav">
-      <ul id="menu" class="menu">
-       <li class="menu-item menu-item-home menu-item-active" style="opacity: 1; transform: translateY(0px);"> <a href="{% url 'app:index' %}" rel="section"> <i class="menu-item-icon fa fa-fw fa-home"></i> <br /> 首页 </a> </li>
-       <li class="menu-item menu-item-categories" style="opacity: 1; transform: translateY(0px);"> <a href="{% url 'app:categories' %}" rel="section"> <i class="menu-item-icon fa fa-fw fa-th"></i> <br /> 分类 </a> </li>
-       <li class="menu-item menu-item-archives" style="opacity: 1; transform: translateY(0px);"> <a href="{% url 'app:archives' %}" rel="section"> <i class="menu-item-icon fa fa-fw fa-archive"></i> <br /> 归档 </a> </li>
-       <li class="menu-item menu-item-tags" style="opacity: 1; transform: translateY(0px);"> <a href="{% url 'app:tags' %}" rel="section"> <i class="menu-item-icon fa fa-fw fa-tags"></i> <br /> 标签 </a> </li>
-       <li class="menu-item menu-item-about" style="opacity: 1; transform: translateY(0px);"> <a href="{% url 'app:about' %}" rel="section"> <i class="menu-item-icon fa fa-fw fa-user"></i> <br /> 关于 </a> </li>
-      </ul>
-     </nav>
+        {% include 'blog/units/content-header.html' %}
+
+        <main id="main" class="main">
+            <div class="main-inner">
+                {% block page-content %} {% endblock %}
+            </div>
+            {% include 'blog/units/sidebar.html' %}
+        </main>
+
+        {% include 'blog/units/footer.html' %}
     </div>
-   </header>
-   {% endblock %}
 
-
-   <main id="main" class="main">
-    <div class="main-inner">
-
-    {% block page-content %} {% endblock %}
-
-     {% block sidebar %}
-     <div class="sidebar-toggle">
-      <div class="sidebar-toggle-line-wrap">
-       <span class="sidebar-toggle-line sidebar-toggle-line-first" style="width: 100%; top: 0px; transform: rotateZ(0deg); opacity: 1; left: 0px;"></span>
-       <span class="sidebar-toggle-line sidebar-toggle-line-middle" style="width: 100%; opacity: 1; left: 0px; top: 0px; transform: rotateZ(0deg);"></span>
-       <span class="sidebar-toggle-line sidebar-toggle-line-last" style="width: 100%; top: 0px; transform: rotateZ(0deg); opacity: 1; left: 0px;"></span>
-      </div>
-     </div>
-     <aside id="sidebar" class="sidebar">
-      <div class="sidebar-inner">
-      {% block blog_index_nav %}{% endblock %}
-       <section class="site-overview sidebar-panel sidebar-panel-active">
-        <div class="site-author motion-element" itemprop="author" itemscope="">
-         <img class="site-author-image" itemprop="image" src="{% static 'blog/image/avatar.gif' %}" alt="dengsc" />
-         <p class="site-author-name" itemprop="name">Dengsc</p>
-         <p class="site-description motion-element" itemprop="description">Dengsc</p>
-        </div>
-        <nav class="site-state motion-element">
-         <div class="site-state-item site-state-posts">
-          <a href="#"> <span class="site-state-item-count">95</span> <span class="site-state-item-name">日志</span> </a>
-         </div>
-         <div class="site-state-item site-state-categories">
-          <a href="#"> <span class="site-state-item-count">30</span> <span class="site-state-item-name">分类</span> </a>
-         </div>
-         <div class="site-state-item site-state-tags">
-          <a href="#"> <span class="site-state-item-count">103</span> <span class="site-state-item-name">标签</span> </a>
-         </div>
-        </nav>
-        <div class="links-of-author motion-element">
-         <span class="links-of-author-item"> <a href="https://github.com/dengshaochun" target="_blank" title="GitHub"> <i class="fa fa-fw fa-github"></i> GitHub </a> </span>
-         <span class="links-of-author-item"> <a href="#" target="_blank" title="weibo"> <i class="fa fa-fw fa-weibo"></i> weibo </a> </span>
-         <span class="links-of-author-item"> <a href="#" target="_blank" title="zhihu"> <i class="fa fa-fw fa-battery-3"></i> zhihu </a> </span>
-        </div>
-        <div class="links-of-blogroll motion-element links-of-blogroll-inline">
-         <div class="links-of-blogroll-title">
-          <i class="fa  fa-fw fa-globe"></i> 友情链接
-         </div>
-         <ul class="links-of-blogroll-list">
-          <li class="links-of-blogroll-item"> <a href="http://www.woaitqs.cc/" title="Qisen Tang" target="_blank">Qisen Tang</a> </li>
-          <li class="links-of-blogroll-item"> <a href="http://szhshp.org/" title="szhshp的博客" target="_blank">szhshp的博客</a> </li>
-          <li class="links-of-blogroll-item"> <a href="http://python.zhangwei.website/" title="JuniorCoder" target="_blank">JuniorCoder</a> </li>
-          <li class="links-of-blogroll-item"> <a href="http://hippo-jessy.com/" title="Hippo" target="_blank">Hippo</a> </li>
-          <li class="links-of-blogroll-item"> <a href="https://www.zhihu.com/people/lippi-ouyang" title="友链出租" target="_blank">友链出租</a> </li>
-         </ul>
-        </div>
-       </section>
-          {% block blog_index_content %}{% endblock %}
-      </div>
-     </aside>
-     {% endblock %}
-
-    </div>
-   </main>
-
-
-   {% block footer %}
-   <footer id="footer" class="footer">
-    <div class="footer-inner">
-     <div class="copyright">
-       &copy; 2018 -
-      <span itemprop="copyrightYear">2022</span>
-      <span class="with-love"> <i class="fa fa-heart"></i> </span>
-      <span class="author" itemprop="copyrightHolder">Dengsc</span>
-     </div>
-     <div class="theme-info">
-       主题 -
-      <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next" rel="external nofollow"> NexT.Mist </a>| Hosted by
-      <a href="https://pages.coding.me/" style="font-weight: bold">Coding Pages</a>
-     </div>
-    </div>
-   </footer>
-   <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-   </div>
-   {% endblock %}
-  </div>
-
-  {% block script %}
-  <script type="text/javascript" src="{% static 'blog/js/jquery.min.js' %}"></script>
-  <script type="text/javascript" src="{% static 'blog/js/fastclick.min.js' %}"></script>
-  <script type="text/javascript" src="{% static 'blog/js/jquery.lazyload.min.js' %}"></script>
-  <script type="text/javascript" src="{% static 'blog/js/velocity.min.js' %}"></script>
-  <script type="text/javascript" src="{% static 'blog/js/velocity.ui.min.js' %}"></script>
-  <script type="text/javascript" src="{% static 'blog/js/jquery.fancybox.pack.js' %}"></script>
-  <script type="text/javascript" src="{% static 'blog/js/utils.js' %}"></script>
-  <script type="text/javascript" src="{% static 'blog/js/motion.js' %}"></script>
-  <script type="text/javascript" src="{% static 'blog/js/bootstrap.js' %}"></script>
-  <script type="text/javascript" src="{% static 'blog/js/post-details.js' %}"></script>
-  <script type="text/javascript" src="{% static 'blog/js/scrollspy.js' %}"></script>
-  <!-- 页面点击小红心 -->
-  <script type="text/javascript" src="{% static 'blog/js/love.js' %}"></script>
- {% endblock %}
-
-
- </body>
+        {% include 'blog/units/script.html' %}
+    </body>
 {% endblock %}
 </html>

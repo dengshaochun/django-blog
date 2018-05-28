@@ -2,32 +2,36 @@
 {% load static %}
 
 {% block page-content %}
-
-  <div class="main-inner">
-   <div class="content-wrap">
-    <div id="content" class="content">
-     <section id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
-      <span class="archive-page-counter"> 很好! 目前共计 {{ article_list|length }} 篇日志。 继续努力。 </span>
-      <div class="collection-title">
-       <h2 class="archive-year motion-element" id="archive-year-2018" style="opacity: 1; display: block; transform: translateX(0px);">2018</h2>
-      </div>
-     {% load paginate_tags %}
-     {% paginate article_list %}
-      {% for article in article_list %}
-      <article class="post post-type-normal" itemscope="" style="opacity: 1; display: block; transform: translateY(0px);">
-       <header class="post-header">
-        <h2 class="post-title"> <a class="post-title-link" href="{% url 'app:detail' article.pk %}" itemprop="url"> <span itemprop="name">{{ article.title }}</span> </a> </h2>
-        <div class="post-meta">
-         <time class="post-time" itemprop="dateCreated"> {{ article.created_time |date:"m-d"}} </time>
+    <div class="content-wrap">
+        <div id="content" class="content">
+            <section id="posts" class="posts-collapse">
+                <span class="archive-move-on"></span>
+                <span class="archive-page-counter"> 很好! 目前共计 {{ article_list|length }} 篇日志。 继续努力。 </span>
+                <div class="collection-title">
+                    <h2 class="archive-year motion-element"
+                        id="archive-year-2018"
+                        style="opacity: 1; display: block; transform: translateX(0px);">
+                        2018</h2>
+                </div>
+                {% load paginate_tags %}
+                {% paginate article_list %}
+                {% for article in article_list %}
+                    <article class="post post-type-normal"
+                             style="opacity: 1; display: block; transform: translateY(0px);">
+                        <header class="post-header">
+                            <h2 class="post-title"><a
+                                    class="post-title-link"
+                                    href="{% url 'app:detail' article.pk %}">
+                                <span>{{ article.title }}</span>
+                            </a></h2>
+                            <div class="post-meta">
+                                <time class="post-time"> {{ article.created_time |date:"m-d" }} </time>
+                            </div>
+                        </header>
+                    </article>
+                {% endfor %}
+            </section>
+            {% include 'blog/units/pagination.html' %}
         </div>
-       </header>
-      </article>
-      {% endfor %}
-     </section>
-     {% include 'blog/pagination.html' %}
     </div>
-   </div>
-  </div>
-
-{% endblock%}
+{% endblock %}

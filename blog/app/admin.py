@@ -2,7 +2,8 @@
 from __future__ import unicode_literals
 
 from django.contrib import admin
-from app.models import Profile, Article, Category, BlogComment, Tag, Suggest
+from app.models import (Profile, Article, Category,
+                        BlogComment, Tag, Suggest, BlogMeta)
 
 # Register your models here.
 
@@ -32,6 +33,6 @@ class BlogCommentAdmin(admin.ModelAdmin):
         return form
 
 
-admin.site.register((Profile, Category, Tag, Suggest))
+admin.site.register((Profile, Category, Tag, Suggest, BlogMeta))
 admin.site.register(Article, ArticleAdmin)
 admin.site.register(BlogComment, BlogCommentAdmin)
