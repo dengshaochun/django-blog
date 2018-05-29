@@ -6,12 +6,11 @@
 {% include 'blog/units/header.html' %}
 
 {% block body %}
-    <body itemscope="" lang="zh-Hans" class="pace-done">
+    <body lang="zh-Hans" class="pace-done">
 
     {% include 'blog/units/progress-bar.html' %}
 
     <div class="container one-collumn sidebar-position-right page-home">
-        <div class="headband"></div>
 
         {% include 'blog/units/content-header.html' %}
 
@@ -19,7 +18,9 @@
             <div class="main-inner">
                 {% block page-content %} {% endblock %}
             </div>
-            {% include 'blog/units/sidebar.html' %}
+            {% block sitebar %}
+                {% include 'blog/units/sidebar.html' %}
+            {% endblock %}
         </main>
 
         {% include 'blog/units/footer.html' %}

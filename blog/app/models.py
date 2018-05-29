@@ -17,6 +17,11 @@ class BlogMeta(models.Model):
     name = models.CharField(_('blog name'),
                             max_length=50,
                             default=u'Example Blog')
+    ico = models.ImageField(_('ico'),
+                            upload_to='ico/%Y/%m/%d/',
+                            max_length=100,
+                            null=True,
+                            blank=True)
     owner = models.ForeignKey('auth.User', verbose_name=_('owner'),
                               null=True,
                               on_delete=models.SET_NULL)

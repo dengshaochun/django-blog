@@ -1,29 +1,27 @@
 {% load static %}
 
-{% block header %}
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-        <meta name="viewport"
-              content="width=device-width, initial-scale=1, maximum-scale=1"/>
-        <link href="{% static 'blog/css/jquery.fancybox.min.css' %}"
-              rel="stylesheet" type="text/css"/>
-        <link href="{% static 'blog/css/font-awesome.min.css' %}"
-              rel="stylesheet" type="text/css"/>
-        <link href="{% static 'blog/css/main.css' %}" rel="stylesheet"
-              type="text/css"/>
-        <link href="{% static 'blog/css/github-markdown.css' %}"
-              rel="stylesheet" type="text/css"/>
-        <link rel="shortcut icon" type="image/x-icon"
-              href="https://www.ezlippi.com/favicon.ico?v=5.1.0"/>
-        <script src="{% static 'blog/js/hm.js' %}"></script>
-        <script src="{% static 'blog/js/index.js' %}" type="text/javascript"
-                id="hexo.configurations"></script>
-        <script src="{% static 'blog/js/pace.min.js' %}"></script>
-        <link href="{% static 'blog/css/pace-theme-flash.css' %}"
-              rel="stylesheet"/>
-        <link href="{% static 'blog/css/pace-user-define.css' %}"
-              rel="stylesheet" type="text/css"/>
-        <title> {{ blog_meta.name }} </title>
-    </head>
-{% endblock %}
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1"/>
+    <link href="{% static 'blog/css/jquery.fancybox.min.css' %}"
+          rel="stylesheet" type="text/css"/>
+    <link href="{% static 'blog/css/font-awesome.min.css' %}"
+          rel="stylesheet" type="text/css"/>
+    <link href="{% static 'blog/css/main.css' %}" rel="stylesheet"
+          type="text/css"/>
+    <link href="{% static 'blog/css/github-markdown.css' %}"
+          rel="stylesheet" type="text/css"/>
+    <link rel="shortcut icon" type="image/x-icon"
+          href="{{ blog_meta.ico.url }}"/>
+    <script src="{% static 'blog/js/hm.js' %}"></script>
+    <script src="{% static 'blog/js/index.js' %}" type="text/javascript"></script>
+    <script src="{% static 'blog/js/pace.min.js' %}"></script>
+    <link href="{% static 'blog/css/pace-theme-flash.css' %}"
+          rel="stylesheet"/>
+    <link href="{% static 'blog/css/pace-user-define.css' %}"
+          rel="stylesheet" type="text/css"/>
+    <title> {{ blog_meta.name }} </title>
+</head>

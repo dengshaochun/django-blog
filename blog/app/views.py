@@ -29,6 +29,9 @@ class IndexView(ListView):
 
     def get_context_data(self, **kwargs):
         kwargs['blog_meta'] = BlogMeta.objects.get(pk=1)
+        kwargs['article_count'] = Article.objects.count()
+        kwargs['category_count'] = Category.objects.count()
+        kwargs['tag_count'] = Tag.objects.count()
         return super(IndexView, self).get_context_data(**kwargs)
 
 
@@ -76,6 +79,9 @@ class ArticleDetailView(DetailView):
         kwargs['comments'] = self.object.blogcomment_set.all()
         kwargs['tags'] = self.object.tags.all()
         kwargs['blog_meta'] = BlogMeta.objects.get(pk=1)
+        kwargs['article_count'] = Article.objects.count()
+        kwargs['category_count'] = Category.objects.count()
+        kwargs['tag_count'] = Tag.objects.count()
         return super(ArticleDetailView, self).get_context_data(**kwargs)
 
 
@@ -89,6 +95,10 @@ class AboutView(DetailView):
         return BlogMeta.objects.get(pk=1)
 
     def get_context_data(self, **kwargs):
+        kwargs['blog_meta'] = BlogMeta.objects.get(pk=1)
+        kwargs['article_count'] = Article.objects.count()
+        kwargs['category_count'] = Category.objects.count()
+        kwargs['tag_count'] = Tag.objects.count()
         return super(AboutView, self).get_context_data(**kwargs)
 
 
@@ -110,6 +120,9 @@ class CategoryView(DetailView):
 
     def get_context_data(self, **kwargs):
         kwargs['blog_meta'] = BlogMeta.objects.get(pk=1)
+        kwargs['article_count'] = Article.objects.count()
+        kwargs['category_count'] = Category.objects.count()
+        kwargs['tag_count'] = Tag.objects.count()
         return super(CategoryView, self).get_context_data(**kwargs)
 
 
@@ -131,6 +144,9 @@ class TagView(DetailView):
 
     def get_context_data(self, **kwargs):
         kwargs['blog_meta'] = BlogMeta.objects.get(pk=1)
+        kwargs['article_count'] = Article.objects.count()
+        kwargs['category_count'] = Category.objects.count()
+        kwargs['tag_count'] = Tag.objects.count()
         return super(TagView, self).get_context_data(**kwargs)
 
 
@@ -148,4 +164,7 @@ class ArchiveView(DetailView):
 
     def get_context_data(self, **kwargs):
         kwargs['blog_meta'] = BlogMeta.objects.get(pk=1)
+        kwargs['article_count'] = Article.objects.count()
+        kwargs['category_count'] = Category.objects.count()
+        kwargs['tag_count'] = Tag.objects.count()
         return super(ArchiveView, self).get_context_data(**kwargs)
