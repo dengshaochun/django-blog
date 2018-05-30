@@ -1,0 +1,51 @@
+{% load static %}
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>New Blog</title>
+    <script type="text/javascript"
+            src="{% static 'blog/js/jquery.min.js' %}"></script>
+    <script type="text/javascript"
+            src="{% static 'blog/js/marked.min.js' %}"></script>
+    <script type="text/javascript"
+            src="{% static 'blog/js/editor.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'blog/css/editor.css' %}"
+          type="text/css"/>
+</head>
+<body>
+
+<div id="bothContainers">
+    <div id="leftContainer">
+        <div class="label">
+            <span>Input</span>
+        </div>
+        <textarea id="input" cols="80" rows="20" class="pane"></textarea>
+    </div>
+
+    <div id="rightContainer">
+        <div class="label">
+            <select id="outputType">
+                <option value="preview">Preview</option>
+                <option value="html">HTML Source</option>
+                <option value="lexer">Lexer Data</option>
+                <option value="quickref">Quick Reference</option>
+            </select>
+        </div>
+
+        <div id="preview" class="pane">
+            <noscript><h2>You'll need to enable Javascript to use this
+                tool.</h2></noscript>
+        </div>
+
+        <textarea id="html" class="pane" cols="80" rows="20"
+                  readonly="readonly"></textarea>
+
+        <textarea id="lexer" class="pane" cols="80" rows="20"
+                  readonly="readonly"></textarea>
+
+        <textarea id="quickref" class="pane" cols="80" rows="20"
+                  readonly="readonly">
+        </textarea>
+    </div>
+</div>
+</body>
+</html>

@@ -26,11 +26,17 @@ class BlogMeta(models.Model):
                               null=True,
                               on_delete=models.SET_NULL)
     created_time = models.DateTimeField(_('create time'), auto_now_add=True)
-    github_url = models.URLField(_('github url address'), null=True, blank=True)
+    github_url = models.ForeignKey('FriendlyLink',
+                                   verbose_name=_('github link url'),
+                                   null=True,
+                                   on_delete=models.SET_NULL)
     more = models.CharField(_('add more'),
                             max_length=200,
                             null=True,
                             blank=True)
+
+    def __unicode__(self):
+        return self.name
 
 
 class Profile(models.Model):
@@ -52,13 +58,13 @@ class Profile(models.Model):
     birth_date = models.DateField(_('birthday'),
                                   null=True,
                                   blank=True)
-    github = models.URLField(_('github url address'), null=True, blank=True)
-    zhihu = models.URLField(_('zhihu url address'), null=True, blank=True)
-    weibo = models.URLField(_('weibo url address'), null=True, blank=True)
     more = models.CharField(_('add more'),
                             max_length=200,
                             null=True,
                             blank=True)
+
+    def __unicode__(self):
+        return self.user.username
 
 
 @receiver(post_save, sender=User)
@@ -70,6 +76,52 @@ def create_user_profile(sender, instance, created, **kwargs):
 @receiver(post_save, sender=User)
 def save_user_profile(sender, instance, **kwargs):
     instance.profile.save()
+
+
+class FriendlyLink(models.Model):
+    TYPE_CHOICES = (
+        (0, 'private'),
+        (1, 'friendly'),
+    )  # 链接类型
+
+    name = models.CharField(_('link name'),
+                            max_length=30,
+                            null=True,
+                            blank=True)
+    display = models.CharField(_('display name'),
+                               max_length=50,
+                               null=True,
+                               blank=True)
+    url = models.URLField(_('link url'), null=True, blank=True)
+    icon = models.ForeignKey('Icon',
+                             verbose_name=_('icon'),
+                             null=True,
+                             blank=True,
+                             on_delete=models.SET_NULL)
+    type = models.IntegerField(_('link type'), choices=TYPE_CHOICES, default=0)
+    state = models.BooleanField(_('link status'), default=True)
+
+    def __unicode__(self):
+        return self.name
+
+
+class Icon(models.Model):
+
+    name = models.CharField(_('icon name'),
+                            max_length=50,
+                            null=True,
+                            blank=True)
+    value = models.CharField(_('icon value'),
+                             max_length=30,
+                             null=True,
+                             blank=True)
+    desc = models.CharField(_('description'),
+                            max_length=80,
+                            null=True,
+                            blank=True)
+
+    def __unicode__(self):
+        return self.name
 
 
 class Article(models.Model):

@@ -1,113 +1,112 @@
-{% block sidebar %}
-    <div class="sidebar-toggle">
-        <div class="sidebar-toggle-line-wrap">
-            <span class="sidebar-toggle-line sidebar-toggle-line-first"
-                  style="top: 5px; transform: rotateZ(-45deg); width: 100%;"></span>
-            <span class="sidebar-toggle-line sidebar-toggle-line-middle"
-                  style="opacity: 0;"></span>
-            <span class="sidebar-toggle-line sidebar-toggle-line-last"
-                  style="top: -5px; transform: rotateZ(45deg); width: 100%;"></span>
-        </div>
+<div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+        <span class="sidebar-toggle-line sidebar-toggle-line-first"
+              style="top: 5px; transform: rotateZ(-45deg); width: 100%;"></span>
+        <span class="sidebar-toggle-line sidebar-toggle-line-middle"
+              style="opacity: 0;"></span>
+        <span class="sidebar-toggle-line sidebar-toggle-line-last"
+              style="top: -5px; transform: rotateZ(45deg); width: 100%;"></span>
     </div>
-    <aside id="sidebar" class="sidebar sidebar-active"
-           style="display: block; width: 320px;">
-        <div class="sidebar-inner">
-            <ul class="sidebar-nav motion-element"
+</div>
+<aside id="sidebar" class="sidebar sidebar-active"
+       style="display: block; width: 320px;">
+    <div class="sidebar-inner">
+        <ul class="sidebar-nav motion-element"
+            style="opacity: 1; display: block; transform: translateX(0px);">
+            <li class="sidebar-nav-toc sidebar-nav-active"
+                data-target="post-toc-wrap"> 文章目录
+            </li>
+            <li class="sidebar-nav-overview" data-target="site-overview">
+                站点概览
+            </li>
+        </ul>
+        <section class="site-overview sidebar-panel">
+            <div class="site-author motion-element"
+                 style="opacity: 1; display: block; transform: translateX(0px);">
+                <img class="site-author-image"
+                     src="{{ blog_meta.owner.profile.avatar.url }}"/>
+                <p class="site-author-name">{{ blog_meta.owner.username }}</p>
+                <p class="site-description motion-element">{{ blog_meta.owner.profile.bio }}</p>
+            </div>
+            <nav class="site-state motion-element"
+                 style="opacity: 1; display: block; transform: translateX(0px);">
+                <div class="site-state-item site-state-posts">
+                    <a href="{% url 'app:index' %}"> <span
+                            class="site-state-item-count">{{ article_count }}</span>
+                        <span
+                                class="site-state-item-name">日志</span> </a>
+                </div>
+                <div class="site-state-item site-state-categories">
+                    <a href="{% url 'app:categories' %}"> <span
+                            class="site-state-item-count">{{ category_count }}</span>
+                        <span
+                                class="site-state-item-name">分类</span> </a>
+                </div>
+                <div class="site-state-item site-state-tags">
+                    <a href="{% url 'app:tags' %}"> <span
+                            class="site-state-item-count">{{ tag_count }}</span>
+                        <span
+                                class="site-state-item-name">标签</span> </a>
+                </div>
+            </nav>
+            <div class="links-of-author motion-element"
+                 style="opacity: 1; display: block; transform: translateX(0px);">
+                {% for link in private_links %}
+                    <span class="links-of-author-item">
+                        <a href="{{ link.url }}" target="_blank">
+                            {% if link.icon %}
+                                <i class="fa fa-fw fa-{{ link.icon.value }}"></i>
+                            {% else %}
+                                <i class="fa fa-fw fa-battery-3"></i>
+                            {% endif %}
+                            {{ link.display }}
+                        </a>
+                    </span>
+                {% endfor %}
+            </div>
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline"
+                 style="opacity: 1; display: block; transform: translateX(0px);">
+                <div class="links-of-blogroll-title">
+                    <i class="fa fa-fw fa-globe"></i> 友情链接
+                </div>
+                <ul class="links-of-blogroll-list">
+                    {% for link in friendly_links %}
+                        <li class="links-of-blogroll-item"><a
+                                href="{{ link.url }}"
+                                target="_blank">{{ link.display }}</a></li>
+                    {% empty %}
+                        <li class="links-of-blogroll-item"><a href="#"
+                                                              target="_blank">友链出租</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </section>
+        <section
+                class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active"
                 style="opacity: 1; display: block; transform: translateX(0px);">
-                <li class="sidebar-nav-toc sidebar-nav-active"
-                    data-target="post-toc-wrap"> 文章目录
-                </li>
-                <li class="sidebar-nav-overview" data-target="site-overview">
-                    站点概览
-                </li>
-            </ul>
-            <section class="site-overview sidebar-panel">
-                <div class="site-author motion-element"
-                     style="opacity: 1; display: block; transform: translateX(0px);">
-                    <img class="site-author-image"
-                         src="{{ blog_meta.owner.profile.avatar.url }}"/>
-                    <p class="site-author-name">{{ blog_meta.owner.username }}</p>
-                    <p class="site-description motion-element">{{ blog_meta.owner.profile.bio }}</p>
+            <div class="post-toc"
+                 style="max-height: 849px; width: calc(100% + 17px);">
+                <div class="post-toc-content">
+                    <ol class="nav">
+                        <li class="nav-item nav-level-2"><a class="nav-link"
+                                                            href="#"><span
+                                class="nav-number">1.</span> <span
+                                class="nav-text">数据持久化</span></a>
+                        </li>
+                        <li class="nav-item nav-level-2"><a class="nav-link"
+                                                            href="#"><span
+                                class="nav-number">2.</span> <span
+                                class="nav-text">refresh操作</span></a>
+                        </li>
+                        <li class="nav-item nav-level-2"><a class="nav-link"
+                                                            href="#"><span
+                                class="nav-number">3.</span> <span
+                                class="nav-text">flush操作</span></a>
+                        </li>
+                    </ol>
                 </div>
-                <nav class="site-state motion-element"
-                     style="opacity: 1; display: block; transform: translateX(0px);">
-                    <div class="site-state-item site-state-posts">
-                        <a href="{% url 'app:index' %}"> <span
-                                class="site-state-item-count">{{ article_count }}</span>
-                            <span
-                                    class="site-state-item-name">日志</span> </a>
-                    </div>
-                    <div class="site-state-item site-state-categories">
-                        <a href="{% url 'app:categories' %}"> <span
-                                class="site-state-item-count">{{ category_count }}</span>
-                            <span
-                                    class="site-state-item-name">分类</span> </a>
-                    </div>
-                    <div class="site-state-item site-state-tags">
-                        <a href="{% url 'app:tags' %}"> <span
-                                class="site-state-item-count">{{ tag_count }}</span>
-                            <span
-                                    class="site-state-item-name">标签</span> </a>
-                    </div>
-                </nav>
-                <div class="links-of-author motion-element"
-                     style="opacity: 1; display: block; transform: translateX(0px);">
-                    <span class="links-of-author-item"> <a
-                            href="{{ blog_meta.owner.profile.github }}"
-                            target="_blank" title="GitHub"> <i
-                            class="fa fa-fw fa-github"></i> GitHub </a> </span>
-                    <span class="links-of-author-item"> <a
-                            href="{{ blog_meta.owner.profile.weibo }}"
-                            target="_blank"
-                            title="weibo"> <i
-                            class="fa fa-fw fa-weibo"></i> weibo </a> </span>
-                    <span class="links-of-author-item"> <a
-                            href="{{ blog_meta.owner.profile.zhihui }}"
-                            target="_blank"
-                            title="zhihu"> <i
-                            class="fa fa-fw fa-battery-3"></i> zhihu </a> </span>
-                </div>
-                <div class="links-of-blogroll motion-element links-of-blogroll-inline"
-                     style="opacity: 1; display: block; transform: translateX(0px);">
-                    <div class="links-of-blogroll-title">
-                        <i class="fa fa-fw fa-globe"></i> 友情链接
-                    </div>
-                    <ul class="links-of-blogroll-list">
-                        <li class="links-of-blogroll-item"><a
-                                href="https://www.ezlippi.com/"
-                                target="_blank">Ezlippi</a></li>
-                        <li class="links-of-blogroll-item"><a
-                                href="#"
-                                title="友链出租" target="_blank">友链出租</a></li>
-                    </ul>
-                </div>
-            </section>
-            <section
-                    class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active"
-                    style="opacity: 1; display: block; transform: translateX(0px);">
-                <div class="post-toc"
-                     style="max-height: 849px; width: calc(100% + 17px);">
-                    <div class="post-toc-content">
-                        <ol class="nav">
-                            <li class="nav-item nav-level-2"><a class="nav-link"
-                                                                href="#"><span
-                                    class="nav-number">1.</span> <span
-                                    class="nav-text">数据持久化</span></a>
-                            </li>
-                            <li class="nav-item nav-level-2"><a class="nav-link"
-                                                                href="#"><span
-                                    class="nav-number">2.</span> <span
-                                    class="nav-text">refresh操作</span></a>
-                            </li>
-                            <li class="nav-item nav-level-2"><a class="nav-link"
-                                                                href="#"><span
-                                    class="nav-number">3.</span> <span
-                                    class="nav-text">flush操作</span></a>
-                            </li>
-                        </ol>
-                    </div>
-                </div>
-            </section>
-        </div>
-    </aside>
-{% endblock %}
+            </div>
+        </section>
+    </div>
+</aside>

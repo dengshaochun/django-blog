@@ -15,6 +15,7 @@ app_name = 'app'
 urlpatterns = [
     url(r'^$', views.IndexView.as_view(), name='index'),
     url('^tags/', views.TagView.as_view(), name='tags'),
+    url('^editor/', views.EditorView.as_view(), name='editor'),
     url('^about/', views.AboutView.as_view(), name='about'),
     url('^archives/', views.ArchiveView.as_view(), name='archives'),
     url('^categories/', views.CategoryView.as_view(), name='categories'),

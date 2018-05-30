@@ -64,6 +64,10 @@
                             <div class="post-eof"></div>
                         </footer>
                     </article>
+                {% empty %}
+                    <section id="posts" class="posts-expand">
+                        <h2 class="post-title">暂未发现任何发布文章，现在就去写一篇！</h2>
+                    </section>
                 {% endfor %}
             </section>
             {% include 'blog/units/pagination.html' %}

@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from app.models import Article, Category, Tag, Profile, BlogComment, BlogMeta
+from app.models import (Article, Category, Tag,
+                        BlogComment, BlogMeta, FriendlyLink)
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 import markdown
@@ -13,7 +14,37 @@ import logging
 logger = logging.getLogger(__name__)
 
 
-class IndexView(ListView):
+class CustomListView(ListView):
+
+    @staticmethod
+    def get_common_context(**kwargs):
+        kwargs['blog_meta'] = BlogMeta.objects.get(pk=1)
+        kwargs['article_count'] = Article.objects.count()
+        kwargs['category_count'] = Category.objects.count()
+        kwargs['tag_count'] = Tag.objects.count()
+        kwargs['private_links'] = FriendlyLink.objects.filter(
+            state=True).filter(type=0).all()
+        kwargs['friendly_links'] = FriendlyLink.objects.filter(
+            state=True).filter(type=1).all()
+        return kwargs
+
+
+class CustomDetailView(DetailView):
+
+    @staticmethod
+    def get_common_context(**kwargs):
+        kwargs['blog_meta'] = BlogMeta.objects.get(pk=1)
+        kwargs['article_count'] = Article.objects.count()
+        kwargs['category_count'] = Category.objects.count()
+        kwargs['tag_count'] = Tag.objects.count()
+        kwargs['private_links'] = FriendlyLink.objects.filter(
+            state=True).filter(type=0).all()
+        kwargs['friendly_links'] = FriendlyLink.objects.filter(
+            state=True).filter(type=1).all()
+        return kwargs
+
+
+class IndexView(CustomListView):
     model = Article
     template_name = 'blog/index.html'
     # 制定获取的model数据列表的名字
@@ -28,14 +59,11 @@ class IndexView(ListView):
         return article_list
 
     def get_context_data(self, **kwargs):
-        kwargs['blog_meta'] = BlogMeta.objects.get(pk=1)
-        kwargs['article_count'] = Article.objects.count()
-        kwargs['category_count'] = Category.objects.count()
-        kwargs['tag_count'] = Tag.objects.count()
+        kwargs = self.get_common_context(**kwargs)
         return super(IndexView, self).get_context_data(**kwargs)
 
 
-class ArticleDetailView(DetailView):
+class ArticleDetailView(CustomDetailView):
     """
     显示文章详情
     """
@@ -76,16 +104,13 @@ class ArticleDetailView(DetailView):
 
     # 新增form到上下文
     def get_context_data(self, **kwargs):
+        kwargs = self.get_common_context(**kwargs)
         kwargs['comments'] = self.object.blogcomment_set.all()
         kwargs['tags'] = self.object.tags.all()
-        kwargs['blog_meta'] = BlogMeta.objects.get(pk=1)
-        kwargs['article_count'] = Article.objects.count()
-        kwargs['category_count'] = Category.objects.count()
-        kwargs['tag_count'] = Tag.objects.count()
         return super(ArticleDetailView, self).get_context_data(**kwargs)
 
 
-class AboutView(DetailView):
+class AboutView(CustomDetailView):
 
     model = BlogMeta
     template_name = 'blog/about.html'
@@ -95,20 +120,17 @@ class AboutView(DetailView):
         return BlogMeta.objects.get(pk=1)
 
     def get_context_data(self, **kwargs):
-        kwargs['blog_meta'] = BlogMeta.objects.get(pk=1)
-        kwargs['article_count'] = Article.objects.count()
-        kwargs['category_count'] = Category.objects.count()
-        kwargs['tag_count'] = Tag.objects.count()
+        kwargs = self.get_common_context(**kwargs)
         return super(AboutView, self).get_context_data(**kwargs)
 
 
-class CategoryView(DetailView):
+class CategoryView(CustomListView):
 
     model = Category
     template_name = 'blog/categories.html'
     context_object_name = 'category_list'
 
-    def get_object(self, queryset=None):
+    def get_queryset(self, queryset=None):
         category_list = []
         categories = Category.objects.all()
         for category in categories:
@@ -119,20 +141,17 @@ class CategoryView(DetailView):
         return category_list
 
     def get_context_data(self, **kwargs):
-        kwargs['blog_meta'] = BlogMeta.objects.get(pk=1)
-        kwargs['article_count'] = Article.objects.count()
-        kwargs['category_count'] = Category.objects.count()
-        kwargs['tag_count'] = Tag.objects.count()
+        kwargs = self.get_common_context(**kwargs)
         return super(CategoryView, self).get_context_data(**kwargs)
 
 
-class TagView(DetailView):
+class TagView(CustomListView):
 
     model = Tag
     template_name = 'blog/tags.html'
     context_object_name = 'tag_list'
 
-    def get_object(self, queryset=None):
+    def get_queryset(self, queryset=None):
         tag_list = []
         tags = Tag.objects.all()
         for tag in tags:
@@ -143,28 +162,31 @@ class TagView(DetailView):
         return tag_list
 
     def get_context_data(self, **kwargs):
-        kwargs['blog_meta'] = BlogMeta.objects.get(pk=1)
-        kwargs['article_count'] = Article.objects.count()
-        kwargs['category_count'] = Category.objects.count()
-        kwargs['tag_count'] = Tag.objects.count()
+        kwargs = self.get_common_context(**kwargs)
         return super(TagView, self).get_context_data(**kwargs)
 
 
-class ArchiveView(DetailView):
+class ArchiveView(CustomListView):
 
     model = Article
     template_name = 'blog/archives.html'
     context_object_name = 'article_list'
 
-    def get_object(self, queryset=None):
+    def get_queryset(self, queryset=None):
 
         article_list = Article.objects.filter(
             status='p').order_by('-created_time')
         return article_list
 
     def get_context_data(self, **kwargs):
-        kwargs['blog_meta'] = BlogMeta.objects.get(pk=1)
-        kwargs['article_count'] = Article.objects.count()
-        kwargs['category_count'] = Category.objects.count()
-        kwargs['tag_count'] = Tag.objects.count()
+        kwargs = self.get_common_context(**kwargs)
         return super(ArchiveView, self).get_context_data(**kwargs)
+
+
+class EditorView(DetailView):
+
+    model = Article
+    template_name = 'blog/editor.html'
+
+    def get_object(self, queryset=None):
+        return None
