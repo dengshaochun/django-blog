@@ -3,30 +3,36 @@
 
 <html class="theme-next mist use-motion" lang="zh-Hans">
 
-{% include 'blog/units/header.html' %}
+{% block header %}
+    {% include 'blog/units/header.html' %}
+{% endblock %}
 
 {% block body %}
-    <body lang="zh-Hans" class="pace-done">
+    <body class="pace-done">
 
-    {% include 'blog/units/progress-bar.html' %}
+        {% block progressbar %}
+            {% include 'blog/units/progress-bar.html' %}
+        {% endblock %}
 
-    <div class="container one-collumn sidebar-position-right page-home">
+        <div class="container one-collumn sidebar-position-right page-home">
 
-        {% include 'blog/units/content-header.html' %}
+            {% include 'blog/units/content-header.html' %}
 
-        <main id="main" class="main">
-            <div class="main-inner">
-                {% block page-content %} {% endblock %}
-            </div>
-            {% block sitebar %}
-                {% include 'blog/units/sidebar.html' %}
+            <main id="main" class="main">
+                <div class="main-inner">
+                    {% block page-content %} {% endblock %}
+                </div>
+                {% block sitebar %}
+                    {% include 'blog/units/sidebar.html' %}
+                {% endblock %}
+            </main>
+            {% block footer %}
+                {% include 'blog/units/footer.html' %}
             {% endblock %}
-        </main>
-
-        {% include 'blog/units/footer.html' %}
-    </div>
-
-        {% include 'blog/units/script.html' %}
+        </div>
+            {% block script %}
+                {% include 'blog/units/script.html' %}
+            {% endblock %}
     </body>
 {% endblock %}
 </html>

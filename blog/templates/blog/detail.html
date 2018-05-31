@@ -75,13 +75,25 @@
                         </div>
                         <div class="post-nav">
                             <div class="post-nav-next post-nav-item">
-                                <a href="#" rel="next"> <i
-                                        class="fa fa-chevron-left"></i>
-                                    MySQL常用参数列表
-                                </a>
+                                {% if prev_article %}
+                                    <a href="{{ prev_article.get_absolute_url }}">
+                                        <i class="fa fa-chevron-left"></i>
+                                        {{ prev_article.title }}
+                                    </a>
+                                {% else %}
+                                    <span class="post-nav-divider">没有啦 --!</span>
+                                {% endif %}
                             </div>
                             <span class="post-nav-divider"></span>
                             <div class="post-nav-prev post-nav-item">
+                                {% if next_article %}
+                                    <a href="{{ next_article.get_absolute_url }}">
+                                        <i class="fa fa-chevron-right"></i>
+                                        {{ next_article.title }}
+                                    </a>
+                                {% else %}
+                                    <span class="post-nav-divider">没有啦 --!</span>
+                                {% endif %}
                             </div>
                         </div>
                     </footer>
@@ -93,4 +105,19 @@
 
 {% block sitebar %}
     {% include 'blog/units/detail-sitebar.html' %}
+{% endblock %}
+
+{% block script %}
+    {{ block.super }}
+    <script>
+        $(document).ready(function(){
+            $(".markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6").each(function(i,item){
+                var tag = $(item).get(0).localName;
+                $(item).attr("id","tag-"+i);
+                var pad = tag.slice(1, 2) * 2;
+                console.log(pad);
+                $('<li class="nav-item" style="margin-left: ' + pad + '%"><a class="nav-link" href="#tag-' + i + '"><span class="nav-text">' + $(this).text() + '</span></a></li>').appendTo($("#tag-nav"));
+          });
+        });
+    </script>
 {% endblock %}

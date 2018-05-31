@@ -14,34 +14,30 @@ import logging
 logger = logging.getLogger(__name__)
 
 
+def get_common_kwargs(**kwargs):
+    kwargs['blog_meta'] = BlogMeta.objects.get(pk=1)
+    kwargs['article_count'] = Article.objects.count()
+    kwargs['category_count'] = Category.objects.count()
+    kwargs['tag_count'] = Tag.objects.count()
+    kwargs['private_links'] = FriendlyLink.objects.filter(
+        state=True).filter(type=0).all()
+    kwargs['friendly_links'] = FriendlyLink.objects.filter(
+        state=True).filter(type=1).all()
+    return kwargs
+
+
 class CustomListView(ListView):
 
-    @staticmethod
-    def get_common_context(**kwargs):
-        kwargs['blog_meta'] = BlogMeta.objects.get(pk=1)
-        kwargs['article_count'] = Article.objects.count()
-        kwargs['category_count'] = Category.objects.count()
-        kwargs['tag_count'] = Tag.objects.count()
-        kwargs['private_links'] = FriendlyLink.objects.filter(
-            state=True).filter(type=0).all()
-        kwargs['friendly_links'] = FriendlyLink.objects.filter(
-            state=True).filter(type=1).all()
-        return kwargs
+    def get_context_data(self, **kwargs):
+        kwargs = get_common_kwargs(**kwargs)
+        return super(CustomListView, self).get_context_data(**kwargs)
 
 
 class CustomDetailView(DetailView):
 
-    @staticmethod
-    def get_common_context(**kwargs):
-        kwargs['blog_meta'] = BlogMeta.objects.get(pk=1)
-        kwargs['article_count'] = Article.objects.count()
-        kwargs['category_count'] = Category.objects.count()
-        kwargs['tag_count'] = Tag.objects.count()
-        kwargs['private_links'] = FriendlyLink.objects.filter(
-            state=True).filter(type=0).all()
-        kwargs['friendly_links'] = FriendlyLink.objects.filter(
-            state=True).filter(type=1).all()
-        return kwargs
+    def get_context_data(self, **kwargs):
+        kwargs = get_common_kwargs(**kwargs)
+        return super(CustomDetailView, self).get_context_data(**kwargs)
 
 
 class IndexView(CustomListView):
@@ -59,7 +55,6 @@ class IndexView(CustomListView):
         return article_list
 
     def get_context_data(self, **kwargs):
-        kwargs = self.get_common_context(**kwargs)
         return super(IndexView, self).get_context_data(**kwargs)
 
 
@@ -97,16 +92,18 @@ class ArticleDetailView(CustomDetailView):
                                         'markdown.extensions.nl2br',
                                         'markdown.extensions.sane_lists',
                                         'markdown.extensions.smarty',
-                                        'markdown.extensions.toc',
                                         'markdown.extensions.wikilinks'
                                         ])
         return obj
 
     # 新增form到上下文
     def get_context_data(self, **kwargs):
-        kwargs = self.get_common_context(**kwargs)
         kwargs['comments'] = self.object.blogcomment_set.all()
         kwargs['tags'] = self.object.tags.all()
+        kwargs['prev_article'] = Article.objects.filter(
+            pk=self.object.pk - 1).first()
+        kwargs['next_article'] = Article.objects.filter(
+            pk=self.object.pk + 1).first()
         return super(ArticleDetailView, self).get_context_data(**kwargs)
 
 
@@ -120,7 +117,6 @@ class AboutView(CustomDetailView):
         return BlogMeta.objects.get(pk=1)
 
     def get_context_data(self, **kwargs):
-        kwargs = self.get_common_context(**kwargs)
         return super(AboutView, self).get_context_data(**kwargs)
 
 
@@ -141,7 +137,6 @@ class CategoryView(CustomListView):
         return category_list
 
     def get_context_data(self, **kwargs):
-        kwargs = self.get_common_context(**kwargs)
         return super(CategoryView, self).get_context_data(**kwargs)
 
 
@@ -162,7 +157,6 @@ class TagView(CustomListView):
         return tag_list
 
     def get_context_data(self, **kwargs):
-        kwargs = self.get_common_context(**kwargs)
         return super(TagView, self).get_context_data(**kwargs)
 
 
@@ -179,14 +173,16 @@ class ArchiveView(CustomListView):
         return article_list
 
     def get_context_data(self, **kwargs):
-        kwargs = self.get_common_context(**kwargs)
         return super(ArchiveView, self).get_context_data(**kwargs)
 
 
-class EditorView(DetailView):
+class EditorView(CustomDetailView):
 
     model = Article
     template_name = 'blog/editor.html'
 
     def get_object(self, queryset=None):
         return None
+
+    def get_context_data(self, **kwargs):
+        return super(EditorView, self).get_context_data(**kwargs)

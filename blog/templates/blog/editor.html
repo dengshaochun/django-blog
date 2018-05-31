@@ -1,51 +1,35 @@
+<!DOCTYPE html>
 {% load static %}
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-<head>
-    <title>New Blog</title>
-    <script type="text/javascript"
-            src="{% static 'blog/js/jquery.min.js' %}"></script>
-    <script type="text/javascript"
-            src="{% static 'blog/js/marked.min.js' %}"></script>
-    <script type="text/javascript"
-            src="{% static 'blog/js/editor.js' %}"></script>
-    <link rel="stylesheet" href="{% static 'blog/css/editor.css' %}"
-          type="text/css"/>
-</head>
-<body>
-
-<div id="bothContainers">
-    <div id="leftContainer">
-        <div class="label">
-            <span>Input</span>
+<html lang="zh">
+    <head>
+        <meta charset="utf-8" />
+        <title>Editor - New Blog</title>
+        <link rel="stylesheet" href="{% static 'blog/css/editor/style.css' %}" />
+        <link rel="stylesheet" href="{% static 'blog/css/editor/editormd.min.css' %}" />
+        {% include 'blog/units/header.html' %}
+    </head>
+    <body>
+        <div id="layout">
+            <header>
+                <h1>Simple example</h1>
+            </header>
+            <div id="test-editormd">
+                <textarea style="display:none;"></textarea>
+            </div>
         </div>
-        <textarea id="input" cols="80" rows="20" class="pane"></textarea>
-    </div>
+        <script src="{% static 'blog/js/jquery.min.js' %}"></script>
+        <script src="{% static 'blog/js/editor/editormd.min.js' %}"></script>
+        <script type="text/javascript">
+            var testEditor;
 
-    <div id="rightContainer">
-        <div class="label">
-            <select id="outputType">
-                <option value="preview">Preview</option>
-                <option value="html">HTML Source</option>
-                <option value="lexer">Lexer Data</option>
-                <option value="quickref">Quick Reference</option>
-            </select>
-        </div>
-
-        <div id="preview" class="pane">
-            <noscript><h2>You'll need to enable Javascript to use this
-                tool.</h2></noscript>
-        </div>
-
-        <textarea id="html" class="pane" cols="80" rows="20"
-                  readonly="readonly"></textarea>
-
-        <textarea id="lexer" class="pane" cols="80" rows="20"
-                  readonly="readonly"></textarea>
-
-        <textarea id="quickref" class="pane" cols="80" rows="20"
-                  readonly="readonly">
-        </textarea>
-    </div>
-</div>
-</body>
+            $(function() {
+                testEditor = editormd("test-editormd", {
+                    width   : "90%",
+                    height  : 640,
+                    syncScrolling : "single",
+                    path    : "{% static 'blog/js/editor/lib/' %}"
+                });
+            });
+        </script>
+    </body>
 </html>
