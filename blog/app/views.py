@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 
 from app.models import (Article, Category, Tag,
-                        BlogComment, BlogMeta, FriendlyLink)
+                        BlogComment, BlogMeta, Link)
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 import markdown
@@ -19,9 +19,9 @@ def get_common_kwargs(**kwargs):
     kwargs['article_count'] = Article.objects.count()
     kwargs['category_count'] = Category.objects.count()
     kwargs['tag_count'] = Tag.objects.count()
-    kwargs['private_links'] = FriendlyLink.objects.filter(
+    kwargs['private_links'] = Link.objects.filter(
         state=True).filter(type=0).all()
-    kwargs['friendly_links'] = FriendlyLink.objects.filter(
+    kwargs['friendly_links'] = Link.objects.filter(
         state=True).filter(type=1).all()
     return kwargs
 

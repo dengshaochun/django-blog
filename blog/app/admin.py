@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 
 from django.contrib import admin
-from app.models import (Profile, Article, Category, FriendlyLink,
+from app.models import (Profile, Article, Category, Link, Image,
                         BlogComment, Tag, Suggest, BlogMeta, Icon)
 
 # Register your models here.
@@ -41,13 +41,13 @@ class ProfileAdmin(admin.ModelAdmin):
     list_display = ('user', 'birth_date', 'location')
 
 
-class FriendlyLinkAdmin(admin.ModelAdmin):
+class LinkAdmin(admin.ModelAdmin):
     list_display = ('name', 'url', 'icon', 'type', 'state')
 
 
-admin.site.register((Tag, Suggest, BlogMeta, Icon))
+admin.site.register((Tag, Suggest, BlogMeta, Icon, Image))
 admin.site.register(Article, ArticleAdmin)
 admin.site.register(BlogComment, BlogCommentAdmin)
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Profile, ProfileAdmin)
-admin.site.register(FriendlyLink, FriendlyLinkAdmin)
+admin.site.register(Link, LinkAdmin)

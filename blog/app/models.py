@@ -14,23 +14,27 @@ from django.utils.translation import ugettext_lazy as _
 
 
 class BlogMeta(models.Model):
+    """
+    Blog 元数据表,包括blog名称,图标等
+    """
+
     name = models.CharField(_('blog name'),
                             max_length=50,
                             default=u'Example Blog')
-    ico = models.ImageField(_('ico'),
-                            upload_to='ico/%Y/%m/%d/',
-                            max_length=100,
+    ico = models.ForeignKey('Image',
+                            verbose_name=_('ico'),
                             null=True,
-                            blank=True)
+                            blank=True,
+                            on_delete=models.SET_NULL)
     owner = models.ForeignKey('auth.User', verbose_name=_('owner'),
                               null=True,
                               on_delete=models.SET_NULL)
     created_time = models.DateTimeField(_('create time'), auto_now_add=True)
-    github_url = models.ForeignKey('FriendlyLink',
+    github_url = models.ForeignKey('Link',
                                    verbose_name=_('github link url'),
                                    null=True,
                                    on_delete=models.SET_NULL)
-    more = models.CharField(_('add more'),
+    more = models.CharField(_('and more'),
                             max_length=200,
                             null=True,
                             blank=True)
@@ -40,13 +44,17 @@ class BlogMeta(models.Model):
 
 
 class Profile(models.Model):
+    """
+    用户扩展表,用户信息补全
+    """
+
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     bio = models.TextField(_('bio'), max_length=500, null=True, blank=True)
-    avatar = models.ImageField(_('avatar'),
-                               upload_to='avatar/%Y/%m/%d/',
-                               max_length=100,
+    avatar = models.ForeignKey('Image',
+                               verbose_name=_('avatar'),
                                null=True,
-                               blank=True)
+                               blank=True,
+                               on_delete=models.SET_NULL)
     position = models.CharField(_('position'),
                                 max_length=100,
                                 null=True,
@@ -78,10 +86,15 @@ def save_user_profile(sender, instance, **kwargs):
     instance.profile.save()
 
 
-class FriendlyLink(models.Model):
+class Link(models.Model):
+    """
+    链接表
+    """
+
     TYPE_CHOICES = (
         (0, 'private'),
         (1, 'friendly'),
+        (3, 'blog_meta')
     )  # 链接类型
 
     name = models.CharField(_('link name'),
@@ -106,6 +119,10 @@ class FriendlyLink(models.Model):
 
 
 class Icon(models.Model):
+    """
+    icon 表
+    参考:http://fontawesome.dashgame.com/
+    """
 
     name = models.CharField(_('icon name'),
                             max_length=50,
@@ -125,6 +142,9 @@ class Icon(models.Model):
 
 
 class Article(models.Model):
+    """
+    Blog 内容表
+    """
     STATUS_CHOICES = (
         ('d', 'part'),
         ('p', 'Published'),
@@ -136,14 +156,11 @@ class Article(models.Model):
                                )
     title = models.CharField(_('title'), max_length=100)
     body = models.TextField(_('body'))
-
     # auto_now_add : 创建时间戳，不会被覆盖
     created_time = models.DateTimeField(_('create time'), auto_now_add=True)
-
     # auto_now: 自动将当前时间覆盖之前时间
     last_modified_time = models.DateTimeField(_('last modified time'),
                                               auto_now=True)
-
     status = models.CharField(_('status'), max_length=1, choices=STATUS_CHOICES)
     abstract = models.CharField(_('abstract'),
                                 max_length=200,
@@ -197,8 +214,7 @@ class Article(models.Model):
 
 class Category(models.Model):
     """
-    另外一个表,储存文章的分类信息
-    文章表的外键指向
+    储存文章的分类信息
     """
     name = models.CharField(_('category name'), max_length=20)
     created_time = models.DateTimeField(_('create time'), auto_now_add=True)
@@ -210,6 +226,9 @@ class Category(models.Model):
 
 
 class BlogComment(models.Model):
+    """
+    Blog评论表
+    """
     user = models.ForeignKey('auth.User',
                              verbose_name=_('reviewers'),
                              on_delete=models.CASCADE)
@@ -253,3 +272,19 @@ class Suggest(models.Model):
 
     def __unicode__(self):
         return self.suggest
+
+
+class Image(models.Model):
+    """
+    图片表
+    """
+    name = models.CharField(_('image name'), max_length=60)
+    image = models.ImageField(_('image'),
+                              upload_to='img/%Y/%m/%d/',
+                              max_length=100,
+                              null=True,
+                              blank=True)
+    desc = models.CharField(_('image description'), max_length=200)
+
+    def __unicode__(self):
+        return self.name
