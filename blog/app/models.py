@@ -278,13 +278,19 @@ class Image(models.Model):
     """
     图片表
     """
-    name = models.CharField(_('image name'), max_length=60)
+    name = models.CharField(_('image name'),
+                            max_length=60,
+                            null=True,
+                            blank=True)
     image = models.ImageField(_('image'),
                               upload_to='img/%Y/%m/%d/',
                               max_length=100,
                               null=True,
                               blank=True)
-    desc = models.CharField(_('image description'), max_length=200)
+    desc = models.CharField(_('image description'),
+                            max_length=200,
+                            null=True,
+                            blank=True)
 
     def __unicode__(self):
         return self.name

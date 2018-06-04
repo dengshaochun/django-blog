@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from app.models import (Article, Category, Tag,
+from app.models import (Article, Category, Tag, Image,
                         BlogComment, BlogMeta, Link)
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
+from django.views.decorators.csrf import csrf_exempt
+from django.http.response import JsonResponse
 import markdown
 import logging
 
@@ -186,3 +188,21 @@ class EditorView(CustomDetailView):
 
     def get_context_data(self, **kwargs):
         return super(EditorView, self).get_context_data(**kwargs)
+
+
+@csrf_exempt
+def upload_image(request):
+    print request.FILES.get('editormd-image-file')
+    if request.method == 'POST':
+        data = {
+            'success': 0,
+            'message': '',
+            'url': ''
+        }
+        new_img = Image(
+            image=request.FILES.get('editormd-image-file'),
+        )
+        new_img.save()
+        data['success'] = 1
+        data['url'] = new_img.image.url
+        return JsonResponse(data)

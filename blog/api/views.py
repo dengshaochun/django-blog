@@ -18,14 +18,22 @@ class ImageViewSet(viewsets.ModelViewSet):
     """
 
     def create(self, request, *args, **kwargs):
-        self.serializer_class = ImageSerializer
+        data = {
+            'success': 0,  # 0表示上传失败，1表示上传成功
+            'message': '',
+            'url': ''
+        }
         file = request.data.dict()
+        print file
+        self.serializer_class = ImageSerializer
         serial = ImageSerializer(data=file)
         if not serial.is_valid():
+            data['message'] = 'serial is not valid!'
             return Response(status=status.HTTP_400_BAD_REQUEST)
-
-        serial.save()
-        return Response(serial.data)
+        obj = serial.save()
+        data['success'] = 1
+        data['url'] = obj.image.url
+        return Response(data)
 
     def list(self, request, *args, **kwargs):
         self.serializer_class = ImageSerializer
