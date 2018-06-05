@@ -55,6 +55,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'app.middleware.ShowSqlMiddleware'
 ]
 
 ROOT_URLCONF = 'blog.urls'
@@ -173,11 +174,11 @@ LOGGING = {
             'formatter': 'verbose',
             'filename': os.path.join(BASE_DIR, 'logs/faillog.log'),
         },
-        'dberror': {
-            'level': 'ERROR',
+        'dblog': {
+            'level': 'INFO',
             'class': 'logging.FileHandler',
             'formatter': 'verbose',
-            'filename': os.path.join(BASE_DIR, 'logs/dberror.log'),
+            'filename': os.path.join(BASE_DIR, 'logs/dblog.log'),
         },
     },
     'loggers': {
@@ -201,10 +202,10 @@ LOGGING = {
             'propagate': False,
             'level': 'ERROR',
         },
-        'dberror': {
-            'handlers': ['console', 'dberror'],
+        'dblog': {
+            'handlers': ['console', 'dblog'],
             'propagate': False,
-            'level': 'ERROR',
+            'level': 'INFO',
         },
     }
 }

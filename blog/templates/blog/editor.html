@@ -1,39 +1,90 @@
 <!DOCTYPE html>
+{% extends 'blog/base.html' %}
 {% load static %}
-<html lang="zh">
+
+{% block header %}
     <head>
-        <meta charset="utf-8" />
-        <link rel="shortcut icon" type="image/x-icon" href="{{ blog_meta.ico.url }}"/>
-        <title>Editor - New Blog</title>
-        <link rel="stylesheet" href="{% static 'blog/css/editor-style.css' %}" />
-        <link rel="stylesheet" href="{% static 'blog/css/editormd.min.css' %}" />
-        <link href="{% static 'blog/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport"
+              content="width=device-width, initial-scale=1, maximum-scale=1"/>
+        <link href="{% static 'blog/css/jquery.fancybox.min.css' %}"
+              rel="stylesheet" type="text/css"/>
+        <link href="{% static 'blog/css/font-awesome.min.css' %}"
+              rel="stylesheet" type="text/css"/>
+        <link href="{% static 'blog/css/main.css' %}" rel="stylesheet"
+              type="text/css"/>
+        <link rel="shortcut icon" type="image/x-icon"
+              href="{{ blog_meta.ico.image.url }}"/>
+        <script src="{% static 'blog/js/pace.min.js' %}"></script>
+        <title> {{ blog_meta.name }} </title>
+        <link href="{% static 'blog/css/pace-theme-flash.css' %}"
+          rel="stylesheet"/>
+        <link href="{% static 'blog/css/pace-user-define.css' %}"
+          rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="{% static 'blog/css/editor-style.css' %}"/>
+        <link rel="stylesheet" href="{% static 'blog/css/editormd.min.css' %}"/>
     </head>
-    <body>
-        <div id="layout">
-            <header>
-                <h1>Simple example</h1>
-            </header>
-            <div id="test-editormd">
-                <textarea style="display:none;"></textarea>
-            </div>
+{% endblock %}
+
+{% block body %}
+    <body class="pace-done">
+
+    {% block progressbar %}
+        {% include 'blog/units/progress-bar.html' %}
+    {% endblock %}
+
+    {% include 'blog/units/content-header.html' %}
+    <form class="" action="{% url 'app:editor' %}" method="post">
+        {% csrf_token %}
+        <div>
+            {{ form.title.label_tag }}
+            {{ form.title }}
         </div>
+        <div>
+            {{ form.abstract.label_tag }}
+            {{ form.abstract }}
+        </div>
+        <div>
+            {{ form.status.label_tag }}
+            {{ form.status }}
+        </div>
+        <div id="test-editormd">
+            {{ form.body }}
+        </div>
+        <div>
+            {{ form.topped.label_tag }}
+            {{ form.topped }}
+        </div>
+       <div>
+            {{ form.category.label_tag }}
+            {{ form.category }}
+        </div>
+        <div>
+            {{ form.tags.label_tag }}
+            {{ form.tags }}
+        </div>
+      <button type="submit" class="post-button"> 发表 </button>
+    </form>
+
+    {% block script %}
         <script src="{% static 'blog/js/jquery.min.js' %}"></script>
         <script src="{% static 'blog/js/editormd/editormd.min.js' %}"></script>
         <script type="text/javascript">
             var testEditor;
 
-            $(function() {
+            $(function () {
                 testEditor = editormd("test-editormd", {
-                    width   : "90%",
-                    height  : 640,
-                    syncScrolling : "single",
-                    path    : "{% static 'blog/js/editormd/lib/' %}",
-                    imageUpload : true,
-                    imageFormats : ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
-                    imageUploadURL : "/images/"
+                    width: "90%",
+                    height: 640,
+                    syncScrolling: "single",
+                    path: "{% static 'blog/js/editormd/lib/' %}",
+                    imageUpload: true,
+                    imageFormats: ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
+                    imageUploadURL: "/images/"
                 });
             });
         </script>
+    {% endblock %}
     </body>
-</html>
+{% endblock %}

@@ -1,10 +1,15 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
+from django.shortcuts import render, redirect
+from django.core.urlresolvers import reverse
 
 from app.models import (Article, Category, Tag, Image,
                         BlogComment, BlogMeta, Link)
+from app.forms import ArticleForm
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
+from django.views.generic.base import View
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.decorators.csrf import csrf_exempt
 from django.http.response import JsonResponse
 import markdown
@@ -178,21 +183,24 @@ class ArchiveView(CustomListView):
         return super(ArchiveView, self).get_context_data(**kwargs)
 
 
-class EditorView(CustomDetailView):
+class EditorView(LoginRequiredMixin, View):
 
-    model = Article
-    template_name = 'blog/editor.html'
+    def get(self, request):
+        blog_meta = BlogMeta.objects.get(pk=1)
+        form = ArticleForm()
+        return render(request, 'blog/editor.html', {'form': form,
+                                                    'blog_meta': blog_meta})
 
-    def get_object(self, queryset=None):
-        return None
-
-    def get_context_data(self, **kwargs):
-        return super(EditorView, self).get_context_data(**kwargs)
+    def post(self, request):
+        f = ArticleForm(request.POST)
+        new_article = f.save(commit=False)
+        new_article.author = request.user
+        new_article.save()
+        return redirect(reverse('app:index'))
 
 
 @csrf_exempt
 def upload_image(request):
-    print request.FILES.get('editormd-image-file')
     if request.method == 'POST':
         data = {
             'success': 0,
