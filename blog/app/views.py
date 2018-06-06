@@ -11,6 +11,7 @@ from django.views.generic.detail import DetailView
 from django.views.generic.base import View
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.decorators.csrf import csrf_exempt
+from django.utils.decorators import method_decorator
 from django.http.response import JsonResponse
 import markdown
 import logging
@@ -147,6 +148,25 @@ class CategoryView(CustomListView):
         return super(CategoryView, self).get_context_data(**kwargs)
 
 
+class CategoryDetailView(CustomListView):
+
+    model = Category
+    template_name = 'blog/filter.html'
+    context_object_name = 'article_list'
+
+    def get_queryset(self, queryset=None):
+        category = Category.objects.get(pk=self.kwargs.get('category'))
+        if category:
+            return category.article_set.all()
+        else:
+            return []
+
+    def get_context_data(self, **kwargs):
+        kwargs['filter'] = Category.objects.get(
+            pk=self.kwargs.get('category')).name
+        return super(CategoryDetailView, self).get_context_data(**kwargs)
+
+
 class TagView(CustomListView):
 
     model = Tag
@@ -165,6 +185,25 @@ class TagView(CustomListView):
 
     def get_context_data(self, **kwargs):
         return super(TagView, self).get_context_data(**kwargs)
+
+
+class TagDetailView(CustomListView):
+
+    model = Tag
+    template_name = 'blog/filter.html'
+    context_object_name = 'article_list'
+
+    def get_queryset(self, queryset=None):
+        tag = Tag.objects.get(pk=self.kwargs.get('tag'))
+        if tag:
+            return tag.article_set.all()
+        else:
+            return []
+
+    def get_context_data(self, **kwargs):
+        kwargs['filter'] = Tag.objects.get(
+            pk=self.kwargs.get('tag')).name
+        return super(TagDetailView, self).get_context_data(**kwargs)
 
 
 class ArchiveView(CustomListView):
@@ -199,18 +238,23 @@ class EditorView(LoginRequiredMixin, View):
         return redirect(reverse('app:index'))
 
 
-@csrf_exempt
-def upload_image(request):
-    if request.method == 'POST':
-        data = {
-            'success': 0,
-            'message': '',
-            'url': ''
-        }
+@method_decorator(csrf_exempt, name='dispatch')
+class UploadImageView(LoginRequiredMixin, View):
+    data = {
+        'success': 0,
+        'message': '',
+        'url': ''
+    }
+
+    def get(self, request):
+        return JsonResponse(self.data)
+
+    def post(self, request):
         new_img = Image(
             image=request.FILES.get('editormd-image-file'),
         )
         new_img.save()
-        data['success'] = 1
-        data['url'] = new_img.image.url
-        return JsonResponse(data)
+        self.data['success'] = 1
+        self.data['url'] = new_img.image.url
+        return JsonResponse(self.data)
+
