@@ -16,13 +16,13 @@
                         <div class="tag-cloud-tags">
                             {% for tag in tag_list %}
                                 {% if tag.count > 0 and tag.count <= 5 %}
-                                    <a href="#"
+                                    <a href="{% url 'app:tag-detail' tag.pk %}"
                                        style="font-size: 12px; color: #ccc">{{ tag.name }}</a>
                                 {% elif tag.count >= 5 and tag.count <= 20 %}
-                                    <a href="#"
+                                    <a href="{% url 'app:tag-detail' tag.pk %}"
                                        style="font-size: 14.25px; color: #b5b5b5">{{ tag.name }}</a>
                                 {% elif tag.count > 20 %}
-                                    <a href="#"
+                                    <a href="{% url 'app:tag-detail' tag.pk %}"
                                        style="font-size: 18.75px; color: #868686">{{ tag.name }}</a>
                                 {% endif %}
                             {% endfor %}

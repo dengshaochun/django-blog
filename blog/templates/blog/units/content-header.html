@@ -29,19 +29,19 @@
                         <br/> 首页 </a></li>
                 <li class="menu-item menu-item-categories"
                     style="opacity: 1; transform: translateY(0px);">
-                    <a href="{% url 'app:categories' %}"
+                    <a href="{% url 'app:category-list' %}"
                        rel="section"> <i
                             class="menu-item-icon fa fa-fw fa-th"></i>
                         <br/> 分类 </a></li>
                 <li class="menu-item menu-item-archives"
                     style="opacity: 1; transform: translateY(0px);">
-                    <a href="{% url 'app:archives' %}"
+                    <a href="{% url 'app:archive-list' %}"
                        rel="section"> <i
                             class="menu-item-icon fa fa-fw fa-archive"></i>
                         <br/> 归档 </a></li>
                 <li class="menu-item menu-item-tags"
                     style="opacity: 1; transform: translateY(0px);">
-                    <a href="{% url 'app:tags' %}" rel="section"> <i
+                    <a href="{% url 'app:tag-list' %}" rel="section"> <i
                             class="menu-item-icon fa fa-fw fa-tags"></i>
                         <br/> 标签 </a></li>
                 {% if user.is_authenticated %}

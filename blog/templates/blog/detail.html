@@ -22,7 +22,7 @@
                                     class="post-meta-item-icon"> <i
                                     class="fa fa-folder-o"></i> </span> <span
                                     class="post-meta-item-text">分类于</span> <span> <a
-                                    href="#"
+                                    href="{% url 'app:category-detail' article.category.pk %}"
                                     rel="index"> <span>{{ article.category }}</span> </a> </span> </span>
                             <span class="leancloud_visitors"> <span
                                     class="post-meta-divider">|</span> <span
@@ -45,7 +45,7 @@
                     </div>
                     <div class="post-tags">
                         {% for tag in tags %}
-                            <a href="#" rel="tag"># {{ tag.name }}</a>
+                            <a href="{% url 'app:tag-detail' tag.pk %}" rel="tag"># {{ tag.name }}</a>
                         {% endfor %}
                     </div>
                     <footer class="post-footer">
@@ -53,15 +53,15 @@
                             <ul class="post-copyright">
                                 <li class="post-copyright-link">
                                     <strong>本文作者：</strong> <a
-                                        href="{% url 'app:index' %}">{{ article.author }}</a>
+                                        href="{% url 'app:about' %}">{{ article.author }}</a>
                                 </li>
                                 <li class="post-copyright-link">
                                     <strong>本文标题：</strong> <a
-                                        href="{% url 'app:detail' article.pk %}">{{ article.title }}</a>
+                                        href="{% url 'app:article-detail' article.pk %}">{{ article.title }}</a>
                                 </li>
                                 <li class="post-copyright-link">
                                     <strong>本文链接：</strong> <a
-                                        href="{% url 'app:detail' article.pk %}">{{ article.get_absolute_url }}</a>
+                                        href="{% url 'app:article-detail' article.pk %}">{{ article.get_absolute_url }}</a>
                                 </li>
                                 <li class="post-copyright-date">
                                     <strong>发布时间：</strong>{{ article.created_time }}

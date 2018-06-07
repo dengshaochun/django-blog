@@ -14,11 +14,11 @@
                     </div>
                     <div class="category-all">
                         <ul class="category-list">
-                            {% for catetory in category_list %}
+                            {% for category in category_list %}
                                 <li class="category-list-item"><a
                                         class="category-list-link"
-                                        href="#">{{ catetory.name }}</a><span
-                                        class="category-list-count">{{ catetory.count }}</span>
+                                        href="{% url 'app:category-detail' category.pk %}">{{ category.name }}</a><span
+                                        class="category-list-count">{{ category.count }}</span>
                                 </li>
                             {% endfor %}
                         </ul>

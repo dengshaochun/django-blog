@@ -194,7 +194,7 @@ class Article(models.Model):
         ordering = ['-last_modified_time']
 
     def get_absolute_url(self):
-        return reverse('app:detail', kwargs={'article_id': self.pk})
+        return reverse('app:article-detail', kwargs={'article_id': self.pk})
 
     def save(self, *args, **kwargs):
         # 统计字数

@@ -104,4 +104,4 @@ ENV/
 *migrations*
 *.idea*
 *.sqlite3
-media/*
+*blog/media/*

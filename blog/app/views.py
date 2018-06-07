@@ -139,8 +139,9 @@ class CategoryView(CustomListView):
         categories = Category.objects.all()
         for category in categories:
             category_list.append({
+                'pk': category.pk,
                 'name': category.name,
-                'count': Article.objects.filter(category=category).count()
+                'count': category.article_set.filter(status='p').count()
             })
         return category_list
 
@@ -157,7 +158,8 @@ class CategoryDetailView(CustomListView):
     def get_queryset(self, queryset=None):
         category = Category.objects.get(pk=self.kwargs.get('category'))
         if category:
-            return category.article_set.all()
+            return category.article_set.filter(
+                status='p').order_by('-created_time').all()
         else:
             return []
 
@@ -178,8 +180,9 @@ class TagView(CustomListView):
         tags = Tag.objects.all()
         for tag in tags:
             tag_list.append({
+                'pk': tag.pk,
                 'name': tag.name,
-                'count': tag.article_set.count()
+                'count': tag.article_set.filter(status='p').count()
             })
         return tag_list
 
@@ -196,7 +199,8 @@ class TagDetailView(CustomListView):
     def get_queryset(self, queryset=None):
         tag = Tag.objects.get(pk=self.kwargs.get('tag'))
         if tag:
-            return tag.article_set.all()
+            return tag.article_set.filter(
+                status='p').order_by('-created_time').all()
         else:
             return []
 
@@ -246,9 +250,6 @@ class UploadImageView(LoginRequiredMixin, View):
         'url': ''
     }
 
-    def get(self, request):
-        return JsonResponse(self.data)
-
     def post(self, request):
         new_img = Image(
             image=request.FILES.get('editormd-image-file'),
@@ -257,4 +258,3 @@ class UploadImageView(LoginRequiredMixin, View):
         self.data['success'] = 1
         self.data['url'] = new_img.image.url
         return JsonResponse(self.data)
-
