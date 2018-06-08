@@ -49,7 +49,7 @@
             {{ form.status.label_tag }}
             {{ form.status }}
         </div>
-        <div id="test-editormd">
+        <div id="new-editormd">
             {{ form.body }}
         </div>
         <div>
@@ -71,17 +71,54 @@
         <script src="{% static 'blog/js/jquery.min.js' %}"></script>
         <script src="{% static 'blog/js/editormd/editormd.min.js' %}"></script>
         <script type="text/javascript">
-            var testEditor;
-
+            var newEditor;
+            var theme = "default";
+            var mirrorTheme = "default";
+            var previewTheme = "default";
             $(function () {
-                testEditor = editormd("test-editormd", {
-                    width: "90%",
-                    height: 640,
+                newEditor = editormd("new-editormd", {
+                    width: "95%",
+                    height: 900,
                     syncScrolling: "single",
                     path: "{% static 'blog/js/editormd/lib/' %}",
                     imageUpload: true,
                     imageFormats: ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
-                    imageUploadURL: "/images/"
+                    imageUploadURL: "/images/",
+                    ToolbarAutoFixed: true,
+                    taskList: true,
+                    emailLink: true,
+                    emoji: true,
+                    flowChart: true,
+                    gotoLine: true,
+                    tex: true,
+                    toolbarIcons : function() {
+                        return ["undo","redo","|","bold","del","italic","quote","ucwords","uppercase","lowercase","|","h1","h2","h3","h4","h5","h6","|","list-ul","list-ol","hr","|","link","reference-link","image","code","preformatted-text","code-block","table","datetime","emoji","html-entities","pagebreak","|","goto-line","watch","preview","fullscreen","clear","search","||","themeIcon","help","info"]
+                    },
+                    toolbarIconsClass : {
+                        themeIcon : "fa-adjust"
+                    },
+                    toolbarHandlers : {
+                        themeIcon : function(cm, icon, cursor, selection) {
+                            if (theme === "default") {
+                                theme = "dark";
+                                mirrorTheme = "pastel-on-dark";
+                                previewTheme = "dark";
+
+                            }else{
+                                theme = "default";
+                                mirrorTheme = "default";
+                                previewTheme = "default";
+                            }
+                            newEditor.setTheme(theme);
+                            newEditor.setCodeMirrorTheme(mirrorTheme);
+                            newEditor.setPreviewTheme(previewTheme);
+                        }
+                    },
+                    lang : {
+                        toolbar : {
+                            themeIcon : "主题(default/dark)"  // 自定义按钮的提示文本，即title属性
+                        }
+                    }
                 });
             });
         </script>
