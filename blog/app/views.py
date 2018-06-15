@@ -217,7 +217,6 @@ class ArchiveView(CustomListView):
     context_object_name = 'article_list'
 
     def get_queryset(self, queryset=None):
-
         article_list = Article.objects.filter(
             status='p').order_by('-created_time')
         return article_list
