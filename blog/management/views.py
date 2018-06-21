@@ -17,20 +17,22 @@ class LoginView(View):
         return render(request, 'management/login.html', {'form': form})
 
     def post(self, request):
-        print 'post'
         f = LoginForm(request.POST)
         print f.is_valid()
         print f.errors
         if f.is_valid():
-            print 'xxx'
             username = f.cleaned_data['username']
             password = f.cleaned_data['password']
             user = authenticate(username=username, password=password)
             if user.is_active and user.is_superuser:
-                print 'pppp'
                 login(request, user)
-                return redirect(reverse('app:index'))
+                return redirect(reverse('management:index'))
             else:
-                print 'ccc'
                 return render(request, 'management/login.html', {'form': f})
         return render(request, 'management/login.html', {'form': f})
+
+
+class IndexView(View):
+
+    def get(self, request):
+        return render(request, 'management/index.html')
