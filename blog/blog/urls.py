@@ -17,6 +17,7 @@ from django.conf.urls import url, include
 from django.conf.urls.static import serve
 from django.contrib import admin
 from django.conf import settings
+from app import search_views
 
 
 urlpatterns = [
@@ -24,6 +25,7 @@ urlpatterns = [
     url(r'', include('app.urls')),
     url(r'^management/', include('management.urls')),
     url(r'^api/v1/', include('api.urls')),
+    url(r'^search/', search_views.MySeachView(), name='haystack_search'),
     url(r'^media/(?P<path>.*)$', serve,
         {'document_root': settings.MEDIA_ROOT}),
     url(r'^static/(?P<path>.*)$', serve,

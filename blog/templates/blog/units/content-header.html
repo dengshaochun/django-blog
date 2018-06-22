@@ -44,18 +44,16 @@
                     <a href="{% url 'app:tag-list' %}" rel="section"> <i
                             class="menu-item-icon fa fa-fw fa-tags"></i>
                         <br/> 标签 </a></li>
-                {% if user.is_authenticated %}
-                <li class="menu-item menu-item-about"
-                    style="opacity: 1; transform: translateY(0px);">
-                    <a href="{% url 'app:editor' %}" rel="section">
-                        <i class="menu-item-icon fa fa-fw fa-file-text"></i>
-                        <br/> 发表 </a></li>
-                {% endif %}
                 <li class="menu-item menu-item-about"
                     style="opacity: 1; transform: translateY(0px);">
                     <a href="{% url 'app:about' %}" rel="section">
                         <i class="menu-item-icon fa fa-fw fa-user"></i>
                         <br/> 关于 </a></li>
+                <li class="menu-item menu-item-search"
+                    style="opacity: 1; transform: translateY(0px);">
+                    <a href="/search" rel="section">
+                        <i class="menu-item-icon fa fa-fw fa-search"></i>
+                        <br/> 搜索 </a></li>
             </ul>
         </nav>
     </div>

@@ -105,3 +105,4 @@ ENV/
 *.idea*
 *.sqlite3
 *blog/media/*
+*whoosh_index*
