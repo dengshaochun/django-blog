@@ -23,7 +23,7 @@ from app import search_views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'', include('app.urls')),
-    url(r'^management/', include('management.urls')),
+    url(r'^mgmt/', include('mgmt.urls')),
     url(r'^api/v1/', include('api.urls')),
     url(r'^search/', search_views.MySeachView(), name='haystack_search'),
     url(r'^media/(?P<path>.*)$', serve,

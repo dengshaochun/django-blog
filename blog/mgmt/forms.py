@@ -6,7 +6,8 @@
 # @File    : forms.py
 # @Software: PyCharm
 
-from django.forms import Form, fields, widgets
+from django.forms import Form, fields, widgets, ModelForm, TextInput
+from app.models import Article
 
 
 class LoginForm(Form):
@@ -31,3 +32,14 @@ class LoginForm(Form):
         error_messages={'required': '密码不能为空!', }
     )
 
+
+class ArticleForm(ModelForm):
+
+    class Meta:
+        model = Article
+        fields = ('title', 'body', 'status', 'abstract', 'topped',
+                  'category', 'tags')
+        widgets = {
+            'title': TextInput(attrs={'id': 'local-search-input'}),
+            'abstract': TextInput(attrs={'id': 'local-search-input'}),
+        }

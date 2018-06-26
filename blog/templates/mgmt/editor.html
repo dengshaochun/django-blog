@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+{% extends 'mgmt/base.html' %}
+{% load static %}
+
+{% block header %}
+    {{ block.super }}
+    <link rel="shortcut icon" type="image/x-icon"
+          href="{{ blog_meta.ico.image.url }}"/>
+    <title> {{ blog_meta.name }} </title>
+
+    <link rel="stylesheet" href="{% static 'editor/css/editor-style.css' %}"/>
+    <link rel="stylesheet" href="{% static 'editor/css/editormd.min.css' %}"/>
+{% endblock %}
+
+{% block page_content %}
+
+    <form class="" action="{% url 'mgmt:editor' %}" method="post">
+        {% csrf_token %}
+        <div>
+            {{ form.title.label_tag }}
+            {{ form.title }}
+        </div>
+        <div>
+            {{ form.abstract.label_tag }}
+            {{ form.abstract }}
+        </div>
+        <div>
+            {{ form.status.label_tag }}
+            {{ form.status }}
+        </div>
+        <div id="new-editormd">
+            {{ form.body }}
+        </div>
+        <div>
+            {{ form.topped.label_tag }}
+            {{ form.topped }}
+        </div>
+        <div>
+            {{ form.category.label_tag }}
+            {{ form.category }}
+        </div>
+        <div>
+            {{ form.tags.label_tag }}
+            {{ form.tags }}
+        </div>
+        <button type="submit" class="post-button"> 发表</button>
+    </form>
+
+    {% block script %}
+        {{ block.super }}
+        <script src="{% static 'common/js/jquery.min.js' %}"></script>
+        <script src="{% static 'editor/js/editormd/editormd.min.js' %}"></script>
+        <script type="text/javascript">
+            var newEditor;
+            var theme = "default";
+            var mirrorTheme = "default";
+            var previewTheme = "default";
+            $(function () {
+                newEditor = editormd("new-editormd", {
+                    width: "95%",
+                    height: 900,
+                    syncScrolling: "single",
+                    path: "{% static 'editor/js/editormd/lib/' %}",
+                    imageUpload: true,
+                    imageFormats: ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
+                    imageUploadURL: "/mgmt/images/",
+                    ToolbarAutoFixed: true,
+                    taskList: true,
+                    emailLink: true,
+                    emoji: true,
+                    flowChart: true,
+                    gotoLine: true,
+                    tex: true,
+                    toolbarIcons: function () {
+                        return ["undo", "redo", "|", "bold", "del", "italic", "quote", "ucwords", "uppercase", "lowercase", "|", "h1", "h2", "h3", "h4", "h5", "h6", "|", "list-ul", "list-ol", "hr", "|", "link", "reference-link", "image", "code", "preformatted-text", "code-block", "table", "datetime", "emoji", "html-entities", "pagebreak", "|", "goto-line", "watch", "preview", "fullscreen", "clear", "search", "||", "themeIcon", "help", "info"]
+                    },
+                    toolbarIconsClass: {
+                        themeIcon: "fa-adjust"
+                    },
+                    toolbarHandlers: {
+                        themeIcon: function (cm, icon, cursor, selection) {
+                            if (theme === "default") {
+                                theme = "dark";
+                                mirrorTheme = "pastel-on-dark";
+                                previewTheme = "dark";
+
+                            } else {
+                                theme = "default";
+                                mirrorTheme = "default";
+                                previewTheme = "default";
+                            }
+                            newEditor.setTheme(theme);
+                            newEditor.setCodeMirrorTheme(mirrorTheme);
+                            newEditor.setPreviewTheme(previewTheme);
+                        }
+                    },
+                    lang: {
+                        toolbar: {
+                            themeIcon: "主题(default/dark)"  // 自定义按钮的提示文本，即title属性
+                        }
+                    }
+                });
+            });
+        </script>
+    {% endblock %}
+{% endblock %}

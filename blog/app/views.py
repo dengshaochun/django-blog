@@ -1,18 +1,10 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-from django.shortcuts import render, redirect
-from django.core.urlresolvers import reverse
 
-from app.models import (Article, Category, Tag, Image,
-                        BlogComment, BlogMeta, Link)
-from app.forms import ArticleForm
+from app.models import (Article, Category, Tag, BlogComment, BlogMeta, Link)
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
-from django.views.generic.base import View
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.decorators.csrf import csrf_exempt
-from django.utils.decorators import method_decorator
-from django.http.response import JsonResponse
+
 import markdown
 import logging
 
@@ -223,37 +215,3 @@ class ArchiveView(CustomListView):
 
     def get_context_data(self, **kwargs):
         return super(ArchiveView, self).get_context_data(**kwargs)
-
-
-class EditorView(LoginRequiredMixin, View):
-
-    def get(self, request):
-        blog_meta = BlogMeta.objects.get(pk=1)
-        form = ArticleForm()
-        return render(request, 'blog/editor.html', {'form': form,
-                                                    'blog_meta': blog_meta})
-
-    def post(self, request):
-        f = ArticleForm(request.POST)
-        new_article = f.save(commit=False)
-        new_article.author = request.user
-        new_article.save()
-        return redirect(reverse('app:index'))
-
-
-@method_decorator(csrf_exempt, name='dispatch')
-class UploadImageView(LoginRequiredMixin, View):
-    data = {
-        'success': 0,
-        'message': '',
-        'url': ''
-    }
-
-    def post(self, request):
-        new_img = Image(
-            image=request.FILES.get('editormd-image-file'),
-        )
-        new_img.save()
-        self.data['success'] = 1
-        self.data['url'] = new_img.image.url
-        return JsonResponse(self.data)
