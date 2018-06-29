@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 {% load static %}
 <html lang="en">
-{% block header %}
-    <head>
-        {% block title %}
-            <title>Blog Admin! | </title>
-        {% endblock %}
+
+<head>
+    {% block title %}
+        <title>Blog Admin! | </title>
+    {% endblock %}
+    {% block header %}
         {% include 'mgmt/units/header.html' %}
-    </head>
-{% endblock %}
+    {% endblock %}
+</head>
+
 
 <body class="nav-md">
 <div class="container body">
@@ -21,8 +23,9 @@
         {% endblock %}
 
         {% block page_content %}{% endblock %}
-
-        {% include 'mgmt/units/footer.html' %}
+        {% block footer %}
+            {% include 'mgmt/units/footer.html' %}
+        {% endblock %}
     </div>
 </div>
 

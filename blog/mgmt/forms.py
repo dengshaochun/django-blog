@@ -6,7 +6,8 @@
 # @File    : forms.py
 # @Software: PyCharm
 
-from django.forms import Form, fields, widgets, ModelForm, TextInput
+from django.forms import (Form, fields, widgets, ModelForm, TextInput,
+                          Select, SelectMultiple, CheckboxInput, Textarea)
 from app.models import Article
 
 
@@ -40,6 +41,25 @@ class ArticleForm(ModelForm):
         fields = ('title', 'body', 'status', 'abstract', 'topped',
                   'category', 'tags')
         widgets = {
-            'title': TextInput(attrs={'id': 'local-search-input'}),
-            'abstract': TextInput(attrs={'id': 'local-search-input'}),
+            'title': TextInput(attrs={
+                'class':
+                    'form-control col-md-7 col-xs-12'
+            }),
+            'abstract': TextInput(attrs={
+                'class':
+                    'form-control col-md-7 col-xs-12'
+            }),
+            'status': Select(attrs={
+                'class': 'form-control'
+            }),
+            'topped': CheckboxInput(attrs={
+                'class': 'js-switch'
+            }),
+            'tags': SelectMultiple(attrs={
+                'class': 'select2_multiple form-control'
+            }),
+            'category': Select(attrs={
+                'class': 'form-control'
+            }),
+            'body': Textarea()
         }
