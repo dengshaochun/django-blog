@@ -1,9 +1,15 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from app.models import (Article, Category, Tag, BlogComment, BlogMeta, Link)
+from app.models import (Article, Category, Tag, BlogMeta, Link)
+from django.views.generic import FormView
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
+from app.forms import CommentForm
+from django.shortcuts import get_object_or_404
+from django.shortcuts import redirect, render
+from django.core.urlresolvers import reverse
+from django.forms.models import model_to_dict
 
 import markdown
 import logging
@@ -41,16 +47,13 @@ class CustomDetailView(DetailView):
 
 
 class IndexView(CustomListView):
+
     model = Article
     template_name = 'blog/index.html'
     # 制定获取的model数据列表的名字
     context_object_name = 'article_list'
 
     def get_queryset(self):
-        """
-        过滤数据，获取已发布文章列表，并转为html格式
-        Returns:
-        """
         article_list = Article.objects.filter(status='p')
         return article_list
 
@@ -59,9 +62,7 @@ class IndexView(CustomListView):
 
 
 class ArticleDetailView(CustomDetailView):
-    """
-    显示文章详情
-    """
+
     model = Article
     template_name = 'blog/detail.html'
     context_object_name = 'article'
@@ -96,9 +97,27 @@ class ArticleDetailView(CustomDetailView):
                                         ])
         return obj
 
+    def get_comments(self):
+        comments = []
+        comment_list = []
+        comment_list_dict = {}
+        for row in self.object.blogcomment_set.all():
+            comment = model_to_dict(row)
+            comment.update({'children': []})
+            comment_list.append(comment)
+            comment_list_dict[comment['id']] = comment
+
+        for item in comment_list:
+            parent_row = comment_list_dict.get(item['id']).get('parent_comment')
+            if not parent_row:
+                comments.append(item)
+            else:
+                parent_row['children'].append(item)
+        return comments
+
     # 新增form到上下文
     def get_context_data(self, **kwargs):
-        kwargs['comments'] = self.object.blogcomment_set.all()
+        kwargs['comments'] = self.get_comments()
         kwargs['tags'] = self.object.tags.all()
         kwargs['prev_article'] = Article.objects.filter(
             pk=self.object.pk - 1).first()
@@ -215,3 +234,27 @@ class ArchiveView(CustomListView):
 
     def get_context_data(self, **kwargs):
         return super(ArchiveView, self).get_context_data(**kwargs)
+
+
+class BlogCommentView(FormView):
+    form_class = CommentForm
+    template_name = 'blog/detail.html'
+
+    def form_valid(self, form):
+        target_article = get_object_or_404(Article,
+                                           pk=self.kwargs['article_id'])
+        comment = form.save(commit=False)
+        comment.article = target_article
+        self.success_url = target_article.get_absolute_url()
+        return redirect(reverse('blog:articles',
+                                args=(self.kwargs['article_id'])))
+
+    def form_invalid(self, form):
+        target_article = get_object_or_404(Article,
+                                           pk=self.kwargs['article_id'])
+        return render(self.request, 'blog/detail.html', {
+            'form': form,
+            'article': target_article,
+            'comment_list': target_article.blogcomment_set.all(),
+        })
+

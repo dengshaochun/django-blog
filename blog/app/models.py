@@ -229,9 +229,9 @@ class BlogComment(models.Model):
     """
     Blog评论表
     """
-    user = models.ForeignKey('auth.User',
-                             verbose_name=_('reviewers'),
-                             on_delete=models.CASCADE)
+    username = models.CharField(_('user name'), max_length=100)
+    email = models.EmailField(_('email address'))
+    private_url = models.URLField(_('user private web url'))
     body = models.TextField(_('comment content'))
     created_time = models.DateTimeField(_('create time'), auto_now_add=True)
     parent_comment = models.ForeignKey('BlogComment',

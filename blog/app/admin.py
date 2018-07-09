@@ -23,14 +23,7 @@ class ArticleAdmin(admin.ModelAdmin):
 
 
 class BlogCommentAdmin(admin.ModelAdmin):
-    def save_model(self, request, obj, form, change):
-        obj.user = request.user
-        obj.save()
-
-    def get_form(self, request, obj=None, **kwargs):
-        self.readonly_fields = ('user',)
-        form = super(BlogCommentAdmin, self).get_form(request, obj, **kwargs)
-        return form
+    list_display = ('username', 'email', 'created_time')
 
 
 class CategoryAdmin(admin.ModelAdmin):
