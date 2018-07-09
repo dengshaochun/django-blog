@@ -108,7 +108,7 @@ class ArticleDetailView(CustomDetailView):
             comment_list_dict[comment['id']] = comment
 
         for item in comment_list:
-            parent_row = comment_list_dict.get(item['id']).get('parent_comment')
+            parent_row = comment_list_dict.get(item['parent_comment'])
             if not parent_row:
                 comments.append(item)
             else:
